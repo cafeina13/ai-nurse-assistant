@@ -108,3 +108,45 @@ def test_replay_refuses_to_run_twice(ward_db):
     asyncio.run(Replay(sessions(ward_db)).run())
     with pytest.raises(RuntimeError, match="already been replayed"):
         asyncio.run(Replay(sessions(ward_db)).run())
+
+
+def test_textbank_cells_and_lookup(tmp_path):
+    from wardgen.textbank import BankText, append_rows, cells
+
+    config = load_config()
+    # soon_plus intents have two wordings (soon, critical); every cell has two speakers.
+    soon_plus = sum(1 for i in config.intents.values() if i.urgency == "soon_plus")
+    assert len(cells(config.intents)) == 2 * (len(config.intents) + soon_plus)
+
+    append_rows(tmp_path, "water", [
+        {"text": "su verir misiniz", "intent": "water", "urgency": "routine",
+         "speaker": "patient", "source": "test", "prompt_version": 1},
+    ])
+    bank = BankText(tmp_path, seed=1)
+    water, fell = config.intents["water"], config.intents["fell"]
+    assert bank.text_for(water, "routine", "patient", None) == "su verir misiniz"
+    # Empty cells fall back to the intent's example phrase.
+    assert bank.text_for(fell, "critical", "companion", None) == fell.example
+
+
+def test_generate_with_textbank(tmp_path):
+    from wardgen.textbank import append_rows
+
+    bank_dir = tmp_path / "bank"
+    append_rows(bank_dir, "water", [
+        {"text": "bi bardak su alabilir miyim", "intent": "water", "urgency": "routine",
+         "speaker": speaker, "source": "test", "prompt_version": 1}
+        for speaker in ("patient", "companion")
+    ])
+    generate(tmp_path / "w.db", seed=5, days=2, textbank=bank_dir)
+    with sessions(tmp_path / "w.db")() as s:
+        water_texts = {c.text for c in s.scalars(select(ScenarioCall))
+                       if c.intent == "water" and c.channel == "text"}
+    assert water_texts == {"bi bardak su alabilir miyim"}
+
+
+def test_claude_test_bank_covers_every_cell():
+    from wardgen.textbank import TEXTBANK_DIR, cells, load_bank
+
+    bank = load_bank(TEXTBANK_DIR / "test" / "claude")
+    assert {k: len(v) for k, v in bank.items()} == {c: 4 for c in cells(load_config().intents)}
