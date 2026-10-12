@@ -1,6 +1,6 @@
 """Fills the training text bank with Gemini-written Turkish requests.
 
-    python -m wardgen.gemini_fill --target 40           # fill every cell to 40 texts
+    python -m wardgen.gemini_fill --target 40           # fill every slot to 40 texts
     python -m wardgen.gemini_fill --dry-run              # print one prompt, call nothing
 
 Resumable: every batch is saved as it arrives, so after a rate limit or a stopped run,
@@ -18,10 +18,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-from wardgen.config import Intent, load_config
-from wardgen.textbank import TEXTBANK_DIR, append_rows, cells, load_bank, normalize
+from wardgen.config import Config, Topic, load_config
+from wardgen.textbank import TEXTBANK_DIR, append_rows, load_bank, normalize, slots
 
-PROMPT_VERSION = 3
+PROMPT_VERSION = 4
 DEFAULT_MODEL = "gemini-3.5-flash-lite"
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -29,7 +29,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 URGENCY_GUIDE = {
     "critical": "The situation is acute and alarming right now; the words sound urgent or panicked.",
     "soon": "The person needs a nurse within minutes; uncomfortable or worried, not panicked.",
-    "routine": "A calm request for comfort, information or supplies; no time pressure.",
+    "routine": "Calm, no time pressure: a request, a question, or a mild or passing symptom.",
 }
 SPEAKER_GUIDE = {
     "patient": "The patient writes about themselves (first person).",
@@ -46,16 +46,18 @@ STYLE_MIX = """- about a third: hurried phone typing, lowercase, missing Turkish
 - some polite, some impatient or annoyed"""
 
 
-def build_prompt(intent: Intent, urgency: str, speaker: str, n: int,
-                 avoid: list[str]) -> str:
+def build_prompt(config: Config, topic: Topic, speaker: str, n: int, avoid: list[str]) -> str:
+    cell = topic.cell
+    category = config.categories[cell.category]["name"]
     avoid_block = "\n".join(f"- {t}" for t in avoid) or "- (none yet)"
     return f"""You write synthetic test data for a hospital nurse-call assistant in Turkey.
 On an internal medicine ward, people type short messages to the nurse station.
 
 Write {n} different messages in Turkish.
 
-What the message is about: {intent.id.replace("_", " ")} (example: "{intent.example}")
-Urgency the wording should express: {urgency}. {URGENCY_GUIDE[urgency]}
+Kind of request: {category}, urgency {cell.urgency}: {cell.means.lower()}.
+What the message is about: {topic.id.replace("_", " ")} (example: "{topic.example}")
+How it should sound: {URGENCY_GUIDE[cell.urgency]}
 Who writes: {SPEAKER_GUIDE[speaker]}
 
 Rules:
@@ -108,40 +110,42 @@ def api_key() -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Fill the training text bank with Gemini.")
-    parser.add_argument("--target", type=int, default=40, help="texts per cell")
+    parser.add_argument("--target", type=int, default=40, help="texts per slot")
     parser.add_argument("--batch", type=int, default=20, help="texts asked for per call")
     parser.add_argument("--model", default=os.environ.get("GEMINI_MODEL", DEFAULT_MODEL))
     parser.add_argument("--min-interval", type=float, default=7.0,
                         help="seconds between calls, to stay under a per-minute limit")
-    parser.add_argument("--intents", help="comma-separated intent ids (default: all)")
+    parser.add_argument("--topics", help="comma-separated topic ids (default: all)")
     parser.add_argument("--out", type=Path, default=TEXTBANK_DIR / "train" / "gemini")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    intents = load_config().intents
-    if args.intents:
-        intents = {k: intents[k] for k in args.intents.split(",")}
+    config = load_config()
+    topics = {t.key: t for t in config.topics}
+    wanted = set(args.topics.split(",")) if args.topics else None
+    all_slots = [s for s in slots(config) if wanted is None or s[2] in wanted]
     bank = load_bank(args.out) if args.out.exists() else {}
-    todo = [c for c in cells(intents) if len(bank.get(c, [])) < args.target]
-    print(f"{len(todo)} of {len(cells(intents))} cells need texts (target {args.target}).")
+    todo = [s for s in all_slots if len(bank.get(s, [])) < args.target]
+    print(f"{len(todo)} of {len(all_slots)} slots need texts (target {args.target}).")
 
     if args.dry_run:
         if todo:
-            intent_id, urgency, speaker = todo[0]
-            print(build_prompt(intents[intent_id], urgency, speaker, args.batch,
+            *key, speaker = todo[0]
+            print(build_prompt(config, topics[tuple(key)], speaker, args.batch,
                                bank.get(todo[0], [])[-15:]))
         return
 
     key = api_key()
-    for cell in todo:
-        intent_id, urgency, speaker = cell
-        existing = list(bank.get(cell, []))
+    for slot in todo:
+        category, urgency, topic_id, speaker = slot
+        topic = topics[(category, urgency, topic_id)]
+        existing = list(bank.get(slot, []))
         seen = {normalize(t) for t in existing}
         attempts = 0
         while len(existing) < args.target and attempts < 6:
             attempts += 1
             n = min(args.batch, args.target - len(existing) + 5)  # a few spare for duplicates
-            prompt = build_prompt(intents[intent_id], urgency, speaker, n, existing[-15:])
+            prompt = build_prompt(config, topic, speaker, n, existing[-15:])
             texts = _call_with_backoff(prompt, args.model, key)
             if texts is None:
                 print("\nStopping: the API keeps refusing (daily quota?). Run again later to resume.")
@@ -151,13 +155,14 @@ def main() -> None:
                 if normalize(t) not in seen and len(existing) + len(fresh) < args.target:
                     seen.add(normalize(t))
                     fresh.append(t)
-            append_rows(args.out, intent_id, [
-                {"text": t, "intent": intent_id, "urgency": urgency, "speaker": speaker,
-                 "source": args.model, "prompt_version": PROMPT_VERSION}
+            append_rows(args.out, [
+                {"text": t, "category": category, "urgency": urgency, "topic": topic_id,
+                 "speaker": speaker, "source": args.model, "prompt_version": PROMPT_VERSION}
                 for t in fresh
             ])
             existing += fresh
-            print(f"{intent_id:<22} {urgency:<8} {speaker:<9} +{len(fresh):>2} -> {len(existing)}")
+            print(f"{category}/{urgency}/{topic_id:<24} {speaker:<9} +{len(fresh):>2} -> {len(existing)}",
+                  flush=True)
             time.sleep(args.min_interval)
     print("Done.")
 
