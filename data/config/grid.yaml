@@ -1,0 +1,229 @@
+# The request grid: every category x the urgency levels it can have. Each request gets one
+# cell as its label. Source of truth: "Labeling guide" in the project plan doc.
+# Not validated with a nurse.
+#
+# Topics are examples that steer the generator; they are never a triage output and never
+# need to be complete. A topic may appear in a soon and a critical cell of the same category:
+# worsening wording can then raise soon to critical (hard-case rule 7).
+#
+# Topic fields:
+#   weight    relative frequency. ASSUMPTION, shaped by the ranking in Tzeng 2010
+#             (bathroom help > pain medication > IV/pump problems > personal help > repositioning).
+#   requires  patient attributes needed: has_iv, bedbound, not_bedbound
+#   context   soon_if_assisted: routine wording, but labeled soon for a patient who cannot
+#             walk alone (hard-case rule 6)
+
+categories:
+  - id: breathing
+    name: Breathing
+    trip: Assess a symptom
+    cells:
+      critical:
+        means: Cannot breathe, or breathlessness getting rapidly worse
+        topics:
+          - {id: cannot_breathe, weight: 0.2, example: "Nefes alamıyorum"}
+          - {id: choking, weight: 0.1, example: "Bir şey kaçtı, boğuluyor"}
+          - {id: short_of_breath, weight: 0.2, example: "Nefesim gittikçe daralıyor, konuşamıyorum"}
+          - {id: oxygen_not_reaching, weight: 0.16, example: "Oksijen kesildi, nefesim daralıyor"}
+      soon:
+        means: Breathless but still talking
+        topics:
+          - {id: short_of_breath, weight: 0.8, example: "Nefesim daralıyor"}
+          - {id: oxygen_not_reaching, weight: 0.64, example: "Oksijen maskem düştü"}
+          - {id: wheezing, weight: 0.8, example: "Göğsümden hırıltı geliyor"}
+      routine:
+        means: Breathing information, no action needed now
+        topics:
+          - {id: breathing_better, weight: 0.5, example: "Nefesim açıldı, rahatladım"}
+          - {id: asks_oxygen_off, weight: 0.5, example: "Oksijeni çıkarabilir miyim artık"}
+
+  - id: pain
+    name: Pain
+    trip: Assess a symptom
+    cells:
+      critical:
+        means: Pain that can signal a life threat
+        topics:
+          - {id: chest_pain, weight: 0.3, example: "Göğsüm sıkışıyor"}
+          - {id: sudden_severe_headache, weight: 0.1, example: "Başıma birden çok şiddetli ağrı girdi, böylesini hiç yaşamadım"}
+      soon:
+        means: Real pain that needs a nurse within minutes
+        topics:
+          - {id: new_pain, weight: 3.0, example: "Karnım ağrımaya başladı"}
+          - {id: worsening_pain, weight: 3.0, example: "Ağrım arttı, geçmiyor"}
+          - {id: wants_painkiller, weight: 9.0, example: "Ağrı kesici alabilir miyim"}
+      routine:
+        means: Pain information, no action needed now
+        topics:
+          - {id: pain_resolved, weight: 1.0, example: "Ağrım geçti, haber vereyim dedim"}
+          - {id: mild_ache, weight: 1.0, example: "Biraz sızlıyor ama idare eder"}
+
+  - id: neuro
+    name: Neuro and consciousness
+    trip: Assess a symptom
+    cells:
+      critical:
+        means: Possible stroke or loss of consciousness
+        topics:
+          - {id: unresponsive, weight: 0.1, example: "Annem uyanmıyor"}
+          - {id: speech_face_change, weight: 0.1, example: "Konuşamıyor, yüzü kaydı"}
+          - {id: confusion, weight: 0.16, example: "Babam birden kimseyi tanımıyor, yataktan atlamaya çalışıyor"}
+          - {id: dizzy_faint, weight: 0.2, example: "Bayılıyorum, gözlerim kararıyor"}
+      soon:
+        means: New change in thinking or balance
+        topics:
+          - {id: confusion, weight: 0.64, example: "Babam kimseyi tanımıyor"}
+          - {id: dizzy_faint, weight: 0.8, example: "Başım dönüyor, bayılacak gibiyim"}
+      routine:
+        means: Symptom has passed
+        topics:
+          - {id: neuro_symptom_passed, weight: 0.3, example: "Baş dönmem geçti, kendime geldim"}
+
+  - id: other_symptom
+    name: Other symptom
+    trip: Assess a symptom
+    cells:
+      critical:
+        means: Symptom with signs of serious illness
+        topics:
+          - {id: chills_with_confusion, weight: 0.2, example: "Titreme tuttu, kafam da karıştı, çok kötüyüm"}
+      soon:
+        means: Bothersome symptom needing assessment
+        topics:
+          - {id: nausea_vomiting, weight: 3.0, example: "Midem bulanıyor, kustum"}
+          - {id: fever_chills, weight: 2.0, example: "Ateşim çıktı, titriyorum"}
+          - {id: diarrhea, weight: 1.5, example: "İshal oldum, sürekli tuvalete gidiyorum"}
+      routine:
+        means: Mild or passing symptom
+        topics:
+          - {id: cough, weight: 2.0, example: "Öksürüğüm var"}
+          - {id: itching, weight: 1.0, example: "Kollarım kaşınıyor"}
+          - {id: runny_nose, weight: 0.5, example: "Burnum akıyor"}
+          - {id: constipation, weight: 1.0, example: "Günlerdir tuvalete çıkamadım"}
+          - {id: symptom_passed, weight: 1.0, example: "Bulantım geçti"}
+
+  - id: fall_injury
+    name: Fall and injury
+    trip: Check the body
+    cells:
+      critical:
+        means: Possible serious injury or blood loss
+        topics:
+          - {id: fell, weight: 0.3, example: "Babam düştü"}
+          - {id: heavy_bleeding, weight: 0.1, example: "Çok kanıyor"}
+          - {id: vomiting_blood, weight: 0.1, example: "Kan kustum"}
+      soon:
+        means: Small wound or dressing problem
+        topics:
+          - {id: minor_bleeding, weight: 0.6, example: "Kolumdan biraz kan geliyor"}
+          - {id: dressing_problem, weight: 1.0, example: "Pansumanım ıslandı"}
+
+  - id: physical_help
+    name: Physical help
+    trip: Move the patient's body
+    cells:
+      soon:
+        means: Cannot wait, or unsafe alone
+        topics:
+          - {id: bedpan_urinal, weight: 8.0, requires: [bedbound], example: "Sürgü lazım"}
+          - {id: soiled, weight: 3.0, example: "Altımı ıslattım"}
+      routine:
+        means: Help moving the body, no time pressure
+        topics:
+          - {id: toilet_help, weight: 14.0, requires: [not_bedbound], context: soon_if_assisted, example: "Tuvalete gitmem lazım"}
+          - {id: get_up_walk, weight: 4.0, requires: [not_bedbound], context: soon_if_assisted, example: "Kalkmak istiyorum, yardım eder misiniz"}
+          - {id: reposition, weight: 6.0, example: "Beni yan çevirir misiniz"}
+          - {id: hygiene, weight: 3.0, example: "Yıkanmak istiyorum"}
+
+  - id: comfort_supplies
+    name: Comfort and supplies
+    trip: Bring or adjust a thing
+    cells:
+      routine:
+        means: Bring or adjust a thing
+        topics:
+          - {id: water, weight: 6.0, example: "Su alabilir miyim"}
+          - {id: food, weight: 2.0, example: "Yemeğim gelmedi"}
+          - {id: blanket_temperature, weight: 3.0, example: "Üşüyorum, battaniye lazım"}
+          - {id: bed_adjust, weight: 3.0, example: "Yatağımı dikleştirir misiniz"}
+          - {id: room_environment, weight: 2.0, example: "Işığı kapatır mısınız, çok gürültü var"}
+          - {id: supplies, weight: 2.0, example: "Peçete bitti"}
+
+  - id: medication
+    name: Medication
+    trip: Check an order
+    cells:
+      critical:
+        means: Signs of a severe drug reaction
+        topics:
+          - {id: side_effect, weight: 0.14, example: "İlacı aldıktan sonra dudaklarım şişti, yutkunamıyorum"}
+      soon:
+        means: Order may be missed, or a mild reaction
+        topics:
+          - {id: missed_dose, weight: 0.7, example: "Sabah ilacımı vermediler"}
+          - {id: side_effect, weight: 0.56, example: "İlacı alınca kaşıntı başladı"}
+      routine:
+        means: Question about an order
+        topics:
+          - {id: next_dose_time, weight: 3.0, example: "İlacım ne zaman verilecek"}
+          - {id: med_question, weight: 1.5, example: "Bu ilacı neden içiyorum"}
+
+  - id: equipment
+    name: Equipment
+    trip: Check a device
+    cells:
+      soon:
+        means: Device needs attention
+        topics:
+          - {id: pump_alarm, weight: 6.0, requires: [has_iv], example: "Serum makinesi ötüyor"}
+          - {id: iv_finished, weight: 4.0, requires: [has_iv], example: "Serumum bitti"}
+          - {id: iv_site_problem, weight: 2.0, requires: [has_iv], example: "Serum takılan yer şişti"}
+          - {id: other_device_alarm, weight: 1.5, example: "Monitör ötüyor"}
+      routine:
+        means: Question about a device
+        topics:
+          - {id: device_question, weight: 0.8, example: "Bu makine ne işe yarıyor"}
+
+  - id: information
+    name: Information
+    trip: Answer a question
+    cells:
+      routine:
+        means: Answer a question
+        topics:
+          - {id: doctor_rounds, weight: 3.0, example: "Doktor ne zaman gelecek"}
+          - {id: test_results, weight: 2.0, example: "Tahlil sonuçlarım çıktı mı"}
+          - {id: discharge, weight: 2.0, example: "Ne zaman taburcu olacağım"}
+          - {id: visiting, weight: 1.0, example: "Ziyaret saati kaçta"}
+          - {id: meal_times, weight: 1.0, example: "Akşam yemeği kaçta"}
+
+  - id: emotional
+    name: Emotional
+    trip: Talk and reassure
+    cells:
+      critical:
+        means: Self-harm risk
+        topics:
+          - {id: hopelessness, weight: 0.1, example: "Artık yaşamak istemiyorum"}
+      soon:
+        means: Distress that needs a person now
+        topics:
+          - {id: anxiety_fear, weight: 1.5, example: "Çok korkuyorum"}
+      routine:
+        means: Wants company or rest
+        topics:
+          - {id: wants_company, weight: 2.0, example: "Biri yanımda olsun istiyorum"}
+          - {id: cannot_sleep, weight: 1.5, example: "Uyuyamıyorum"}
+
+  - id: unclear
+    name: Unclear
+    trip: Go and ask
+    cells:
+      critical:
+        means: Vague but alarmed
+        topics:
+          - {id: vague_alarmed, weight: 0.5, example: "Çabuk gelin, bir şey oldu"}
+      soon:
+        means: Vague distress, no stated need
+        topics:
+          - {id: vague_distress, weight: 2.5, example: "Kötü hissediyorum, bir tuhafım"}
