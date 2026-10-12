@@ -19,7 +19,7 @@ def generate(db_path: str | Path, *, seed: int, days: int = 1,
              textbank: Path | None = None) -> int:
     """Writes a new ward and its scripted calls to an empty database. Returns the call count.
 
-    Without a text bank, every call uses its intent's example phrase.
+    Without a text bank, every call uses its topic's example phrase.
     """
     config = config or load_config()
     text: TextGenerator = BankText(textbank, seed) if textbank else ExampleText()

@@ -121,7 +121,7 @@ class Replay:
             )
             session.add(request)
             session.flush()
-            # Only what the system could know: no intent or urgency from the script.
+            # Only what the system could know: no topic or label from the script.
             event = eventlog.append(
                 session, at=call.at, type=EventType.REQUEST_CREATED,
                 actor=f"{call.speaker}:{patient.id}", room_id=patient.room_id,

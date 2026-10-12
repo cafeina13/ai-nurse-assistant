@@ -96,8 +96,8 @@ class MedicationOrder(Base):
 class ScenarioCall(Base):
     """A call scripted by the generator, waiting to happen during replay.
 
-    Holds the ground truth (intent, urgency) used only for evaluation; the running
-    system sees calls as Requests and must never read these labels.
+    Holds the ground truth (category and urgency, i.e. the grid cell) used only for
+    evaluation; the running system sees calls as Requests and must never read these labels.
     """
 
     __tablename__ = "scenario_calls"
@@ -108,7 +108,7 @@ class ScenarioCall(Base):
     speaker: Mapped[str] = mapped_column(String(20))  # patient | companion
     channel: Mapped[str] = mapped_column(String(20))  # text | button
     text: Mapped[str] = mapped_column(Text)
-    intent: Mapped[str] = mapped_column(String(40))
+    topic: Mapped[str] = mapped_column(String(40))
     category: Mapped[str] = mapped_column(String(40))
     urgency: Mapped[str] = mapped_column(String(20))  # critical | soon | routine
 

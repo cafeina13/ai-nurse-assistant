@@ -19,7 +19,7 @@ def main() -> None:
     parser.add_argument("--days", type=int, default=1)
     parser.add_argument("--textbank", type=Path,
                         help="text bank directory, e.g. data/textbank/train/gemini "
-                             "(default: one example phrase per intent)")
+                             "(default: one example phrase per topic)")
     parser.add_argument("--force", action="store_true", help="replace the file if it exists")
     args = parser.parse_args()
 
