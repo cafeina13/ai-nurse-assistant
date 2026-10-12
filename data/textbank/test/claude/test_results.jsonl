@@ -1,8 +1,0 @@
-{"text": "Dünkü kan tahlilim çıktı mı", "intent": "test_results", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "rontgen sonucu ne oldu", "intent": "test_results", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Tomografi sonucumu ne zaman öğrenirim", "intent": "test_results", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "idrar tahlili cikti mi", "intent": "test_results", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemin tahlil sonuçları hakkında bilgi alabilir miyiz", "intent": "test_results", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babamin mr sonucu belli oldu mu", "intent": "test_results", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşimin biyopsi sonucu ne zaman çıkar", "intent": "test_results", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "dedemin seker degerleri nasil", "intent": "test_results", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

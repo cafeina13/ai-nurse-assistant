@@ -1,0 +1,56 @@
+{"text": "Göğsümde müthiş bir baskı var, koluma vuruyor", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gogsum yaniyo sol kolum uyusuyo cabuk gelin", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kalbimin üstüne biri oturmuş gibi, terliyorum", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gogus agrisi basladi cok siddetli", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam göğsünü tutuyor, çok terliyor, acil gelin", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kalbim sıkışıyo diyo bembeyaz oldu", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim göğsünde ağrı var dedi, sonra kusmaya başladı, çabuk", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem gogsune bastiriyo agri cenesine gidiyomus yetisin", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bacağım zonklamaya başladı, az önce yoktu", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim agriyo yarim saattir gecmedi", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ameliyat yerimin yanında yeni bir sızı başladı", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sirtimda bi agri cikti nereden geldi bilmiyorum", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem karnım ağrıyor diyor, akşam yoktu", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin dizi sisti agriyo yeni basladi", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim başının çok ağrıdığını söylüyor, bakar mısınız", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem kulagim agriyo diye agliyo", "category": "pain", "urgency": "soon", "topic": "new_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağrı kesici işe yaradı, artık ağrım yok", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gogsumdeki agri gecti haberiniz olsun", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Az önce çağırmıştım, şimdi geçti gelmenize gerek yok", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim artik agrimiyo tesekkurler", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ağrısı geçti, rahatladı, uyuyor şimdi", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam artik agrisi kalmadi dedi bilginiz olsun", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin karın ağrısı hafifledi, iyi görünüyor", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin agrisi gecti merak etmeyin", "category": "pain", "urgency": "routine", "topic": "pain_resolved", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağrı kesicimin saati geldi mi, çok ağrıyor", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "agri kesici istiyorum lutfen", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bir ağrı kesici daha verebilir misiniz, başım çatlıyor", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "parol falan bisey var mi agrim var", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Anneme ağrı kesici verebilir misiniz, çok canı yanıyor", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam agri igne istiyo", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim ağrı kesici rica ediyor, akşamki etkisini kaybetti", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin agrisi var ilac verir misiniz", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağrım dayanılmaz hale geldi, ilaç işe yaramadı", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "agri gittikce artiyo bi seyler yapin", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bel ağrım öğleden beri katlandı, yatamıyorum", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "iğne yaptılar ama ağrı hiç geçmedi daha kötü", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın ağrısı arttı, inliyor durmadan", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annemin agrisi geceden beri kotulesiyo uyuyamiyo", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dizindeki ağrı iyice şiddetlendi, yerinden kımıldayamıyor", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin agrisi gecmiyo artik bagiriyo", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Başımda bir şey patladı sanki, hayatımda böyle ağrı çekmedim", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "birden kafam yariliyomus gibi agri girdi gozum kararıyo", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ensemden başıma müthiş bir ağrı vurdu, kusacağım", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim aniden cok fena agridi dayanamiyorum acil", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem birden başını tutup bağırdı, çok şiddetli ağrı diyor", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam bas agrisindan kivraniyo birden basladi kusuyo", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim hayatının en kötü baş ağrısı dedi, gözlerini açamıyor", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin basina ani agri girdi ensesi tutuldu yetisin", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Dizimde hafif bir sızı var ama önemli değil", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "biraz belim agriyo ama idare ediyor", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serum yeri hafif sızlıyor, söyleyeyim dedim", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ufak bi bas agrisi var bisey istemiyorum", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin sırtı biraz ağrıyormuş, acil değil", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin omzu hafif agriyo ama sikayet etmiyo", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin bacağında hafif ağrı var, sabaha bakarsınız", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem hafif agri var diyo ama rahat", "category": "pain", "urgency": "routine", "topic": "mild_ache", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

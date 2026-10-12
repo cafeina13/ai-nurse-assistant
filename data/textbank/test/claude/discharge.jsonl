@@ -1,8 +1,0 @@
-{"text": "Ne zaman eve çıkabilirim", "intent": "discharge", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "taburcu ne zaman doktor bisey demedi", "intent": "discharge", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Yarın çıkış olur mu, işe gitmem lazım", "intent": "discharge", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "eve gidince ilaclarimi kim yazacak", "intent": "discharge", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemin taburcusu bugün mü, araba ayarlayacağız", "intent": "discharge", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babam ne zaman cikar", "intent": "discharge", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşim çıkınca evde nelere dikkat etmeliyiz", "intent": "discharge", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ninemi eve almadan once rapor lazim mi", "intent": "discharge", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

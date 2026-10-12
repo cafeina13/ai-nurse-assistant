@@ -1,8 +1,0 @@
-{"text": "Ağrı kesicimin saati geldi mi, çok ağrıyor", "intent": "wants_painkiller", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "agri kesici istiyorum lutfen", "intent": "wants_painkiller", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Bir ağrı kesici daha verebilir misiniz, başım çatlıyor", "intent": "wants_painkiller", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "parol falan bisey var mi agrim var", "intent": "wants_painkiller", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Anneme ağrı kesici verebilir misiniz, çok canı yanıyor", "intent": "wants_painkiller", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babam agri igne istiyo", "intent": "wants_painkiller", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşim ağrı kesici rica ediyor, akşamki etkisini kaybetti", "intent": "wants_painkiller", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ninemin agrisi var ilac verir misiniz", "intent": "wants_painkiller", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

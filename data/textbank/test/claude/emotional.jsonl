@@ -1,0 +1,32 @@
+{"text": "Çok korkuyorum, kalbim küt küt atıyor, biri gelsin", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yalniz kalmak istemiyorum cok endiseliyim", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yarınki ameliyattan çok korkuyorum, sakinleşemiyorum", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "panik oluyorum durduramiyorum", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem çok huzursuz, ağlıyor, sakinleştiremiyorum", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam korkmus titriyo surekli soruyo", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim panik atak geçiriyor gibi, ellerini sıkıyor", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem korkuyo yalniz birakmayin diyo", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Gece boyu uyuyamadım, bu gece de aynı", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "uykum gelmiyo hic", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sürekli uyanıyorum, uyku ilacı var mı", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gozumu kapatinca aklima bisey geliyo uyuyamiyorum", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem gece hiç uyumuyor, bir şey yapabilir miyiz", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam saat 3 oldu uyumadi", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim uyuyamıyor, ışık ve ses rahatsız ediyor", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem geceleri uyumuyo gunduz uyuyo", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Artık dayanacak gücüm kalmadı, ölmek istiyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yasamanin anlami yok bitirmek istiyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kendime bir şey yapacağım, kimseye yük olmak istemiyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "bu aci bitsin istiyorum artik yasamak istemiyom", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam yaşamak istemediğini söylüyor, serumu çıkarmaya çalıştı", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kendini oldurmekten bahsediyo korkuyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim pencereden atlayacağım diyor, acil gelin", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem ilaclarimi toplu icecem diyo", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Biraz konuşabilir miyiz, canım sıkıldı", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "biri yanima gelse iyi olur", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kimse gelmiyor, yalnız hissediyorum", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "refakatcim gitti biraz otururmusunuz", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem sizi soruyor, biraz uğrar mısınız", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam hemsireyi gormek istiyo bisey yok ama", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim ben eve gidince yalnız kalacak, arada bakar mısınız", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem sizinle konusmak istiyo hal hatir", "category": "emotional", "urgency": "routine", "topic": "wants_company", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

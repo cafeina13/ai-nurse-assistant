@@ -1,8 +1,0 @@
-{"text": "Lokma boğazımda kaldı nefes alamıyorum", "intent": "choking", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ilacı yutamadım boğazımda takıldı boğuluyorum", "intent": "choking", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Boğulmak üzereyim su içerken kaçtı durmadan öksürüyorum nefes yok", "intent": "choking", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "yemek kacti bogazima nefes alamiyom", "intent": "choking", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Babam yemek yerken boğuldu, öksüremiyor bile, koşun!", "intent": "choking", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "annemin bogazina ekmek kacti morariyo yetisin", "intent": "choking", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Dedem çorba içiyordu, boğuluyor, sesi çıkmıyor acil", "intent": "choking", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "esime hap kacti nefes alamiyor bogazini tutuyor", "intent": "choking", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

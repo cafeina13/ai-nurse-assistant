@@ -1,0 +1,40 @@
+{"text": "Bu beyaz hap ne için, ilk defa veriliyor", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "evde kullandigim ilaci burda da icecek miyim", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bu serumun içinde ne var", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilaclari ac karnina mi tok karnina mi iciyorum", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ilaçları değişti mi, listeyi görebilir miyiz", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin kullandigi kan sulandirici devam mi", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşime verdiğiniz ilaç uyku yapar mı", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin evden getirdigi ilaclar ne olacak", "category": "medication", "urgency": "routine", "topic": "med_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Öğlen ilacımı kimse getirmedi", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sabahki iğnem yapilmadi galiba", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Akşam yemekten önce vereceğiniz hap gelmedi, saat geçti", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "insulinim yapilmadi yemek geldi", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin sabah ilacı verilmemiş, kontrol eder misiniz", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin antibiyotigi saatinde gelmedi", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin kalp ilacı atlanmış olabilir, emin değilim", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin hapini unuttunuz sanirim", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Akşam ilacım saat kaçta gelecek", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tansiyon hapimi ne zaman vericeksiniz", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Antibiyotiğin bir sonraki dozu kaçta", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac saati gelmedi mi daha", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin şeker iğnesi ne zaman yapılacak", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin hapi kacta", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin serumdaki ilacı bitince yenisi ne zaman takılacak", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin gece ilaci saat kacta", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yeni ilaçtan sonra midem bulanıyor", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac sonrasi kollarim kizardi kasiniyo", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Hapı içtiğimden beri ağzım kuru ve uykum var", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum takilinca icim yandi biraz", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ilaçtan sonra eli kaşınmaya başladı", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ilactan beri kusuyo", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yeni ilaçtan sonra sırtında kırmızı lekeler çıktı", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem ilac icince cok uyusuk oldu", "category": "medication", "urgency": "soon", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İlaçtan sonra dudaklarım şişti, yutkunamıyorum", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "igneden sonra her yerim kasiniyo bogazim daraliyo", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serum takıldı, yüzüm şişti, nefesim sıkıştı", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac icince dilim sisti konusamiyorum iyi", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin yüzü ilaçtan sonra balon gibi şişti, acil!", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ilactan sonra kizardi nefesi daraliyo", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dili şişti, ilacı yeni almıştı, çabuk gelin", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem igneden sonra fenalasti her yeri kabardi", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

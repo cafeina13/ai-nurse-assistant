@@ -1,0 +1,16 @@
+{"text": "Bir tuhafım, ne olduğunu anlatamıyorum", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "iyi degilim biri gelsin", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İçim içime sığmıyor, bir şeyler ters", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kendimi garip hissediyorum bakar misiniz", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem iyi değil, ne olduğunu bilmiyorum, bakar mısınız", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamda bi tuhaflik var", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim kötüyüm diyor ama nesi olduğunu söyleyemiyor", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem hic iyi gorunmuyo", "category": "unclear", "urgency": "soon", "topic": "vague_distress", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Çabuk gelin, bir şey oluyor bana", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "acil biri gelsin cok kotuyum", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yardım edin, bir tuhaflık var, hemen!", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ne olur gelin bisey oldu", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babama bir şey oldu, çabuk gelin!", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem fenalasti acil", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim birden kötüleşti, ne olduğunu bilmiyorum, koşun", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem iyi degil hemen gelin lutfen", "category": "unclear", "urgency": "critical", "topic": "vague_alarmed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

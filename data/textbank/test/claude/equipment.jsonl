@@ -1,0 +1,40 @@
+{"text": "Serumum bitti, hava giriyor mu acaba", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum torbasi bosaldi", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Antibiyotik bitti, son damlası da aktı", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum bitmek uzere degistirecek misiniz", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin serumu bitmiş, hortumda kan var", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin serumu tukendi", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin damar yolundaki ilaç bitti, alır mısınız", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin serumu bitti damla gelmiyo", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kolumdaki iğnenin olduğu yer şişti ve acıyor", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "damar yolu kizardi yaniyo", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kateter yerinden çıkmış gibi, bant ıslak", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum giris yeri morardi cok sert oldu", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin elindeki kanül çıkmış", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin serum taktiginiz yer balon gibi", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin damar yolu yanıyor diyor, kızarmış", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem branulu cekmis cikarmis", "category": "equipment", "urgency": "soon", "topic": "iv_site_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Parmağımdaki cihaz düştü, monitör ötüyor", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yanimdaki ekran alarm veriyo sari yaniyo", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kalp monitörünün kabloları çıktı", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tansiyon aleti kendi kendine sisip duruyo", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin bağlı olduğu cihaz uyarı veriyor", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin monitoru otmeye basladi", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin göğsündeki kablolardan biri koptu", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin parmak probu cikmis alarm caliyo", "category": "equipment", "urgency": "soon", "topic": "other_device_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serum makinesi durmadan bip bip ediyor", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "pompa otuyo susturamiyorum", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Makinenin ekranında kırmızı ışık yanıyor, ses çıkarıyor", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum cihazi alarm veriyo yarim saattir", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin serum pompası öttü, kapatabilir misiniz", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin makinesi ses yapiyo", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin infüzyon pompası tıkandı yazıyor", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin serumunun aleti bagiriyo", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bu kola taktığınız aleti çıkarabilir miyim", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "monitordeki sayilar ne demek", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serum makinesini fişten çekersem sorun olur mu", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "parmagimdaki mandal ne ise yariyo", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin bağlı olduğu cihaz ne ölçüyor", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin yatak alti makinesi ne", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin kolundaki tansiyon aleti hep mi takılı kalacak", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin makinesi gece ses yapar mi", "category": "equipment", "urgency": "routine", "topic": "device_question", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

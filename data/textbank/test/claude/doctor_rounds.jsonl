@@ -1,8 +1,0 @@
-{"text": "Doktor bugün vizite gelecek mi", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "doktorla konusmak istiyorum ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Sabah gelen hoca öğleden sonra tekrar uğrar mı", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "doktorumun adi ne ogrenebilir miyim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Babamın doktoruyla görüşebilir miyiz, sorularımız var", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "annemin doktoru kacta gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşimin durumu hakkında doktordan bilgi almak istiyoruz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ninemin doktoru haftasonu da geliyo mu", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

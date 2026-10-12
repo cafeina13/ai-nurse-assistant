@@ -1,0 +1,56 @@
+{"text": "Neredeyim ben, burası neresi, evime gitmek istiyorum", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kafam karisti hangi gun bilmiyorum biri gelsin", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Burada yabancı insanlar var, kim bunlar", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "eve gidecem cantam nerde kimse soylemiyo", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem beni tanımadı, sabah iyiydi, bakar mısınız", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam saçmalıyo askerdeyim diyo", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim ne dediğimi anlamıyor, hep aynı şeyi soruyor", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem geceden beri boş boş bakiyo kimseyi bilmiyo", "category": "neuro", "urgency": "soon", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Her şey bulanıklaştı, kim olduğumu karıştırıyorum, korkuyorum", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kafam calismiyo yazdiklarim anlamsiz geliyo yardim", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Duvarlar üstüme geliyor, adımı hatırlamıyorum", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ne oldugunu anlamiyorum herkes bulanik cok kotu", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam birden tamamen şaşırdı, serumu koparmaya çalışıyor, acil", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kimseyi tanimiyo bagiriyo yataktan atlayacak", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim hiç kendinde değil, yataktan kalkmaya çalışıyor, durduramıyorum", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem cildirmis gibi cok ajite hemen gelin", "category": "neuro", "urgency": "critical", "topic": "confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Başım dönüyor, oturunca biraz geçiyor", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kalkinca gozum karardi yattim simdi", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sersem gibiyim, oda dönüyor sanki", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim donuyo midem de bulaniyo biraz", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem tuvaletten dönünce başım dönüyor dedi, yatırdım", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin bas donmesi var ayaga kalkamiyo", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim halsiz, sanki bayılacakmış gibi duruyor", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem otururken sallaniyo gozleri kayiyo", "category": "neuro", "urgency": "soon", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bayılıyorum, gözlerim kararıyor, hemen gelin", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim cok fena donuyo dusecem tutunamiyorum", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kendimi kaybedecek gibiyim, soğuk ter döküyorum", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gozum karardi bayilcam yetisin", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam bir anda bayıldı, sonra açtı gözünü, çok solgun", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem bayilip ayildi terliyo hemen gelin", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim fenalaştı, bembeyaz oldu, düşecek gibi", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem baygin gibi gozleri devriliyo", "category": "neuro", "urgency": "critical", "topic": "dizzy_faint", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağzım kaydı gibi, konuşamıyorum düzgün", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sag kolumu kaldiramiyorum yuzum uyusuyo", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kelimeleri çıkaramıyorum, dilim dolanıyor birden", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yuzumun yarisi hissetmiyo bisey oldu", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ağzı yana kaydı, ne dediği anlaşılmıyor, acil!", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam konusamiyo sol tarafi tutmuyo", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yüzü düştü, kolunu kaldıramıyor, hemen gelin", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem birden anlamsiz konusmaya basladi agzi carpildi", "category": "neuro", "urgency": "critical", "topic": "speech_face_change", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yanımdaki hasta uyanmıyor, seslendim cevap vermiyor", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "oda arkadasim kipirdamiyo cagirdim duymuyo", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yandaki teyze hiç tepki vermiyor, gözleri açık", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yan yataktaki amca bayildi galiba kalkmiyo", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam uyanmıyor, sarstım tepki yok, koşun!", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem gozlerini acmiyo cevap vermiyo acil", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim bayıldı, yerde yatıyor, ses vermiyor", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem nefes aliyo ama hic uyanmiyo seslensem de", "category": "neuro", "urgency": "critical", "topic": "unresponsive", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Baş dönmem geçti, ayağa kalktım sorun yok", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gozumun kararmasi gecti iyiyim simdi", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Az önceki sersemlik geçti, kendime geldim", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "bas donmesi azaldi artik oda donmuyo", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin kafası toparlandı, beni tanıdı", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin bas donmesi gecti oturuyo", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim kendine geldi, konuşması normal şimdi", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem sabahki gibi saskin degil artik", "category": "neuro", "urgency": "routine", "topic": "neuro_symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

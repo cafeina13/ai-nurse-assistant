@@ -1,0 +1,48 @@
+{"text": "Yatağın başını biraz kaldırabilir misiniz", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yatak cok dik indirin biraz", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yatağın kumandası çalışmıyor, ayarlayamıyorum", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yatagin yan demirlerini indirir misiniz", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin yatağını oturur pozisyona getirelim mi", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin yatagi gicirdiyo bi bakarmisiniz", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yatağının ayak kısmını yükseltebilir miyiz", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin yataginin kenarini kaldiralim dusmesin", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Odam buz gibi, bir battaniye daha alabilir miyim", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "cok sicak klimayi acarmisiniz", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Üşüyorum, ayaklarım donuyor", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "pencere acik kalmis kapatir misiniz cereyan var", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem üşüdüğünü söylüyor, ekstra örtü var mı", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin battaniyesi ince bi tane daha", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Oda çok havasız, eşim bunaldı", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem titriyo ustunu ortecek bisey lazim", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yemek dağıtıldı mı, bana gelmedi", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "aciktim aksam yemeginden bisey kaldi mi", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Diyet yemeğim yerine normal tabak gelmiş, değişir mi", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "corba sogumus isitma imkani var mi", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin tepsisi gelmedi, unutulmuş olabilir mi", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam yemek yiyebilir mi aclik oldu", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim yemeğini yiyemiyor, daha yumuşak bir şey olur mu", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedeme meyve suyu getirebilir miyim disaridan", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Koridorda çok gürültü var, uyuyamıyorum", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "isik gozume vuruyo kapatir misiniz", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yan yatağın televizyonu çok yüksek", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "perde kapanmiyo gunes yuzume geliyo", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Gece lambası yanık kalsın mı, annem karanlıktan korkar", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin odasi cok gurultulu baska oda olur mu", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Odada bir koku var, havalandırabilir miyiz", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "klima calismiyo galiba ninem terledi", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Peçete ve ıslak mendil alabilir miyim", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "telefonumu sarj edecek priz yok", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bir yastık daha rica edebilir miyim", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tuvalet kagidi bitmis", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem için temiz kıyafet var mı, önlüğü kirlendi", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babama ikinci yastik lazim", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Refakatçi koltuğu için battaniye alabilir miyim", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin terligi kayboldu hastane terligi var mi", "category": "comfort_supplies", "urgency": "routine", "topic": "supplies", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sürahim boşaldı, doldurur musunuz", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilacimi icecem su yok", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağzım kurudu, soğuk su varsa sevinirim", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "suuu lutfen", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam için bir şişe su alabilir miyiz", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem susamis bardak da yok", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşime pipetle su vermek istiyorum, pipet ve su var mı", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin suyu bitti", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

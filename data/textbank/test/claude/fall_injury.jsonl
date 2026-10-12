@@ -1,0 +1,40 @@
+{"text": "Pansumanım kaydı, yara açıkta kaldı", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sargim islandi dusta", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bant kaşındırıyor, yerinden oynadı, değiştirir misiniz", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yaramin uzeri akinti yapmis sargi sirilsiklam", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin pansumanı düşmüş, ne yapalım", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin sargisi gevsemis acilmis", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yarasının bandı ıslak, kokuyor biraz", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin bacagindaki sargi kaymis", "category": "fall_injury", "urgency": "soon", "topic": "dressing_problem", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yere düştüm, kalkamıyorum", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tuvalette dustum kafami carptim", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yataktan kaydım, yerdeyim, kalçam çok ağrıyor", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dustum kalkamiyom kimse yok", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem yataktan düştü, başını çarptı, koşun", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam banyoda dusmus yerde yatiyo", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim tuvalete giderken yere yığıldı", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem dustu bacagi garip duruyo", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serumu çektim, kolumdan kan fışkırıyor", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "burnumdan durmadan kan geliyo yastik kan oldu", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kan kustum, çok fazla, korkuyorum", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ameliyat yerinden kan akiyo durmuyo", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın her yeri kan oldu, durduramıyoruz", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kan kusuyo hemen gelin", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dizindeki yaradan kan şarıl şarıl akıyor", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin altindan cok kan geliyo carsaf kipkirmizi", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İğne yerinden biraz kan sızıyor", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dis fircalarken dis etim kanadi durmadi biraz", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bandın altından hafif kan gelmiş", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kasidim yara kanadi azicik", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin elindeki kateterin oradan kan geliyor biraz", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin burnu kanadi az durdu gibi ama bi bakin", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin kolunda morluk var, biraz da kanıyor", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin pansumani kanla lekelendi", "category": "fall_injury", "urgency": "soon", "topic": "minor_bleeding", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kusmuğumda kan var, kırmızı", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kahve telvesi gibi bisey kustum", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağzımdan kan geldi kusarken, çok korktum", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kan kustum lavabo kirmizi oldu", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam kan kustu, çarşaf kan oldu, koşun", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kusuyo icinde kan var", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim simsiyah bir şey kustu, bembeyaz oldu", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem kan kusuyo hemen gelin", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

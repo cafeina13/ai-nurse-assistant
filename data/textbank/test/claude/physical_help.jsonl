@@ -1,0 +1,48 @@
+{"text": "Sürgü getirir misiniz, kalkamıyorum", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ordek lazim acil sayilir", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yatakta yapmam gerekecek, kap getirebilir misiniz", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "surguyu alir misiniz doldu", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babama ördek lazım, yataktan çıkamıyor", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem surgu istiyo bekleyemiyo", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim için sürgü getirir misiniz, sıkıştı", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin ordegi dolmus degistirir misiniz", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Biraz yürümek istiyorum, koridora çıkabilir miyim", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yataktan kalkmak istiyorum yardim edin", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Koltuğa oturmak istiyorum, tek başıma kalkamıyorum", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ayaklarim uyustu biraz yurusem", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam koltuğa geçmek istiyor, kaldırabilir miyiz", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annemi biraz yurutelim mi doktor yurusun demisti", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim kalkıp pencereye kadar gitmek istiyor", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem kalkmak istiyo ama yalniz kaldiramam", "category": "physical_help", "urgency": "routine", "topic": "get_up_walk", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Duş alabilir miyim, ne zaman uygun olur", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "elimi yuzumu yikamak istiyorum", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Saçlarımı yıkamam mümkün mü, üç gündür yıkamadım", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "disimi fircalayacam lavaboya giderken yardim", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Anneme ıslak mendille silsek olur mu, terlemiş", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babami yikamamiz lazim nasil yapalim", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin tıraş olması lazım, kendisi yapamıyor", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin vucudunu silmek icin havlu ve leğen lazim", "category": "physical_help", "urgency": "routine", "topic": "hygiene", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Hep aynı tarafa yattım, beni çevirir misiniz", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yastigi duzeltip beni yukari cekermisiniz", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kaydım, yatakta aşağı indim, yukarı çeker misiniz", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sirtim ustu yatmaktan bunaldim yan donmek istiyorum", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemi öbür tarafa çevirmemiz lazım, tek başıma yapamıyorum", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam yatakta asagi kaymis", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin pozisyonunu değiştirelim, yatak yarası olmasın", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemi yan cevirmek lazim saati gecti", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Altıma kaçırdım, çok utanıyorum, temizler misiniz", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yatak islandi altim islak", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bezim dolmuş, değiştirilmesi lazım", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kendimi tutamadim carsaf kirlendi", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin bezi kirlenmiş, değiştirmemiz lazım", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam altina yapmis", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin çarşafı ıslanmış, temiz çarşaf ve bez lazım", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem altini islatmis uyuyo ama rahatsiz", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Tuvalete gideceğim, biri koluma girebilir mi", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "cisim geldi tuvalete gotursenize", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Lavaboya kadar yürümem lazım, yalnız korkuyorum", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tuvalet sirasi bende yardim eden olur mu", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemi tuvalete götürmemiz gerek, tek başıma kaldıramıyorum", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam wc ye gidecek yardim", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin tuvaleti geldi, birlikte götürelim mi", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem tuvalete gitmek istiyo serumu takili nasil yapalim", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

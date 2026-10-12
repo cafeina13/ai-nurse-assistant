@@ -1,8 +1,0 @@
-{"text": "Serumum bitti, hava giriyor mu acaba", "intent": "iv_finished", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "serum torbasi bosaldi", "intent": "iv_finished", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Antibiyotik bitti, son damlası da aktı", "intent": "iv_finished", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "serum bitmek uzere degistirecek misiniz", "intent": "iv_finished", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemin serumu bitmiş, hortumda kan var", "intent": "iv_finished", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babamin serumu tukendi", "intent": "iv_finished", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşimin damar yolundaki ilaç bitti, alır mısınız", "intent": "iv_finished", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "dedemin serumu bitti damla gelmiyo", "intent": "iv_finished", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

@@ -1,0 +1,40 @@
+{"text": "Ne zaman eve çıkabilirim", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "taburcu ne zaman doktor bisey demedi", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yarın çıkış olur mu, işe gitmem lazım", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "eve gidince ilaclarimi kim yazacak", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin taburcusu bugün mü, araba ayarlayacağız", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ne zaman cikar", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim çıkınca evde nelere dikkat etmeliyiz", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemi eve almadan once rapor lazim mi", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Doktor bugün vizite gelecek mi", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "doktorla konusmak istiyorum ne zaman gelir", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sabah gelen hoca öğleden sonra tekrar uğrar mı", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "doktorumun adi ne ogrenebilir miyim", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın doktoruyla görüşebilir miyiz, sorularımız var", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annemin doktoru kacta gelir", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin durumu hakkında doktordan bilgi almak istiyoruz", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin doktoru haftasonu da geliyo mu", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kahvaltı saat kaçta veriliyor", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "aksam yemegi ne zaman gelir", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Öğle yemeği geç mi geliyor bugün", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ara ogun var mi", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin yemeği kaçta gelir, ben de dışarı çıkacağım", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yemek saati kacta", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Refakatçiye yemek veriliyor mu, saati ne", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin kahvaltisi gelmeden ilac verilir mi yemek kacta", "category": "information", "urgency": "routine", "topic": "meal_times", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Dünkü kan tahlilim çıktı mı", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "rontgen sonucu ne oldu", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Tomografi sonucumu ne zaman öğrenirim", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "idrar tahlili cikti mi", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin tahlil sonuçları hakkında bilgi alabilir miyiz", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin mr sonucu belli oldu mu", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin biyopsi sonucu ne zaman çıkar", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin seker degerleri nasil", "category": "information", "urgency": "routine", "topic": "test_results", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kızım beni ziyarete kaçta gelebilir", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ziyaretci kac kisi girebiliyo", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Torunlarım gelebilir mi, çocuk girişi var mı", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "aksam ziyaret var mi", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Refakatçi değişimi saat kaçta olabiliyor", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ziyaret saati kacta bitiyo", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemi kardeşim ziyaret edecek, kart lazım mı", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin yanina gece iki kisi kalabilir mi", "category": "information", "urgency": "routine", "topic": "visiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

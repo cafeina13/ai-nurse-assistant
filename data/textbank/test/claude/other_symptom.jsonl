@@ -1,0 +1,72 @@
+{"text": "Zangır zangır titriyorum, ne olduğunu anlayamıyorum", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "titreme tuttu basim donuyo kendimde degilim", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ateşim çok yükseldi, titriyorum, her şey karışık geliyor", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "cok usuyorum titriyorum kafam calismiyo", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam titreyerek sayıklıyor, ateşi çok yüksek", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem titriyo saçmaliyo beni tanimiyo", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim yanıyor, titriyor ve ne dediğimi anlamıyor", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem titriyo dudaklari morardi sayikliyo", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Midem çok bulanıyor, kusacak gibiyim", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "iki kere kustum yemekten sonra", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kusma tuttu, bir şey yiyemiyorum", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "midem kalkiyo bulanti cok kotu", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem kusuyor, poşet getirir misiniz", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin midesi bulaniyo sabahtan beri", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim yemekten sonra kustu, rengi soldu", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem ogurdu bi seyler cikardi", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ateşim var galiba, çok üşüyorum", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "vucudum yaniyo ates olcermisiniz", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Titreme geldi, battaniye de ısıtmıyor", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "atesim cikti bas agrisi da var", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin alnı çok sıcak, ateşini ölçer misiniz", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam titriyo atesi var gibi", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim terledi, sonra titremeye başladı", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin atesi cikti galiba yaniyo", "category": "other_symptom", "urgency": "soon", "topic": "fever_chills", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İshal oldum, üç kere tuvalete koştum", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "karnim surekli guruldiyo ishal var", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sabahtan beri sulu sulu gidiyorum", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ishal durmadi halsiz kaldim", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ishali var, bezini sık sık değiştiriyoruz", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ishal olmus surekli tuvalete gidiyo", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dün geceden beri ishali var", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem ishal tutmus cok yoruldu", "category": "other_symptom", "urgency": "soon", "topic": "diarrhea", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Öksürüğüm var, şurup verilebilir mi", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kuru kuru oksuruyorum gece", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Balgamım var, öksürünce çıkıyor", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "oksuruk biraz rahatsiz ediyo", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem öksürüyor, boğazı tahriş olmuş", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin oksurugu var aksamlari artiyo", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim hafif öksürüyor, pastil olur mu", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem balgamli oksuruyo", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sırtım kaşınıyor, krem var mı", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ayaklarim kasiniyo cok", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Cildim kurudu, kaşıntı yapıyor", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kasinti var bi seyle silsem mi", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin kolları kaşınıyor, kuru gibi", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam surekli kasiniyo yatagi mi acaba", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin bacakları kaşınıyor, nemlendirici sürebilir miyiz", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin sirti kasiniyo", "category": "other_symptom", "urgency": "routine", "topic": "itching", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Burnum akıyor, mendil bitti", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "nezle gibiyim burnum tikali", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Hapşırıp duruyorum, burun damlası olur mu", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "burnum akiyo da hafif", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin burnu akıyor, üşüttü sanırım", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin burnu tikanmis nefes alirken", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim nezle olmuş gibi, burnu akıyor", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem hapsiriyo burnu akiyo", "category": "other_symptom", "urgency": "routine", "topic": "runny_nose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Üç gündür tuvalete çıkamadım, kabızım", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kabizlik oldu ilac var mi", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Karnım şişti, büyük tuvaletim gelmiyor", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "bagirsaklarim calismiyo gunlerdir", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem günlerdir tuvalete çıkmadı", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam kabiz oldu hastaneye geldigimizden beri", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin karnı şiş, kabızlık var", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem tuvalete cikamiyo uc gundur", "category": "other_symptom", "urgency": "routine", "topic": "constipation", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bulantım geçti, yemek yiyebilirim", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "atesim dustu terledim simdi iyiyim", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İshal kesildi, haber vereyim", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "titremem gecti tesekkurler", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ateşi düştü, rahatladı", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin kusmasi durdu", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin bulantısı geçti, uyuyor", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin ishali kesildi bilginiz olsun", "category": "other_symptom", "urgency": "routine", "topic": "symptom_passed", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

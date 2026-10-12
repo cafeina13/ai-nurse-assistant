@@ -1,8 +1,0 @@
-{"text": "Biraz yürümek istiyorum, koridora çıkabilir miyim", "intent": "get_up_walk", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "yataktan kalkmak istiyorum yardim edin", "intent": "get_up_walk", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Koltuğa oturmak istiyorum, tek başıma kalkamıyorum", "intent": "get_up_walk", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ayaklarim uyustu biraz yurusem", "intent": "get_up_walk", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Babam koltuğa geçmek istiyor, kaldırabilir miyiz", "intent": "get_up_walk", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "annemi biraz yurutelim mi doktor yurusun demisti", "intent": "get_up_walk", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşim kalkıp pencereye kadar gitmek istiyor", "intent": "get_up_walk", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "dedem kalkmak istiyo ama yalniz kaldiramam", "intent": "get_up_walk", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

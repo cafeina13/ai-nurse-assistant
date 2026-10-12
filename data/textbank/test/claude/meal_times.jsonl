@@ -1,8 +1,0 @@
-{"text": "Kahvaltı saat kaçta veriliyor", "intent": "meal_times", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "aksam yemegi ne zaman gelir", "intent": "meal_times", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Öğle yemeği geç mi geliyor bugün", "intent": "meal_times", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ara ogun var mi", "intent": "meal_times", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemin yemeği kaçta gelir, ben de dışarı çıkacağım", "intent": "meal_times", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "yemek saati kacta", "intent": "meal_times", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Refakatçiye yemek veriliyor mu, saati ne", "intent": "meal_times", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babamin kahvaltisi gelmeden ilac verilir mi yemek kacta", "intent": "meal_times", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

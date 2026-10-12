@@ -1,8 +1,0 @@
-{"text": "Bu beyaz hap ne için, ilk defa veriliyor", "intent": "med_question", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "evde kullandigim ilaci burda da icecek miyim", "intent": "med_question", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Bu serumun içinde ne var", "intent": "med_question", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "ilaclari ac karnina mi tok karnina mi iciyorum", "intent": "med_question", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemin ilaçları değişti mi, listeyi görebilir miyiz", "intent": "med_question", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babamin kullandigi kan sulandirici devam mi", "intent": "med_question", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşime verdiğiniz ilaç uyku yapar mı", "intent": "med_question", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "dedemin evden getirdigi ilaclar ne olacak", "intent": "med_question", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

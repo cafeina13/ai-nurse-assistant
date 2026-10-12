@@ -1,8 +1,0 @@
-{"text": "Hep aynı tarafa yattım, beni çevirir misiniz", "intent": "reposition", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "yastigi duzeltip beni yukari cekermisiniz", "intent": "reposition", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Kaydım, yatakta aşağı indim, yukarı çeker misiniz", "intent": "reposition", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "sirtim ustu yatmaktan bunaldim yan donmek istiyorum", "intent": "reposition", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Annemi öbür tarafa çevirmemiz lazım, tek başıma yapamıyorum", "intent": "reposition", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "babam yatakta asagi kaymis", "intent": "reposition", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "Eşimin pozisyonunu değiştirelim, yatak yarası olmasın", "intent": "reposition", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
-{"text": "dedemi yan cevirmek lazim saati gecti", "intent": "reposition", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
