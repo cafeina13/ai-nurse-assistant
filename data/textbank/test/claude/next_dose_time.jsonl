@@ -1,0 +1,8 @@
+{"text": "Akşam ilacım saat kaçta gelecek", "intent": "next_dose_time", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tansiyon hapimi ne zaman vericeksiniz", "intent": "next_dose_time", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Antibiyotiğin bir sonraki dozu kaçta", "intent": "next_dose_time", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac saati gelmedi mi daha", "intent": "next_dose_time", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin şeker iğnesi ne zaman yapılacak", "intent": "next_dose_time", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin hapi kacta", "intent": "next_dose_time", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin serumdaki ilacı bitince yenisi ne zaman takılacak", "intent": "next_dose_time", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin gece ilaci saat kacta", "intent": "next_dose_time", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

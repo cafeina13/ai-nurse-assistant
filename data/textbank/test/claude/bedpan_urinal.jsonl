@@ -1,0 +1,8 @@
+{"text": "Sürgü getirir misiniz, kalkamıyorum", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ordek lazim acil sayilir", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yatakta yapmam gerekecek, kap getirebilir misiniz", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "surguyu alir misiniz doldu", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babama ördek lazım, yataktan çıkamıyor", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem surgu istiyo bekleyemiyo", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim için sürgü getirir misiniz, sıkıştı", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin ordegi dolmus degistirir misiniz", "intent": "bedpan_urinal", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

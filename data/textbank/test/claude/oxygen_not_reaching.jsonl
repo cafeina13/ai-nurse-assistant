@@ -1,0 +1,16 @@
+{"text": "Oksijen hortumu burnumdan çıktı takamıyorum", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "maske yerinde durmuyo surekli kayiyo", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Oksijenin sesi gelmiyor, çalışıyor mu bilmiyorum, bakar mısınız", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "burun kanulu kopmus galiba oksijen gelmiyo", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin oksijen maskesi yüzünden düşmüş, düzeltir misiniz", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam uyurken oksijen hortumunu cekip cikarmis", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin oksijen borusu duvardan çıkmış galiba, hava gelmiyor", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem maskeyi takmak istemiyo surekli cikariyo", "intent": "oxygen_not_reaching", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Oksijen kesildi nefes alamıyorum hemen gelin", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "maskeden hava gelmiyo bogulcam acil", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Oksijen bitti galiba, nefesim kesiliyor, çabuk olun", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "hortum cikti nefesim daraldi takamiyorum yetisin", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın oksijeni kesildi, morarmaya başladı, acil!", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annemin maskesinden oksijen gelmiyo nefes alamiyo kosun", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin oksijen tüpü boşalmış, nefesi kesiliyor, hemen gelin", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin hortumu kopmus nefesi tikandi acil yardim", "intent": "oxygen_not_reaching", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

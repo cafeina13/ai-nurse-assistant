@@ -1,0 +1,16 @@
+{"text": "Neredeyim ben, burası neresi, evime gitmek istiyorum", "intent": "confusion", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kafam karisti hangi gun bilmiyorum biri gelsin", "intent": "confusion", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Burada yabancı insanlar var, kim bunlar", "intent": "confusion", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "eve gidecem cantam nerde kimse soylemiyo", "intent": "confusion", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem beni tanımadı, sabah iyiydi, bakar mısınız", "intent": "confusion", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam saçmalıyo askerdeyim diyo", "intent": "confusion", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim ne dediğimi anlamıyor, hep aynı şeyi soruyor", "intent": "confusion", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem geceden beri boş boş bakiyo kimseyi bilmiyo", "intent": "confusion", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Her şey bulanıklaştı, kim olduğumu karıştırıyorum, korkuyorum", "intent": "confusion", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kafam calismiyo yazdiklarim anlamsiz geliyo yardim", "intent": "confusion", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Duvarlar üstüme geliyor, adımı hatırlamıyorum", "intent": "confusion", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ne oldugunu anlamiyorum herkes bulanik cok kotu", "intent": "confusion", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam birden tamamen şaşırdı, serumu koparmaya çalışıyor, acil", "intent": "confusion", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem kimseyi tanimiyo bagiriyo yataktan atlayacak", "intent": "confusion", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim hiç kendinde değil, yataktan kalkmaya çalışıyor, durduramıyorum", "intent": "confusion", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem cildirmis gibi cok ajite hemen gelin", "intent": "confusion", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

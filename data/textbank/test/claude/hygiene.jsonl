@@ -1,0 +1,8 @@
+{"text": "Duş alabilir miyim, ne zaman uygun olur", "intent": "hygiene", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "elimi yuzumu yikamak istiyorum", "intent": "hygiene", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Saçlarımı yıkamam mümkün mü, üç gündür yıkamadım", "intent": "hygiene", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "disimi fircalayacam lavaboya giderken yardim", "intent": "hygiene", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Anneme ıslak mendille silsek olur mu, terlemiş", "intent": "hygiene", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babami yikamamiz lazim nasil yapalim", "intent": "hygiene", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin tıraş olması lazım, kendisi yapamıyor", "intent": "hygiene", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin vucudunu silmek icin havlu ve leğen lazim", "intent": "hygiene", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

@@ -1,0 +1,8 @@
+{"text": "Ağrım dayanılmaz hale geldi, ilaç işe yaramadı", "intent": "worsening_pain", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "agri gittikce artiyo bi seyler yapin", "intent": "worsening_pain", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bel ağrım öğleden beri katlandı, yatamıyorum", "intent": "worsening_pain", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "iğne yaptılar ama ağrı hiç geçmedi daha kötü", "intent": "worsening_pain", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın ağrısı arttı, inliyor durmadan", "intent": "worsening_pain", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annemin agrisi geceden beri kotulesiyo uyuyamiyo", "intent": "worsening_pain", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dizindeki ağrı iyice şiddetlendi, yerinden kımıldayamıyor", "intent": "worsening_pain", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin agrisi gecmiyo artik bagiriyo", "intent": "worsening_pain", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

@@ -1,0 +1,16 @@
+{"text": "Biraz nefesim daralıyor, bakabilir misiniz", "intent": "short_of_breath", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "nefes almakta zorlaniyorum yatinca daha kotu oluyo", "intent": "short_of_breath", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Merdiven çıkmış gibi soluyorum, yatakta yatarken bile", "intent": "short_of_breath", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sabahtan beri nefesim kesik kesik geliyor biri baksin", "intent": "short_of_breath", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin nefesi biraz hızlandı, bir bakar mısınız", "intent": "short_of_breath", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam konusurken nefes nefese kaliyo normalde boyle degildi", "intent": "short_of_breath", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin solunumu sıklaştı gibi, yine de bir göz atın lütfen", "intent": "short_of_breath", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem hirildayarak nefes aliyor biraz, gelebilir misiniz", "intent": "short_of_breath", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Nefesim çok daraldı, konuşurken bile tıkanıyorum, çabuk", "intent": "short_of_breath", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "nefesim gittikce daraliyo artik yetmiyo hemen gelin", "intent": "short_of_breath", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Soluğum kesiliyor, oturdum ama geçmiyor, kötüleşiyor", "intent": "short_of_breath", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "nefes alamayacak gibiyim cok kotu daraldim", "intent": "short_of_breath", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babamın nefesi çok kötüleşti, cümlesini bitiremiyor, acele edin", "intent": "short_of_breath", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem soluk soluga kaldi rengi soldu cabuk gelin", "intent": "short_of_breath", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim nefes almak için çırpınıyor, iyice daraldı", "intent": "short_of_breath", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin nefesi hizla kotulesti ter icinde kaldi", "intent": "short_of_breath", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

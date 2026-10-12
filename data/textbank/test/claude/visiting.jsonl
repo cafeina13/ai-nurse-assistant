@@ -1,0 +1,8 @@
+{"text": "Kızım beni ziyarete kaçta gelebilir", "intent": "visiting", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ziyaretci kac kisi girebiliyo", "intent": "visiting", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Torunlarım gelebilir mi, çocuk girişi var mı", "intent": "visiting", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "aksam ziyaret var mi", "intent": "visiting", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Refakatçi değişimi saat kaçta olabiliyor", "intent": "visiting", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ziyaret saati kacta bitiyo", "intent": "visiting", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemi kardeşim ziyaret edecek, kart lazım mı", "intent": "visiting", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin yanina gece iki kisi kalabilir mi", "intent": "visiting", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

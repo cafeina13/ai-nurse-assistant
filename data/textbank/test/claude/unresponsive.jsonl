@@ -1,0 +1,8 @@
+{"text": "Yanımdaki hasta uyanmıyor, seslendim cevap vermiyor", "intent": "unresponsive", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "oda arkadasim kipirdamiyo cagirdim duymuyo", "intent": "unresponsive", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yandaki teyze hiç tepki vermiyor, gözleri açık", "intent": "unresponsive", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yan yataktaki amca bayildi galiba kalkmiyo", "intent": "unresponsive", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam uyanmıyor, sarstım tepki yok, koşun!", "intent": "unresponsive", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem gozlerini acmiyo cevap vermiyo acil", "intent": "unresponsive", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim bayıldı, yerde yatıyor, ses vermiyor", "intent": "unresponsive", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem nefes aliyo ama hic uyanmiyo seslensem de", "intent": "unresponsive", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

@@ -1,0 +1,8 @@
+{"text": "Gece boyu uyuyamadım, bu gece de aynı", "intent": "cannot_sleep", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "uykum gelmiyo hic", "intent": "cannot_sleep", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sürekli uyanıyorum, uyku ilacı var mı", "intent": "cannot_sleep", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gozumu kapatinca aklima bisey geliyo uyuyamiyorum", "intent": "cannot_sleep", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem gece hiç uyumuyor, bir şey yapabilir miyiz", "intent": "cannot_sleep", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam saat 3 oldu uyumadi", "intent": "cannot_sleep", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim uyuyamıyor, ışık ve ses rahatsız ediyor", "intent": "cannot_sleep", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem geceleri uyumuyo gunduz uyuyo", "intent": "cannot_sleep", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

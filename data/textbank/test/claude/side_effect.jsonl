@@ -1,0 +1,16 @@
+{"text": "Yeni ilaçtan sonra midem bulanıyor", "intent": "side_effect", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac sonrasi kollarim kizardi kasiniyo", "intent": "side_effect", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Hapı içtiğimden beri ağzım kuru ve uykum var", "intent": "side_effect", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum takilinca icim yandi biraz", "intent": "side_effect", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin ilaçtan sonra eli kaşınmaya başladı", "intent": "side_effect", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ilactan beri kusuyo", "intent": "side_effect", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yeni ilaçtan sonra sırtında kırmızı lekeler çıktı", "intent": "side_effect", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem ilac icince cok uyusuk oldu", "intent": "side_effect", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "İlaçtan sonra dudaklarım şişti, yutkunamıyorum", "intent": "side_effect", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "igneden sonra her yerim kasiniyo bogazim daraliyo", "intent": "side_effect", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Serum takıldı, yüzüm şişti, nefesim sıkıştı", "intent": "side_effect", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilac icince dilim sisti konusamiyorum iyi", "intent": "side_effect", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin yüzü ilaçtan sonra balon gibi şişti, acil!", "intent": "side_effect", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam ilactan sonra kizardi nefesi daraliyo", "intent": "side_effect", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin dili şişti, ilacı yeni almıştı, çabuk gelin", "intent": "side_effect", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem igneden sonra fenalasti her yeri kabardi", "intent": "side_effect", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

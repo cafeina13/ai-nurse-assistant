@@ -1,0 +1,8 @@
+{"text": "Parmağımdaki cihaz düştü, monitör ötüyor", "intent": "other_device_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yanimdaki ekran alarm veriyo sari yaniyo", "intent": "other_device_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kalp monitörünün kabloları çıktı", "intent": "other_device_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tansiyon aleti kendi kendine sisip duruyo", "intent": "other_device_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin bağlı olduğu cihaz uyarı veriyor", "intent": "other_device_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin monitoru otmeye basladi", "intent": "other_device_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin göğsündeki kablolardan biri koptu", "intent": "other_device_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin parmak probu cikmis alarm caliyo", "intent": "other_device_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

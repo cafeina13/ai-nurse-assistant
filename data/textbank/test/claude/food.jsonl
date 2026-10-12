@@ -1,0 +1,8 @@
+{"text": "Yemek dağıtıldı mı, bana gelmedi", "intent": "food", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "aciktim aksam yemeginden bisey kaldi mi", "intent": "food", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Diyet yemeğim yerine normal tabak gelmiş, değişir mi", "intent": "food", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "corba sogumus isitma imkani var mi", "intent": "food", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin tepsisi gelmedi, unutulmuş olabilir mi", "intent": "food", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam yemek yiyebilir mi aclik oldu", "intent": "food", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim yemeğini yiyemiyor, daha yumuşak bir şey olur mu", "intent": "food", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedeme meyve suyu getirebilir miyim disaridan", "intent": "food", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

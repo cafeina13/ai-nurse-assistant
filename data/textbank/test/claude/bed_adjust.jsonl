@@ -1,0 +1,8 @@
+{"text": "Yatağın başını biraz kaldırabilir misiniz", "intent": "bed_adjust", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yatak cok dik indirin biraz", "intent": "bed_adjust", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yatağın kumandası çalışmıyor, ayarlayamıyorum", "intent": "bed_adjust", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "yatagin yan demirlerini indirir misiniz", "intent": "bed_adjust", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin yatağını oturur pozisyona getirelim mi", "intent": "bed_adjust", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin yatagi gicirdiyo bi bakarmisiniz", "intent": "bed_adjust", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin yatağının ayak kısmını yükseltebilir miyiz", "intent": "bed_adjust", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin yataginin kenarini kaldiralim dusmesin", "intent": "bed_adjust", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

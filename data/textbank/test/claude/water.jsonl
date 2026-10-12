@@ -1,0 +1,8 @@
+{"text": "Sürahim boşaldı, doldurur musunuz", "intent": "water", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ilacimi icecem su yok", "intent": "water", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Ağzım kurudu, soğuk su varsa sevinirim", "intent": "water", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "suuu lutfen", "intent": "water", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam için bir şişe su alabilir miyiz", "intent": "water", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem susamis bardak da yok", "intent": "water", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşime pipetle su vermek istiyorum, pipet ve su var mı", "intent": "water", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin suyu bitti", "intent": "water", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

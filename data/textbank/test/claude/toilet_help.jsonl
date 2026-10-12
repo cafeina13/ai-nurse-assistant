@@ -1,0 +1,8 @@
+{"text": "Tuvalete gideceğim, biri koluma girebilir mi", "intent": "toilet_help", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "cisim geldi tuvalete gotursenize", "intent": "toilet_help", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Lavaboya kadar yürümem lazım, yalnız korkuyorum", "intent": "toilet_help", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "tuvalet sirasi bende yardim eden olur mu", "intent": "toilet_help", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemi tuvalete götürmemiz gerek, tek başıma kaldıramıyorum", "intent": "toilet_help", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babam wc ye gidecek yardim", "intent": "toilet_help", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin tuvaleti geldi, birlikte götürelim mi", "intent": "toilet_help", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem tuvalete gitmek istiyo serumu takili nasil yapalim", "intent": "toilet_help", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

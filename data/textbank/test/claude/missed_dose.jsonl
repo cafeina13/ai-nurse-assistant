@@ -1,0 +1,8 @@
+{"text": "Öğlen ilacımı kimse getirmedi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "sabahki iğnem yapilmadi galiba", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Akşam yemekten önce vereceğiniz hap gelmedi, saat geçti", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "insulinim yapilmadi yemek geldi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin sabah ilacı verilmemiş, kontrol eder misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin antibiyotigi saatinde gelmedi", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin kalp ilacı atlanmış olabilir, emin değilim", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedemin hapini unuttunuz sanirim", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

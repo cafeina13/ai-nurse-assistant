@@ -1,0 +1,8 @@
+{"text": "Koridorda çok gürültü var, uyuyamıyorum", "intent": "room_environment", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "isik gozume vuruyo kapatir misiniz", "intent": "room_environment", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Yan yatağın televizyonu çok yüksek", "intent": "room_environment", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "perde kapanmiyo gunes yuzume geliyo", "intent": "room_environment", "urgency": "routine", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Gece lambası yanık kalsın mı, annem karanlıktan korkar", "intent": "room_environment", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin odasi cok gurultulu baska oda olur mu", "intent": "room_environment", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Odada bir koku var, havalandırabilir miyiz", "intent": "room_environment", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "klima calismiyo galiba ninem terledi", "intent": "room_environment", "urgency": "routine", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

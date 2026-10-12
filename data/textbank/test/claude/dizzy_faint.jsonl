@@ -1,0 +1,16 @@
+{"text": "Başım dönüyor, oturunca biraz geçiyor", "intent": "dizzy_faint", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "kalkinca gozum karardi yattim simdi", "intent": "dizzy_faint", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Sersem gibiyim, oda dönüyor sanki", "intent": "dizzy_faint", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim donuyo midem de bulaniyo biraz", "intent": "dizzy_faint", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annem tuvaletten dönünce başım dönüyor dedi, yatırdım", "intent": "dizzy_faint", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin bas donmesi var ayaga kalkamiyo", "intent": "dizzy_faint", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim halsiz, sanki bayılacakmış gibi duruyor", "intent": "dizzy_faint", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "dedem otururken sallaniyo gozleri kayiyo", "intent": "dizzy_faint", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Bayılıyorum, gözlerim kararıyor, hemen gelin", "intent": "dizzy_faint", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "basim cok fena donuyo dusecem tutunamiyorum", "intent": "dizzy_faint", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Kendimi kaybedecek gibiyim, soğuk ter döküyorum", "intent": "dizzy_faint", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "gozum karardi bayilcam yetisin", "intent": "dizzy_faint", "urgency": "critical", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Babam bir anda bayıldı, sonra açtı gözünü, çok solgun", "intent": "dizzy_faint", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "annem bayilip ayildi terliyo hemen gelin", "intent": "dizzy_faint", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşim fenalaştı, bembeyaz oldu, düşecek gibi", "intent": "dizzy_faint", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninem baygin gibi gozleri devriliyo", "intent": "dizzy_faint", "urgency": "critical", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}

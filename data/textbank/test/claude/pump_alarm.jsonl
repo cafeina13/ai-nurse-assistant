@@ -1,0 +1,8 @@
+{"text": "Serum makinesi durmadan bip bip ediyor", "intent": "pump_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "pompa otuyo susturamiyorum", "intent": "pump_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Makinenin ekranında kırmızı ışık yanıyor, ses çıkarıyor", "intent": "pump_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "serum cihazi alarm veriyo yarim saattir", "intent": "pump_alarm", "urgency": "soon", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Annemin serum pompası öttü, kapatabilir misiniz", "intent": "pump_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "babamin makinesi ses yapiyo", "intent": "pump_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "Eşimin infüzyon pompası tıkandı yazıyor", "intent": "pump_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
+{"text": "ninemin serumunun aleti bagiriyo", "intent": "pump_alarm", "urgency": "soon", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0}
