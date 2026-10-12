@@ -27,9 +27,9 @@ def sessions(path):
 
 def test_config_matches_plan_doc():
     config = load_config()
-    assert len(config.categories) == 11
-    assert len(config.intents) == 47
-    assert {i.category for i in config.intents.values()} == set(config.categories)
+    assert len(config.categories) == 12
+    assert len(config.cells) == 28
+    assert {t.cell.label for t in config.topics} == set(config.cells)
 
 
 def test_same_seed_gives_same_ward(tmp_path):
@@ -37,7 +37,7 @@ def test_same_seed_gives_same_ward(tmp_path):
         generate(path, seed=3, days=1)
         with sessions(path)() as s:
             calls = s.scalars(select(ScenarioCall).order_by(ScenarioCall.id)).all()
-            return [(c.at, c.patient_id, c.intent, c.urgency, c.text) for c in calls]
+            return [(c.at, c.patient_id, c.topic, c.urgency, c.text) for c in calls]
 
     assert snapshot(tmp_path / "a.db") == snapshot(tmp_path / "b.db")
 
@@ -52,14 +52,16 @@ def test_call_volume_follows_configured_rates(tmp_path):
 
 
 def test_calls_respect_patient_attributes(ward_db):
+    cells = load_config().cells
     with sessions(ward_db)() as s:
         for call in s.scalars(select(ScenarioCall)):
+            assert f"{call.category}/{call.urgency}" in cells
             patient = s.get(Patient, call.patient_id)
-            if call.intent in {"pump_alarm", "iv_finished", "iv_site_problem"}:
+            if call.topic in {"pump_alarm", "iv_finished", "iv_site_problem"}:
                 assert patient.has_iv
-            if call.intent == "bedpan_urinal":
+            if call.topic == "bedpan_urinal":
                 assert patient.mobility == "bedbound"
-            if call.intent in {"toilet_help", "get_up_walk"}:
+            if call.topic in {"toilet_help", "get_up_walk"}:
                 assert patient.mobility != "bedbound"
                 assert call.urgency == ("routine" if patient.mobility == "independent" else "soon")
 
@@ -101,7 +103,7 @@ def test_replay_creates_one_request_per_call_in_order(ward_db):
     assert events[-1].type == EventType.REPLAY_FINISHED
     # The system must never see the generator's labels.
     for e in events:
-        assert "intent" not in e.details and "urgency" not in e.details
+        assert not {"topic", "category", "urgency"} & set(e.details)
 
 
 def test_replay_refuses_to_run_twice(ward_db):
@@ -110,43 +112,41 @@ def test_replay_refuses_to_run_twice(ward_db):
         asyncio.run(Replay(sessions(ward_db)).run())
 
 
-def test_textbank_cells_and_lookup(tmp_path):
-    from wardgen.textbank import BankText, append_rows, cells
+def test_textbank_lookup(tmp_path):
+    from wardgen.textbank import BankText, append_rows
 
     config = load_config()
-    # soon_plus intents have two wordings (soon, critical); every cell has two speakers.
-    soon_plus = sum(1 for i in config.intents.values() if i.urgency == "soon_plus")
-    assert len(cells(config.intents)) == 2 * (len(config.intents) + soon_plus)
-
-    append_rows(tmp_path, "water", [
-        {"text": "su verir misiniz", "intent": "water", "urgency": "routine",
-         "speaker": "patient", "source": "test", "prompt_version": 1},
-    ])
+    water = next(t for t in config.topics if t.id == "water")
+    fell = next(t for t in config.topics if t.id == "fell")
+    append_rows(tmp_path, [{"text": "su verir misiniz", "category": "comfort_supplies",
+                            "urgency": "routine", "topic": "water", "speaker": "patient",
+                            "source": "test", "prompt_version": 1}])
     bank = BankText(tmp_path, seed=1)
-    water, fell = config.intents["water"], config.intents["fell"]
-    assert bank.text_for(water, "routine", "patient", None) == "su verir misiniz"
-    # Empty cells fall back to the intent's example phrase.
-    assert bank.text_for(fell, "critical", "companion", None) == fell.example
+    assert bank.text_for(water, "patient", None) == "su verir misiniz"
+    # Empty slots fall back to the topic's example phrase.
+    assert bank.text_for(fell, "companion", None) == fell.example
 
 
 def test_generate_with_textbank(tmp_path):
     from wardgen.textbank import append_rows
 
     bank_dir = tmp_path / "bank"
-    append_rows(bank_dir, "water", [
-        {"text": "bi bardak su alabilir miyim", "intent": "water", "urgency": "routine",
-         "speaker": speaker, "source": "test", "prompt_version": 1}
+    append_rows(bank_dir, [
+        {"text": "bi bardak su alabilir miyim", "category": "comfort_supplies",
+         "urgency": "routine", "topic": "water", "speaker": speaker, "source": "test",
+         "prompt_version": 1}
         for speaker in ("patient", "companion")
     ])
     generate(tmp_path / "w.db", seed=5, days=2, textbank=bank_dir)
     with sessions(tmp_path / "w.db")() as s:
         water_texts = {c.text for c in s.scalars(select(ScenarioCall))
-                       if c.intent == "water" and c.channel == "text"}
+                       if c.topic == "water" and c.channel == "text"}
     assert water_texts == {"bi bardak su alabilir miyim"}
 
 
-def test_claude_test_bank_covers_every_cell():
-    from wardgen.textbank import TEXTBANK_DIR, cells, load_bank
+@pytest.mark.parametrize("bank, per_slot", [("train/gemini", 40), ("test/claude", 4)])
+def test_text_banks_cover_every_slot(bank, per_slot):
+    from wardgen.textbank import TEXTBANK_DIR, load_bank, slots
 
-    bank = load_bank(TEXTBANK_DIR / "test" / "claude")
-    assert {k: len(v) for k, v in bank.items()} == {c: 4 for c in cells(load_config().intents)}
+    counts = {k: len(v) for k, v in load_bank(TEXTBANK_DIR / bank).items()}
+    assert counts == {slot: per_slot for slot in slots(load_config())}
