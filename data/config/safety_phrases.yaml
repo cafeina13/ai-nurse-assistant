@@ -1,0 +1,75 @@
+# Red-flag phrases that raise a request to a critical cell. Never lower anything.
+# Source of truth: "Safety phrases (draft)" in the project plan doc. Not validated with a nurse.
+#
+# Pattern syntax (written in normal Turkish; text and patterns are folded the same way):
+#   word      matches any word starting with it: "boğul" matches boğuluyorum, boguldu
+#   (a/b)     alternatives inside a word or as a whole word: "göğs(üm/ü)", "(ağrı/sıkış)"
+#   ...       up to four words in between
+# not_after: words (roots) that must not come right before the match (optional).
+# unless: words (roots) that, anywhere in the message, stop the rule (optional).
+# Tune these on the training bank only; the test bank stays untouched until evaluation.
+
+rules:
+  breathing/critical:
+    - pattern: "nefes alamı"
+    - pattern: "nefes(im/i) kesil"
+    - pattern: "soluk alamı"
+    - pattern: "boğul"
+    - pattern: "morar"
+    - pattern: "nefes borusu tıkan"
+    - pattern: "boğaz(ıma/ına) kaç"
+    - pattern: "oksijen kesil"
+    - pattern: "nefes(im/i) tıkan"
+    - pattern: "nefessiz kal"
+    - pattern: "nefes(im/i) dur"
+    - pattern: "soluyamı"
+
+  pain/critical:
+    - pattern: "göğs ... (ağrı/sıkış/bask/yan/saplan/delin)"
+    - pattern: "kalb(im/i) sıkış"
+    - pattern: "sol kol ... (uyuş/ağrı/vur)"
+    - pattern: "kalb ... ağırlık"
+    - pattern: "(birden/aniden) ... baş ... ağrı"
+
+  neuro/critical:
+    - pattern: "uyanmı"
+    - pattern: "göz(ünü/lerini/ü/leri) açmı"
+    - pattern: "bilinc(i) (git/kapan/yok/bulan)"
+    - pattern: "ses vermi"
+    - pattern: "tepki vermi"
+    - pattern: "cevap vermi"
+    - pattern: "bayıl"
+    - pattern: "(yüz/ağz)(ü/ı) kay"
+      unless: ["maske", "kanül", "hortum", "bant"]
+    - pattern: "ağzı çarpıl"
+    - pattern: "konuşamı"
+    - pattern: "dili dolan"
+    - pattern: "kol(unu/umu) kaldıramı"
+
+  fall_injury/critical:
+    - pattern: "(yere/yataktan/banyoda/tuvalette) düş"
+    - pattern: "düştüm"
+    - pattern: "(annem/babam/eşim/dedem/ninem/oğlum/kızım/kayınvalidem/kayınpederim/hasta) ... düştü"
+    - pattern: "yere (kapaklan/yuvarlan/yığıl)"
+    - pattern: "kan kus"
+    - pattern: "çok kan"
+    - pattern: "kan fışkır"
+    - pattern: "kan(ı) durmu"
+    - pattern: "kan(a) bulan"
+    - pattern: "kan içinde"
+    - pattern: "kan tutmu"
+    - pattern: "oluk gibi kan"
+    - pattern: "ağz(ım/ı)(n)dan kan"
+    - pattern: "kus ... kan"
+
+  medication/critical:
+    - pattern: "(dudak/dil/yüz)(ım/ı/ü/um/u) şiş"
+    - pattern: "boğaz(ım/ı) (şiş/daral/kapan)"
+
+  emotional/critical:
+    - pattern: "ölmek ist"
+    - pattern: "yaşamak istem"
+    - pattern: "kendimi öldür"
+    - pattern: "intihar"
+    - pattern: "atlayacağ"
+    - pattern: "canıma kıy"
