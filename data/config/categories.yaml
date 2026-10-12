@@ -1,0 +1,36 @@
+# Request categories, grouped by what the nurse's trip involves.
+# Source of truth: "Labeling guide" in the project plan doc. Not validated with a nurse.
+categories:
+  - id: breathing
+    name: Breathing
+    trip: Assess a symptom
+  - id: pain
+    name: Pain
+    trip: Assess a symptom
+  - id: neuro
+    name: Neuro and consciousness
+    trip: Assess a symptom
+  - id: fall_injury
+    name: Fall and injury
+    trip: Check the body
+  - id: physical_help
+    name: Physical help
+    trip: Move the patient's body
+  - id: comfort_supplies
+    name: Comfort and supplies
+    trip: Bring or adjust a thing
+  - id: medication
+    name: Medication
+    trip: Check an order
+  - id: equipment
+    name: Equipment
+    trip: Check a device
+  - id: information
+    name: Information
+    trip: Answer a question
+  - id: emotional
+    name: Emotional
+    trip: Talk and reassure
+  - id: unclear
+    name: Unclear
+    trip: Go and ask
