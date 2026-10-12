@@ -17,6 +17,9 @@ def main() -> None:
     parser.add_argument("db", type=Path, help="SQLite file to create")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--days", type=int, default=1)
+    parser.add_argument("--textbank", type=Path,
+                        help="text bank directory, e.g. data/textbank/train/gemini "
+                             "(default: one example phrase per intent)")
     parser.add_argument("--force", action="store_true", help="replace the file if it exists")
     args = parser.parse_args()
 
@@ -26,7 +29,7 @@ def main() -> None:
         args.db.unlink()
     args.db.parent.mkdir(parents=True, exist_ok=True)
 
-    count = generate(args.db, seed=args.seed, days=args.days)
+    count = generate(args.db, seed=args.seed, days=args.days, textbank=args.textbank)
     print(f"Wrote {args.db}: {count} calls over {args.days} day(s), seed {args.seed}\n")
     print_summary(args.db)
 
