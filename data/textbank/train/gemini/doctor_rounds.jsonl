@@ -1,0 +1,80 @@
+{"text": "Doktor bey bugun vizite gelecek mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati gecti doktorumuz ne zaman ugrayacak", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "odeme ve taburculuk icin doktorun gormesi gerekiyormus ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman gelecek bi bilgi alabilir miyim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit ne zaman baslar acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktorla bi gorusmem lazim ne zaman gelir odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ogleden sonra doktor viziti olacak mi", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor hanim henuz gelmedi bizim odaya ugrayacak mi bugun", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati hakkinda bilgi alabilir miyiz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey bugun bizi muayene edecek mi", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bizimle ilgilenen doktor ne zaman vizit yapacak", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman ugrayacak acaba bekliyoruz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit icin henuz kimse gelmedi bi aksilik mi var", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hastaneden cikisimiz icin doktorun gormesi gerekiyormus ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey ne zaman gelir acabaoda degistirebilir miyiz diye soracaktim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugunku vizit saati belli mi", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman gelecek ogrenebilir miyim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizitler basladi mi bizim odaya ne zaman sıra gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey bugun vizite geldi mi kacirdik mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "asistan doktorlar ne zaman vizit yapacak", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman gelecek acaba odamiza", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugun doktor bey gelecek mi bizim kata", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor viziti icin bilgi alabilir miyim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "soracaklarim var doktoru ne zaman bulabilirim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hoca ne zaman vizit yapar acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktorla konusmam lazim ne zaman ugrar", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "odamiza ne zaman gelecekler vizit icin", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugunku vizitler basladi mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey buralarda mi ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati belli mi bugun icin", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bizim dr ne zaman ugrayacak odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hastaneden ne zaman cikacagiz doktor gormedi henuz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "uzman doktor ne zaman vizit atacak acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor gelip bi bakacakti bugun", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit sirasi ne zaman bize gelir acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "sorum olacakti doktor ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugun hekim viziti olacak mi bizim odada", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor kontrolu icin saat kac beklenmeli", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "odamiza ugrayacak mi bugun doktor bey", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati gecti mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Annem icin vizit saati ne zaman acaba bilgi alabilir miyiz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey bugun ne zaman gelir odamiza", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babamin doktoru geldimi acaba bugun gormedikte", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit ne zaman baslar acaba ogrenebilir miyim", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Kizim doktor ne zaman ugrayacak odaya merak ediyoruz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hocamiz bugun vizite cikti mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktorumuz ne zaman gelir bi sorabilir miyiz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babam icin doktor ne zaman bilgi verecek", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saatleri hakkinda bilgi alabilir miyiz lutfen", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "odamiza ne zaman gelecek doktor bey", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman ugrayacak acaba hastanin durumu hakkinda konusmak icin", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Hanimefendi doktor ne zaman gelecek bugun", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annemin doktoru ne zaman kontrole gelir acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit icin saat verebilir misiniz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktorumuz ne zaman gelir acaba odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babam soruyor doktor ne zaman gelecek diye", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugun doktor viziti yapildi mi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hemsire hanim doktor bey ne zaman gelir ogrenebilir miyiz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman gecer odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit ne taraftan basladi acaba bizim odaya ne zaman gelirler", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman bakacak acaba hastaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati gecti mi doktor bey gorunmedi henuz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hocamiz bugun gelip bi bakabilir mi odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annemin doktoru hangi saatte geliyor acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman ugrayacak odaya bilgi almak istiyoruz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizitler basladi mi acaba bizim odaya ne zaman sira gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "odamiza ne zaman gelecek doktor", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babamin doktoruyla bi gorusme imkanimiz var mi bugun", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor bey vizite ciktimi acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hemsire hanim doktorumuzun gelis saatini soylermisiniz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bugun doktor viziti olmadi sanirim ne zaman gelirler", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esimin durumu icin doktor ne zaman bilgi verir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne zaman ugrayacak acaba merak ediyoruz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit icin bi saat verebilir misiniz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktorumuz bugun ugrayacak mi odaya", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babam soruyo doktor ne zaman gelcek diye", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hastaniz icin doktoru bekliyoruz ne zaman gelir", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "vizit saati hakkinda bilgi alabilir miyiz", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "doktor ne taraftan basladi vizite", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "bizimle ilgilenen doktor ne zaman gelir acaba", "intent": "doctor_rounds", "urgency": "routine", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}

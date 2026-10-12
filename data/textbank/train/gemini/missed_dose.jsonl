@@ -1,0 +1,80 @@
+{"text": "Sabah ilacimi vermediler, unuttular galiba, bi bakabilir misiniz lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilac saati gecti ama hala getiren olmadi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Evladim sabahki haplarimi almadim daha, basim donmeye basladi gibi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ogilen ilacimi vermediniz, ne zaman getirirsiniz acaba?", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Kizim bi bakiver, sabah ilacimi icmeyi unuttum, hem hemsire hanim da ugramadi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilaclarim hala gelmedi, gecikti baya", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah hapi verilmedi bana, bi onceki odadakilere verildi ama", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Yavrum benim ilaclarimi vermeyi unuttular sanirim, bi hatirlatirsaniz sevinirim", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Haplarimi vermediniz sabah, kendimi biraz garip hissediyorum", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilac saati bayagi oldu geceli, neden hala getirmediler", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah ilaci unutuldu galiba, bi kontrol edebilir misiniz acele", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilacim gelmedi henuz", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Hemsire hanim sabah ilaclarimi unuttu sanirim, bi baksaniz iyi olacak", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Benim ilaclar hala gelmedi, tansiyonum cikacak simdi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabahki ilac verilmedi, igne degil hap", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Evladim bi zahmet soyle, sabah ilacimi getirmediler hala", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilacimi vermediler sabah, midem bulanmaya basladi ilactan dolayi mi bilmem", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Gecikti ilaclarim baya, ne zaman verirler", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah ilacimi unuttular, hem asagiya da inemedim sormak icin", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ilac zamanim gecti bile, hala veren yok", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah ilacimi vermediler hala, bi bakabilir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilac saati gecti ama odamiza ugrayan olmadi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Kizim benim haplarimi unuttular, bi hatirlativer sunlara", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ogleden sonraki ilacim hala gelmedi, basim agrimaya basladi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilaclarin verilme saati gecti, bi zahmet getirir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "sabahki ilacim verilmedi henuz, ne zaman getirirler acaba", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Yavrum benim ilaci unutmuslar, bi soyle de getirsinler lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilacimi getirmediler, tansiyonum oynamaya basliyor sanki", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilaclar hala gelmedi, biraz geciktimi ne", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Hemsire hanim sabah ilaclarimi vermeyi unuttu galiba, bakabilir miyiz", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilac vakti geldi geciyor, kimse gelmedi daha", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Evladim bi bakiver, ilacimi vermediler bu sabah", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilaclarim hala gelmedi, bekliyorum odada", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah ilacimi unuttular sanirim, hemen verirseniz sevinirim", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilaclarimin saati gecti baya, bi ilgilenin lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Kizim bi zahmet soyle, ilacimi vermediler hala", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilac gelmedi henuz, gecikti bugun baya", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilacimi unuttular galiba, bi hatirlatirsaniz iyi olur", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Sabah verilmeliydi ilacim ama kimse ugramadi", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilac saati gecti, neden gelmedi hala", "intent": "missed_dose", "urgency": "soon", "speaker": "patient", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Annemin sabah ilaci hala verilmedi, bakar misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babamin tansiyon hapi unutuldu sanirim, bi bakabilir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esimin ogle ilacini vermeyi unuttular galiba", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kizim bi bak, 12 ilacimizi hala getirmediler", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Oglumun hapi verilmedi saat gecti biraz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ninemin ilaclari hala gelmedi, gecikti baya", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Dedemin sabahki ilacini vermediler lutfen bi bakin", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kayinvalidemin ilac zamani gecti ama veren olmadi", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilacimizi unuttular herhalde, bi hemsire gonderebilir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annemlerin ilaci verilmedi hala, bekliyoruz oyle", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Babamin ilac saati gecti niye vermediler acaba", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "evladim esim ilacini alMadi henuz, bi hatirlatirsaniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "oglumun ilaclari unutuldu galiba, kac saat oldu", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "hastaniz ilacini almadi sabah, ilgilenir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "Ninem ilacini bekliyo ama kimse gelmedi", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilaclari vermediler bugun, gecikti bayagi", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babam ilacini alamadi hala, bi hemsire baksın lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esimin hapi verilmedi saatidir, unuttular galiba", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kayinvalidemin ilaci hala gelmedi, bi bakiverseiz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ilac saati gecti ama veren olmadi henuz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annemin sabah ilaclari hala verilmedi, kac saat oldu", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babamin ilac saati baya gecti ama gelen giden yok", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esimin ilacini unuttular sanirim, bi hemsire gelebilir mi", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kizimin hapi verilmedi hala, bi bakarsaniz sevinirim", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "oglum ilacini alamadi henuz, ilgilenebilir misiniz lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kayinvalidemin ilac zamani geldi gecti, niye vermediler acaba", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ninemin sabahki haplari verilmedi, gozunuzu seveyim bi bakin", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "dedemin ilaci unutuldu galiba, kac defadir bekliyoruz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annem ilaclarini hala alMadi, bi hemsire gonderebilir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babama ilaclarini vermediler, saatidir bekliyoruz boyle", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esim ilacini bekliyo ama kimse ugramadi bi suredir", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kizimin ilacini unuttular herhalde, bi hatirlatverin lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "oglumun hapi verilmedi bugun, gecikti baya", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kayinvalidem ilacini alamadi hala, bi hemsire baksın lutfen", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "ninemin ilaclari hala gelmedi, unuttular galiba", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "dedemin ilac saati gecti ama veren olmadi henuz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "annemlerin ilaci verilmedi hala, bi ilgilenir misiniz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "babamin ilaci hala gelmedi, bi bakiverseiz", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "esimin hapini vermediler saatidir, bekliyoruz oyle", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
+{"text": "kizimin ilaclari unutuldu galiba, bi hemsire rica edecektim", "intent": "missed_dose", "urgency": "soon", "speaker": "companion", "source": "gemini-3.5-flash-lite", "prompt_version": 3}
