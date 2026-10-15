@@ -1,0 +1,128 @@
+# Protocol engine: extract facts from a message, then decide its grid cell with an ordered
+# table, like a clinical triage protocol (Manchester Triage System style discriminators).
+# Not validated with a nurse. Built from the grid, the training bank and clinical red flags,
+# never from the test set; tuned on the dev split.
+#
+# facts: each is a list of patterns, same syntax as safety_phrases.yaml
+#   word -> any word starting with it; (a/b) -> alternatives; ... -> up to four words between
+# protocol: ordered lines; the FIRST line whose conditions hold decides the cell.
+#   all: every fact listed must be present; any: at least one; none: none of them
+# Turkish detail that matters: inability (-AmA-: "nefes alamıyorum", bad) is a different fact
+# from negation or recovery ("ağrımıyor", "geçti", good). Urgency words (acil, çabuk) are a fact
+# but only used for vague messages: tone must not decide urgency (tone shortcut, see the plan).
+
+facts:
+  # --- what it is about
+  breath: ["nefes", "solu", "hava (alam/gelm/girm/yetm)", "havam", "hırıl", "hırılt", "ıslık"]
+  breath_stopped: ["nefes(im/i) yetmi", "havasız kal", "nefes(im/i) ... (kesil/dur/git/bit/yok/tıkan)", "nefes yok", "nefessiz", "solu(ğu/k) ... kesil"]
+  choke: ["boğaz(ım/ımda/ıma/ına) ... (kaç/takıl/kaldı)", "lokma", "boğul"]
+  oxygen: ["oksijen", "maske", "kanül", "hortum"]
+  chest: ["göğs", "göğüs", "kalb", "kalp"]
+  pain: ["ağrı", "ağrıy", "ağrım", "sancı", "sızı", "sızla", "acıyo", "canım acı", "zonk", "bıçak", "yanıyo", "sıkış", "bask", "ağırlık", "batı", "vur"]
+  painkiller: ["ağrı kesici", "ağrı iğne", "parol", "ağrı için"]
+  head: ["baş(ım/ı/ıma/ına)", "kafa", "ense"]
+  unconscious: ["göz(leri/ü) don", "öylece kal", "kendini kaybet", "kendinden geç", "uyanmı", "uyandıramı", "tepki vermi", "cevap vermi", "ses vermi", "bayıldı", "bayılıp", "kendinde değil", "bilinc(i) (git/kapan/yok/bulan)", "göz(ünü/lerini/ü/leri) açmı", "kıpırdamı", "duymuyo", "kendimi kaybed"]
+  stroke: ["dil(im/i) dönmü", "dil(im/i) dolaş", "ağzı kay", "(yüz/ağz)(ü/ı/üm/ım) ... kay", "ağzı çarpıl", "konuşamı", "dili dolan", "kol(unu/umu/u/um) kaldıramı", "yarısı hissetmi", "kelime ... çıkaramı", "laf çıkmı", "konuşması bozul"]
+  confusion: ["kendini kaybet", "akl(ı/ım) yerinde değil", "hatırlamı", "hatırlayamı", "kim olduğ(umu/umuzu) ... (unut/bilmi)", "yabancı bak", "neden burda", "niye burda", "hangi ara geldim", "burası nere", "kafa(m/sı) basmı", "ne dediğimi bilmi", "ne sorduğumu anlamı", "anlamıyo", "bulandı", "tanımı", "tanıyamı", "sayıkl", "şaşkın", "kafa(m/sı) karış", "karışık", "saçmal", "bulanık", "neredeyim", "nerdeyim", "burası neresi", "kim olduğ", "ajite", "kendinde değil", "anlamsız", "çıldır"]
+  dizzy: ["bayılıyo", "dengesiz", "dalgın", "uykulu hal", "göz(lerim/üm) görmez", "baş(ım/ı) dön", "göz(üm/ü) karar", "sersem", "bayılacak", "bayılcam", "bayılıcam", "bayılmak üzere", "fenalaş", "halsiz"]
+  fever: ["ateş", "titre", "titri", "yanıyo"]
+  vomit: ["kus", "kustu", "kusma", "bulantı", "mide(m) bulan", "öğür"]
+  blood: ["kan"]
+  dark_vomit: ["simsiyah", "siyah", "kahve telvesi", "kahve gibi"]
+  heavy_bleeding: ["kanama ... (arttı/fena/çok/durmu)", "kan ... durmu", "kan dol", "çok kan", "kan fışkır", "kan(ı) durmu", "oluk gibi", "kan içinde", "kana bulan", "kan tutmu", "kan şarıl", "kan akıyo"]
+  vital_dropped: ["(ateş/tansiyon/şeker/nabz/nabız/değer/sıcaklı)(ım/i/ı/u/si/sı/ları) ... düş", "sisteme düş", "(maske/pansuman/bant/sargı/hortum/kanül/ortü/örtü)(m/si/sı/ım/i/ı) ... düş"]
+  fall: ["yataktan ... düş", "düşmüş", "aşağı düş", "düştüm", "(annem/babam/eşim/dedem/ninem/oğlum/kızım/kayınvalidem/kayınpederim/hasta) ... düştü", "yere (düş/kapaklan/yuvarlan/yığıl)", "yerde kal", "yataktan (düş/kay)"]
+  wound: ["yara", "pansuman", "sargı", "bant", "dikiş"]
+  self_harm: ["ölmek ist", "yaşamak istem", "kendimi öldür", "kendini öldür", "intihar", "atlayaca", "canıma kıy", "kendime (bir/bi) (şey/şi) yap", "yaşamanın anlamı", "bitirmek isti", "her şey bitsin"]
+  anxiety: ["kork", "panik", "endişe", "kaygı", "huzursuz", "sinir"]
+  sleep: ["uyuyama", "uyku tut", "dalamı", "dalınamı", "gözüme uyku", "uyku gir", "uyuyamı", "uyku(m) (gelm/kaç)", "uyumuyo"]
+  company: ["yanında otur", "vakit geçir", "tek başına", "yanımda", "yanına", "konuşalım", "yalnız", "sıkıldı", "canım sıkıl", "biraz konuş", "ziyaret etse"]
+  toilet: ["tuvalet", "wc", "lavaboya", "çiş"]
+  bedpan: ["sürgü", "ördek"]
+  soiled: ["alt(ım/ı/ını) ... (ıslan/değiştir)", "yatak ... ısla", "altına yap", "alt(ım/ı/ına/ını) ... (ıslat/kaçır/yap/kirlen)", "altına kaçır", "bez(i/im) ... (dol/kirlen)", "çarşaf ... (ıslan/kirlen)", "yatak ... ıslan"]
+  move_body: ["kalk", "yürü", "çevir", "döndür", "yan(a) dön", "yukarı çek", "pozisyon", "koltuğa", "kaydım", "aşağı kay", "yatırın"]
+  hygiene: ["üst(ümü/ünü/ü) değiştir", "çarşaf(ı/ını/ımı) değiştir", "gecelik", "çamaşır", "kıyafet(im/i) ... (kirlen/değiş)", "yıkan", "duş (al/yap)", "duşa", "banyo", "tıraş", "diş(imi) fırçala", "silmek", "silsek"]
+  water: ["su şişe", "şişe(si/m) ... boşal", "su (al/ver/iç/getir/lazım/ist/rica/bit/doldur/yok/kalma/var/getiren/isteyecek)", "bardak su", "bardağ", "suy", "sürahi", "susa", "içecek", "sulu (bir/bi)"]
+  food: ["yemek", "yemeğ", "acıktım", "acıkt", "aç kaldım", "karnım aç", "kahvaltı", "çorba", "tepsi", "meyve"]
+  temperature: ["üşü", "battaniye", "soğuk", "sıcak", "klima", "pencere", "örtü", "cereyan", "havasız"]
+  bed: ["yatağ(ım/ı/ın) ... (dikleştir/kaldır/indir/başı/ayak)", "yatak ... (dik/kumanda)", "kumanda", "yan demir"]
+  environment: ["ışık", "gürültü", "televizyon", "perde", "koku", "lamba", "ses ... (yüksek/çok)"]
+  supplies: ["yastı", "kağı", "terliğ", "masa", "dolap", "sandalye", "eşya", "peçete", "mendil", "yastık", "kağıt", "şarj", "priz", "terlik", "kıyafet", "önlük", "havlu"]
+  medication: ["ilaç", "hap", "doz", "antibiyotik", "insülin", "şurup", "tansiyon hap", "kan sulandır"]
+  missed: ["bekliyo", "gecikti", "gecikmiş", "uğramadı", "verilmedi", "verilmemiş", "vermedi", "getirmedi", "unuttunuz", "unutuldu", "yapılmadı", "atlandı", "atlanmış", "gelmedi"]
+  after_drug: ["(hap/ilaç)(ı/tan) ... (çarp/dokun)", "ilacı içince", "ilaci icince", "ilaç(tan/ı) ... (sonra/beri)", "ilacı (alınca/içince)", "hap(tan/ı) ... (sonra/beri)", "iğne(den) sonra", "serum takılınca"]
+  swelling: ["(dudak/dil/yüz/boğaz)(ım/ı/ü/um/u/ları/larım) ... şiş", "boğaz(ım/ı) ... (daral/kapan)"]
+  rash: ["kaşın", "kızar", "döküntü", "leke", "kabar"]
+  device: ["damla", "sıvı", "iğne yer", "öte duru", "ötüp", "serum", "pompa", "makine", "makina", "cihaz", "monitör", "alarm", "ötüyo", "bip", "kablo", "kanül", "damar yolu", "branül", "prob", "alet"]
+  device_question: ["iptal", "alsak", "alalım", "kapat", "kıs", "sesini", "(ne/neyi) göster", "sayılar", "yolu var mı", "ne işe yar", "ne demek", "ne ölçüyo", "(çıkarabilir/çıkarsam/çekersem)", "hep mi takılı", "takılı (mı/kalacak)"]
+  info: ["vizit", "hekim", "eve çık", "bilgi al", "doktor", "vizite", "sonuç", "tahlil", "röntgen", "mr", "tomografi", "biyopsi", "taburcu", "çıkış", "eve (ne zaman/gidebil/çık)", "ziyaret", "saat kaç", "kaçta", "ne zaman"]
+  cough: ["öksür", "balgam"]
+  nose: ["burn(um/u) ... (ak/tıka)", "nezle", "hapşır"]
+  constipation: ["kabız", "tuvalete çıkamadı", "büyük tuvalet", "bağırsak(larım) çalışmı"]
+  diarrhea: ["ishal", "sulu sulu"]
+  hopeless: ["bittim", "tükendim", "gücüm kalmadı", "her şey bitti", "her şey bitsin", "yeter artık", "dayanacak gücüm", "kendime zarar", "kendine zarar"]
+  food_question: ["yiyebilir", "var mı", "var mıymış", "verildi mi", "kaçta", "ne zaman", "ara öğün", "diyet", "yemeği ... (ne/hangi)"]
+  iv_site: ["(serum/iğne/damar yolu/kanül/branül)(un/u/um/umun/ın/in) ... (şiş/ağrı/acı/yan/kızar)", "kol(um/u) ... şiş(ti/miş) ... serum", "serum(dan) ... (can/acı/yan)"]
+  vague: ["kötüyüm", "kötü hissed", "tuhaf", "(bir/bi) (şey/şi) oldu", "iyi değil", "garip", "bir hal oldu", "bi hal", "bi haller"]
+  # --- how it is
+  inability: ["alamı", "alamıyo", "kalkamı", "yutamı", "yutkunamı", "göremi", "veremi", "tutamı", "durduramı", "soluyamı"]
+  # Careful: "nefesim kesildi / durdu" is an emergency, so kesildi/durdu only count after symptoms that stop.
+  passed: ["nefes(im/i) ... (iyi/yerinde/rahat)", "gayet iyi", "geçti", "düzeldi", "rahatla", "azaldı", "hafifledi", "kalmadı", "nefes(im/i) açıldı", "iyiyim", "kendime geldim", "artık ... (yok/ağrımı)", "ağrımı", "kanamı", "baş(ım/ı) dönmü", "toparlandı", "normale döndü", "ateş(im/i) ... düştü", "(kusma/ishal/kanama/ağrı/bulantı/titreme)(m/sı/ı/si) ... (kesildi/durdu)"]
+  severe: ["çok", "dayanılmaz", "şiddetli", "fena", "korkunç", "berbat", "müthiş", "hayatımda"]
+  sudden: ["birden", "aniden", "bir anda", "ansızın"]
+  worsening: ["arttı", "artıyo", "artmaya", "arttıkça", "gittikçe", "giderek", "kötüleş", "geçmiyo", "daha kötü", "katlan", "şiddetlen", "hızla"]
+  alarm_sign: ["morar", "mosmor", "bembeyaz", "rengi sol", "soğuk ter", "ter içinde", "terli"]
+  mild: ["biraz", "hafif", "idare", "önemli değil", "acil değil", "ufak", "azıcık"]
+  urgency_words: ["acil", "çabuk", "hemen", "yetiş", "koşun", "ne olur", "imdat"]
+
+protocol:
+  # ---------- critical: red flags first
+  - {cell: emotional/critical, any: [self_harm, hopeless]}
+  - {cell: neuro/critical, any: [unconscious], none: [passed]}
+  - {cell: neuro/critical, any: [stroke], none: [passed]}
+  - {cell: pain/critical, all: [chest, pain], none: [passed, mild]}
+  - {cell: breathing/critical, any: [choke]}
+  - {cell: breathing/critical, any: [breath_stopped], none: [passed]}
+  - {cell: breathing/critical, all: [breath], any: [inability, alarm_sign, worsening, severe], none: [passed]}
+  - {cell: breathing/critical, all: [oxygen, breath], any: [inability, alarm_sign], none: [passed]}
+  - {cell: fall_injury/critical, all: [vomit], any: [blood, dark_vomit]}
+  - {cell: fall_injury/critical, any: [fall], none: [vital_dropped]}
+  - {cell: fall_injury/critical, any: [heavy_bleeding]}
+  - {cell: other_symptom/critical, all: [fever, confusion]}
+  - {cell: medication/critical, any: [swelling]}
+  - {cell: pain/critical, all: [head, pain, sudden], any: [severe]}
+  - {cell: neuro/critical, all: [confusion], any: [severe, sudden]}
+  - {cell: neuro/critical, all: [dizzy], any: [alarm_sign]}
+  # ---------- soon and routine, by category
+  - {cell: breathing/routine, all: [breath, passed]}
+  - {cell: breathing/routine, all: [oxygen, device_question]}
+  - {cell: breathing/soon, any: [breath]}
+  - {cell: breathing/soon, all: [oxygen], none: [device_question]}
+  - {cell: neuro/routine, any: [dizzy, confusion], all: [passed]}
+  - {cell: neuro/soon, any: [dizzy, confusion]}
+  - {cell: pain/routine, all: [pain, passed]}
+  - {cell: pain/routine, all: [pain, mild], none: [worsening, painkiller]}
+  - {cell: equipment/soon, any: [iv_site]}
+  - {cell: medication/soon, any: [after_drug]}
+  - {cell: medication/soon, all: [medication, missed]}
+  - {cell: pain/soon, any: [painkiller, pain]}
+  - {cell: other_symptom/routine, any: [fever, vomit, diarrhea], all: [passed]}
+  - {cell: other_symptom/soon, any: [fever, vomit, diarrhea]}
+  - {cell: other_symptom/routine, any: [cough, nose, constipation]}
+  - {cell: other_symptom/routine, any: [rash]}
+  - {cell: fall_injury/soon, any: [blood, wound]}
+  - {cell: equipment/routine, all: [device, device_question]}
+  - {cell: equipment/soon, any: [device]}
+  - {cell: physical_help/soon, any: [bedpan, soiled]}
+  - {cell: comfort_supplies/routine, any: [bed]}
+  - {cell: physical_help/routine, any: [toilet, move_body, hygiene]}
+  - {cell: emotional/soon, any: [anxiety]}
+  - {cell: emotional/routine, any: [sleep, company]}
+  - {cell: medication/routine, any: [medication]}
+  - {cell: information/routine, any: [info]}
+  - {cell: information/routine, all: [food, food_question]}
+  - {cell: comfort_supplies/routine, any: [water, food, temperature, environment, supplies]}
+  - {cell: unclear/critical, all: [vague, urgency_words]}
+  - {cell: unclear/soon, any: [vague]}
+  # ---------- nothing recognized: like the old call button, someone needs a person
+  - {cell: unclear/soon}
