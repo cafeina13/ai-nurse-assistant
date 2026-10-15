@@ -32,5 +32,6 @@ class TfidfModel:
         return self
 
     def predict_proba(self, texts: list[str]) -> list[dict[str, float]]:
-        classes = self.pipeline.classes_
-        return [dict(zip(classes, row)) for row in self.pipeline.predict_proba(texts)]
+        # Plain str and float, not numpy types: results go into the JSON event log.
+        classes = [str(c) for c in self.pipeline.classes_]
+        return [dict(zip(classes, map(float, row))) for row in self.pipeline.predict_proba(texts)]

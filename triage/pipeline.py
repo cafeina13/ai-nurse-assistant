@@ -69,7 +69,8 @@ class Triage:
         channels = channels or ["text"] * len(texts)
         mobilities = mobilities or [None] * len(texts)
         free_text = [i for i, ch in enumerate(channels) if ch != "button"]
-        probas = dict(zip(free_text, self.model.predict_proba([texts[i] for i in free_text])))
+        probas = (dict(zip(free_text, self.model.predict_proba([texts[i] for i in free_text])))
+                  if free_text else {})  # only buttons: nothing for the model to read
 
         results = []
         for i, text in enumerate(texts):
