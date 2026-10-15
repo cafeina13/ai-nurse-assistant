@@ -200,12 +200,13 @@ full-cell accuracy 76.7% vs 46.3% (`data/generated/compare`).
 ## 3. Voice results
 
 Speech to text ran on Kaggle T4s (faster-whisper); the laptop only re-scores the saved
-transcripts, so changing the triage engine needs no new speech run. The test clips are
-`test/claude` + `test/tone` read aloud (614 texts); `test/fresh` has no audio yet. Records:
+transcripts, so changing the triage engine needs no new speech run. Runs 1 and 2 read
+`test/claude` + `test/tone` aloud (614 texts); run 3 reads `test/fresh` (420 texts). Records:
 `data/generated/voice_eval/` (gitignored), scored with `python -m voice.report`.
 
 Runs 1 and 2 were scored with the early engine (TF-IDF + rules, typed texts only). Section
-3.1 re-scores run 2 with the final engine.
+3.1 re-scores run 2 with the final engine; **section 3.2 (the fresh set) is the voice result
+to quote.**
 
 **Run 1** (large-v3, 3,684 clips = 614 texts x 2 voices x 3 conditions):
 
@@ -262,8 +263,39 @@ large-v3-syntia-hint --with-tone-bank --model hybrid-critical:tfidf [--checks --
   before: 29-45% of routine requests rise to soon.
 - **Caveat:** the protocol's first draft was written after seeing `test/claude` errors (2.4),
   and these clips are `test/claude` texts. The *absolute* voice numbers are therefore
-  optimistic; the text -> voice drop is the more trustworthy figure. A clean check would read
-  `test/fresh` aloud (TTS + STT, a Kaggle job).
+  optimistic; the text -> voice drop is the more trustworthy figure. Section 3.2 is the clean
+  check.
+
+### 3.2 Voice on the fresh set (the number to quote)
+Run 3: `test/fresh` read aloud by the same test voices, same three conditions, preset
+large-v3 + Syntia + hint: 2,520 clips (420 texts x 2 voices x 3 conditions), 4 workers on
+2 T4s, about 18 minutes (`data/generated/voice_eval/fresh/`). Nothing was tuned on it.
+
+| Engine | Clean crit. | Ward crit. | Hard crit. | Hard crit. -> routine | False crit. clean / ward / hard |
+|---|---:|---:|---:|---:|---:|
+| TF-IDF + rules (early) | 88.2 -> 87.7% | 88.2 -> 85.3% | 88.2 -> 68.1% | 16.7% | 4.9 / 4.7 / 8.2% |
+| **Hybrid `critical` + tone bank** | 96.1 -> **95.1%** | 96.1 -> **94.6%** | 96.1 -> **80.4%** | 11.8% | 6.0 / 5.8 / 10.1% |
+| ... + checks + floor | 96.1 -> 95.1% | 96.1 -> 94.6% | 96.1 -> 79.9% | **0.0%** | 6.0 / 5.8 / 9.6% |
+
+WER: clean 16.2%, ward 21.3%, hard 46.4%. Reproduce: `python -m voice.report
+data/generated/voice_eval/fresh/transcripts.jsonl --with-tone-bank --model
+hybrid-critical:tfidf [--checks --floor listen]`.
+
+- **The hybrid's lead holds by voice and is not an artefact of the biased set:** 7-12
+  points over the early engine in every condition.
+- Speech to text costs little in clean and ward speech (1-1.5 points) and a lot in hard
+  audio (about 16 points). The fresh texts are easier to hear than `test/claude` (clean WER
+  16% vs 20%), so this drop is smaller than in 3.1.
+- **Tone matters for speech recognition too.** Calm texts are heard almost perfectly (clean
+  WER 4.5%); urgent ones are not (clean 31.9%, hard 68.0%), since shouted capitals, "!!" and
+  broken spelling become garbled speech. Hard-condition critical recall: calm 86.8%, urgent
+  76.5%. So the requests most likely to be real emergencies are the hardest to hear.
+- With the floor, **no** critical reached routine in any condition; 20-42% of routine requests
+  rose to soon.
+- **The worst error is a dropped negation**, and no check catches it:
+  "babam nefes alamıyor" was heard as "babam nefes alıyor" ("is breathing") with high
+  confidence, so it was ranked soon and not flagged for listening. A typed request cannot fail
+  this way. This is the main argument for attaching the recording to every voice card.
 
 ---
 
@@ -305,8 +337,8 @@ measured in real use.
    different model from the training texts, but language models share habits.
 3. **No clinical validation.** No nurse has checked the labels, the grid or the protocol yet.
    The plan is to ask a nursing student to label about 100 texts as a gold standard.
-4. **Voice is TTS, not people**, and the voice clips are `test/claude` texts, which the
-   protocol is not blind to (3.1).
+4. **Voice is TTS, not people.** Real patients (weak, elderly, accented, in pain) will be
+   harder to hear than these voices. Quote the fresh-set voice numbers (3.2), not 3.1.
 5. **Small subsets.** Each fresh-set tone has 34 criticals, so one text is about 3 points.
 6. **The protocol was partly written after seeing test errors**; that is why the fresh set
    exists (2.4). Its `test/claude` numbers should not be quoted as unbiased.
@@ -334,6 +366,5 @@ measured in real use.
 
 ## 8. Next
 
-- Read `test/fresh` aloud on Kaggle for an uncontaminated voice score.
 - Nurse-student labels for about 100 texts (gold standard; also checks the grid).
 - Fine-tuned BERTurk, and an ensemble of TF-IDF and embeddings (they miss different texts).
