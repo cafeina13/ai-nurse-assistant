@@ -154,6 +154,8 @@ def main() -> None:
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--set", choices=["test", "train"], default="test",
                         help="train: speak the Gemini training bank once per text, one condition each")
+    parser.add_argument("--shard", type=int, default=0, help="this worker's index (parallel runs)")
+    parser.add_argument("--shards", type=int, default=1, help="how many workers split the texts")
     args = parser.parse_args()
     training = args.set == "train"
 
@@ -163,12 +165,12 @@ def main() -> None:
     # its output folder, and a 60 MB voice file is not a result.
     work = Path(tempfile.gettempdir()) / "voice_eval_cache"
     texts = (load_train_texts(args.banks) if training else load_texts(args.banks))[:args.limit]
+    texts = [row for row in texts if row["id"] % args.shards == args.shard]
     drifting, others = load_voices(work, None if training else args.merve, args.device, training)
     if args.stt_presets:
         stts = WhisperSTT.presets(args.stt_presets.split(","), device=args.device)
     else:
         stts = [WhisperSTT(args.stt_model, device=args.device)]
-    rng = np.random.default_rng(0)
     babble_pool = []
     for i, sentence in enumerate(BABBLE):
         voice = (drifting + others)[i % len(drifting + others)]
@@ -198,6 +200,9 @@ def main() -> None:
                 # Training: one condition per text, in turn, so 5,600 texts stay ~5,600 clips.
                 conditions = [CONDITIONS[row["id"] % len(CONDITIONS)]] if training else CONDITIONS
                 for condition in conditions:
+                    # Seeded by text, voice and condition: the same clip gets the same noise
+                    # however the texts are split across workers.
+                    rng = np.random.default_rng([row["id"], voices.index(voice), CONDITIONS.index(condition)])
                     babble = babble_pool[rng.integers(len(babble_pool))] if babble_pool else room_hum(STT_RATE, rng)
                     heard = apply_condition(speech, condition, babble, rng)
                     for stt in stts:  # every preset hears exactly the same audio

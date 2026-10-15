@@ -32,6 +32,7 @@ from pathlib import Path
 LIMIT = {limit!r}
 SET = {set!r}
 PRESETS = {presets!r}
+WORKERS_PER_GPU = {workers_per_gpu!r}
 
 def sh(cmd):
     print("$", cmd, flush=True)
@@ -42,16 +43,49 @@ sh('pip install -q faster-whisper piper-tts soundfile '
    'git+https://github.com/emres/turkish-deasciifier')
 code = Path(next(glob.iglob("/kaggle/input/**/voice/run_eval.py", recursive=True))).parent.parent
 merve = next(glob.iglob("/kaggle/input/**/tr_TR-merve-medium.onnx", recursive=True), None)
-cmd = [sys.executable, "-m", "voice.run_eval", "--banks", str(code / "banks"),
-       "--out", "/kaggle/working/transcripts.jsonl", "--samples", "/kaggle/working/samples",
-       "--set", SET]
-if merve:
-    cmd += ["--merve", merve]
-if LIMIT:
-    cmd += ["--limit", str(LIMIT)]
-if PRESETS:
-    cmd += ["--stt-presets", PRESETS]
-subprocess.run(cmd, check=True, cwd=code, env={{**os.environ, "PYTHONPATH": str(code)}})
+gpus = len(subprocess.check_output(["nvidia-smi", "-L"], text=True).strip().splitlines())
+workers = gpus * WORKERS_PER_GPU
+print(f"{{gpus}} GPU(s), {{workers}} workers", flush=True)
+
+# Every worker runs the same code on every Nth text, pinned to one GPU. Two per GPU keep it
+# busy while the other worker does CPU work (TTS on CPU, noise mixing).
+work = Path("/kaggle/working")
+procs = []
+for i in range(workers):
+    cmd = [sys.executable, "-m", "voice.run_eval", "--banks", str(code / "banks"),
+           "--out", str(work / f"part{{i}}.jsonl"), "--set", SET,
+           "--shard", str(i), "--shards", str(workers)]
+    if i == 0:
+        cmd += ["--samples", str(work / "samples")]
+    if merve:
+        cmd += ["--merve", merve]
+    if LIMIT:
+        cmd += ["--limit", str(LIMIT)]
+    if PRESETS:
+        cmd += ["--stt-presets", PRESETS]
+    env = {{**os.environ, "PYTHONPATH": str(code), "CUDA_VISIBLE_DEVICES": str(i % gpus)}}
+    log = open(work / f"worker{{i}}.log", "w")
+    procs.append((i, subprocess.Popen(cmd, cwd=code, env=env, stdout=log, stderr=subprocess.STDOUT), log))
+
+failed = []
+for i, proc, log in procs:
+    proc.wait()
+    log.close()
+    print(f"worker {{i}} exit {{proc.returncode}}", flush=True)
+    if proc.returncode != 0:
+        failed.append(i)
+for i in failed:
+    print(f"--- worker {{i}} log (tail) ---")
+    print((work / f"worker{{i}}.log").read_text()[-3000:])
+if failed:
+    sys.exit(f"workers failed: {{failed}}")
+
+with open(work / "transcripts.jsonl", "w", encoding="utf-8") as out:
+    for i in range(workers):
+        part = work / f"part{{i}}.jsonl"
+        out.write(part.read_text(encoding="utf-8"))
+        part.unlink()
+print("merged", flush=True)
 '''
 
 
@@ -120,6 +154,7 @@ def main() -> None:
     parser.add_argument("--set", choices=["test", "train"], default="test")
     parser.add_argument("--stt-presets", help="voice.stt.PRESETS names, comma-separated")
     parser.add_argument("--tag", help="name for a separate notebook and results folder")
+    parser.add_argument("--workers-per-gpu", type=int, default=2)
     args = parser.parse_args()
 
     user = username()
@@ -138,7 +173,8 @@ def main() -> None:
 
         kernel = STAGE / f"kernel-{tag or 'eval'}"
         kernel.mkdir(parents=True, exist_ok=True)
-        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit, set=args.set, presets=args.stt_presets), encoding="utf-8")
+        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit, set=args.set, presets=args.stt_presets,
+                          workers_per_gpu=args.workers_per_gpu), encoding="utf-8")
         (kernel / "kernel-metadata.json").write_text(json.dumps({
             "id": kernel_ref, "title": slug, "code_file": "run.py",
             "language": "python", "kernel_type": "script", "is_private": "true",
