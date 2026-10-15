@@ -1,0 +1,128 @@
+:root {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --text: #1d2330;
+  --muted: #5f6878;
+  --line: #dde1e8;
+  --critical: #c62828;
+  --critical-bg: #fdecec;
+  --soon: #b26a00;
+  --soon-bg: #fff4e0;
+  --routine: #4a5568;
+  --routine-bg: #eef1f5;
+  --accent: #1f6feb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding: 12px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+header h1 { font-size: 18px; margin: 0; }
+header .clock { font-variant-numeric: tabular-nums; color: var(--muted); }
+header .spacer { flex: 1; }
+
+select, button, textarea, input {
+  font: inherit;
+}
+
+select, textarea {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--panel);
+  color: var(--text);
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: 0.5; cursor: default; }
+
+.counts { display: flex; gap: 10px; }
+.count { padding: 4px 10px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+.count.critical { background: var(--critical-bg); color: var(--critical); }
+.count.soon { background: var(--soon-bg); color: var(--soon); }
+.count.routine { background: var(--routine-bg); color: var(--routine); }
+
+main { padding: 16px; max-width: 1100px; margin: 0 auto; }
+
+.queue { display: grid; gap: 10px; }
+.empty { color: var(--muted); text-align: center; padding: 48px 0; }
+
+.card {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 4px 16px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--routine);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.card.critical { border-left-color: var(--critical); background: var(--critical-bg); }
+.card.soon { border-left-color: var(--soon); }
+.card.claimed { opacity: 0.75; }
+.card.alarm { animation: alarm 1s ease-in-out 4; }
+
+@keyframes alarm {
+  50% { box-shadow: 0 0 0 4px var(--critical); }
+}
+
+.where { font-weight: 700; font-size: 18px; }
+.where small { display: block; font-weight: 400; font-size: 13px; color: var(--muted); }
+.what .text { font-size: 17px; }
+.what .meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+.badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: var(--routine-bg); }
+.badge.critical { background: var(--critical); color: #fff; }
+.badge.soon { background: var(--soon); color: #fff; }
+.badge.unsure { background: #e8e0ff; color: #4b2aa8; }
+.actions { display: flex; gap: 8px; justify-content: flex-end; }
+.wait { font-variant-numeric: tabular-nums; }
+
+dialog { border: 1px solid var(--line); border-radius: 12px; padding: 20px; max-width: 360px; }
+dialog p { margin-top: 0; }
+dialog .row { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* Patient page */
+.patient main { max-width: 560px; }
+.quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.quick button { font-size: 22px; padding: 28px 8px; border-radius: 14px; }
+.patient textarea { width: 100%; min-height: 110px; font-size: 18px; }
+.patient .send { width: 100%; margin-top: 10px; font-size: 20px; padding: 14px; }
+.notice { margin-top: 16px; padding: 14px; border-radius: 10px; background: #e7f3ea; color: #1e5b2c; display: none; }
+.who { display: flex; gap: 8px; margin-top: 12px; }
+.who button.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .card { grid-template-columns: 1fr; }
+  .actions { justify-content: flex-start; }
+  .quick button { font-size: 18px; padding: 22px 4px; }
+}

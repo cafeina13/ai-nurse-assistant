@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hemşire Panosu</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Hemşire Panosu</h1>
+    <span class="clock" id="clock">--:--</span>
+    <div class="counts">
+      <span class="count critical" id="n-critical">0 kritik</span>
+      <span class="count soon" id="n-soon">0 kısa sürede</span>
+      <span class="count routine" id="n-routine">0 rutin</span>
+    </div>
+    <span class="spacer"></span>
+    <label>Hemşire <select id="nurse"></select></label>
+    <select id="speed" title="Simülasyon hızı">
+      <option value="60">×60</option>
+      <option value="600" selected>×600</option>
+      <option value="3600">×3600</option>
+    </select>
+    <button id="replay" class="primary">Vardiyayı oynat</button>
+  </header>
+
+  <main>
+    <div class="queue" id="queue"></div>
+    <p class="empty" id="empty">Bekleyen istek yok.</p>
+  </main>
+
+  <dialog id="confirm">
+    <p>Bu istek gerçekten kritik miydi?</p>
+    <div class="row">
+      <button value="no">Hayır</button>
+      <button value="yes" class="primary">Evet</button>
+    </div>
+  </dialog>
+
+  <script src="/static/board.js"></script>
+</body>
+</html>

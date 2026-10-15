@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hemşire Çağrı</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="patient">
+  <header>
+    <h1>Hemşire Çağrı</h1>
+    <span class="spacer"></span>
+    <!-- On a real bedside tablet this is fixed to the bed; here it picks who is calling. -->
+    <label>Yatak <select id="patient"></select></label>
+  </header>
+
+  <main>
+    <div class="quick">
+      <button data-text="[Su]">Su</button>
+      <button data-text="[Tuvalet]">Tuvalet</button>
+      <button data-text="[Ağrı]">Ağrı</button>
+    </div>
+
+    <textarea id="text" placeholder="Ne istediğinizi yazın…"></textarea>
+    <div class="who">
+      <button id="as-patient" class="on">Hasta</button>
+      <button id="as-companion">Refakatçi</button>
+    </div>
+    <button id="send" class="primary send">Gönder</button>
+
+    <div class="notice" id="notice"></div>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let speaker = "patient";
+
+    async function send(text, channel) {
+      const res = await fetch("/api/requests", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ patient_id: Number($("patient").value), text, channel, speaker }),
+      });
+      const body = await res.json();
+      // The same calm message for every request: never tell a patient it is not urgent.
+      $("notice").textContent = res.ok ? body.message : (body.detail || "Gönderilemedi, lütfen tekrar deneyin.");
+      $("notice").style.display = "block";
+      if (res.ok && channel === "text") $("text").value = "";
+    }
+
+    for (const b of document.querySelectorAll(".quick button")) {
+      b.onclick = () => send(b.dataset.text, "button");
+    }
+    $("send").onclick = () => { if ($("text").value.trim()) send($("text").value.trim(), "text"); };
+    for (const [id, who] of [["as-patient", "patient"], ["as-companion", "companion"]]) {
+      $(id).onclick = () => {
+        speaker = who;
+        $("as-patient").classList.toggle("on", who === "patient");
+        $("as-companion").classList.toggle("on", who === "companion");
+      };
+    }
+
+    fetch("/api/state").then((r) => r.json()).then((state) => {
+      $("patient").replaceChildren(...state.patients.map((p) => {
+        const o = document.createElement("option");
+        o.value = p.id;
+        o.textContent = `Oda ${p.room} · Yatak ${p.bed} · ${p.name}`;
+        return o;
+      }));
+    });
+  </script>
+</body>
+</html>
