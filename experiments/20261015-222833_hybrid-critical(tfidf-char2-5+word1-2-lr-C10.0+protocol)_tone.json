@@ -1,0 +1,154 @@
+{
+ "time": "20261015-222833",
+ "model": "hybrid-critical(tfidf-char2-5+word1-2-lr-C10.0+protocol)",
+ "settings": {
+  "mode": "critical",
+  "classifier": {
+   "C": 10.0,
+   "seed": 0,
+   "char_ngrams": [
+    2,
+    5
+   ],
+   "word_ngrams": [
+    1,
+    2
+   ]
+  },
+  "protocol": {
+   "protocol": "protocol.yaml",
+   "lines": 47
+  },
+  "tone_bank": true
+ },
+ "pipeline": "rules:51+model:hybrid-critical(tfidf-char2-5+word1-2-lr-C10.0+protocol)",
+ "data": {
+  "train/gemini": "fedba77549f8",
+  "train/gemini_tone": "4dedb4cfa831",
+  "test/claude": "185d2a222820",
+  "test/tone": "b68fadf3c76c"
+ },
+ "split": {
+  "dev_fraction": 0.2,
+  "seed": 0,
+  "train": 5436,
+  "dev": 1120
+ },
+ "reports": {
+  "dev (20% of train/gemini)": {
+   "n": 1120,
+   "critical_recall": {
+    "combined": 0.9596,
+    "model_only": 0.9485,
+    "rules_only": 0.5551
+   },
+   "under_triage_rate": 0.0214,
+   "over_triage_rate": 0.067,
+   "false_critical_rate": 0.0743,
+   "interrupt": {
+    "critical_interrupted": 0.6507,
+    "false_interrupt_rate": 0.0212
+   },
+   "cell_accuracy": 0.8562,
+   "cell_accuracy_model_only": 0.8634,
+   "urgency_accuracy": 0.9116,
+   "urgency_confusion": {
+    "critical->critical": 261,
+    "critical->soon": 11,
+    "routine->critical": 12,
+    "routine->routine": 456,
+    "routine->soon": 12,
+    "soon->critical": 51,
+    "soon->routine": 13,
+    "soon->soon": 304
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.9844,
+    "breathing/routine": 0.9375,
+    "breathing/soon": 0.5625,
+    "comfort_supplies/routine": 0.9062,
+    "emotional/critical": 0.875,
+    "emotional/routine": 0.9062,
+    "emotional/soon": 0.875,
+    "equipment/routine": 0.9375,
+    "equipment/soon": 0.8906,
+    "fall_injury/critical": 0.9375,
+    "fall_injury/soon": 0.8438,
+    "information/routine": 0.9,
+    "medication/critical": 0.375,
+    "medication/routine": 0.75,
+    "medication/soon": 0.8125,
+    "neuro/critical": 0.9219,
+    "neuro/routine": 0.6875,
+    "neuro/soon": 0.4375,
+    "other_symptom/critical": 0.875,
+    "other_symptom/routine": 0.85,
+    "other_symptom/soon": 0.9583,
+    "pain/critical": 0.8125,
+    "pain/routine": 0.875,
+    "pain/soon": 0.9375,
+    "physical_help/routine": 0.9062,
+    "physical_help/soon": 0.9375,
+    "unclear/critical": 0.6875,
+    "unclear/soon": 0.8125
+   },
+   "missed_critical": [
+    {
+     "text": "acilen oksijen verin nefesim daraliyor",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "acil kaniyo dedemin kolundaki yer yetisin lutfen",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "hiziyla bas donmesi basladi hemen bi hemsire gelsin lutfen",
+     "true": "medication/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Oglum bu mavi ilac zehirledi galiba beni kalbim kut kut atiyo ellerim uyustu hemen bi hemsire gonderin",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "ilac carpinti yapti",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "Yavrum o hapı yuttum yutalı bütün derim yanmaya başladı, ateşim tavan yaptı, hemen gelin",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "serum damardan cikti mi bilmiyorum ama tum kolum uyustu ve siddetli agriyla kivraniorum",
+     "true": "medication/critical",
+     "pred": "equipment/soon"
+    },
+    {
+     "text": "Kızım bi anda odadakileri yabancı zannetmeye başladı, çığlık atıyo, acele edin!",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Evladım, gözümün içine bakıp sen kimsin diyor, aklını kaçırdı galiba, acele et",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "hemen doktor gonderin lutfen annem bi hal oldu cok korkuyorum",
+     "true": "unclear/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "Yavrum yetisin icim yaniyo fena oldum bi anda",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  }
+ }
+}

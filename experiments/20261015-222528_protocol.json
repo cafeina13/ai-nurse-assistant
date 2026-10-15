@@ -1,0 +1,570 @@
+{
+ "time": "20261015-222528",
+ "model": "protocol",
+ "settings": {
+  "protocol": "protocol.yaml",
+  "lines": 45,
+  "tone_bank": false
+ },
+ "pipeline": "rules:51+model:protocol",
+ "data": {
+  "train/gemini": "fedba77549f8",
+  "train/gemini_tone": "4dedb4cfa831",
+  "test/claude": "185d2a222820",
+  "test/tone": "b68fadf3c76c"
+ },
+ "split": {
+  "dev_fraction": 0.2,
+  "seed": 0,
+  "train": 4480,
+  "dev": 1120
+ },
+ "reports": {
+  "dev (20% of train/gemini)": {
+   "n": 1120,
+   "critical_recall": {
+    "combined": 0.6434,
+    "model_only": 0.5699,
+    "rules_only": 0.5551
+   },
+   "under_triage_rate": 0.1134,
+   "over_triage_rate": 0.1482,
+   "false_critical_rate": 0.0483,
+   "interrupt": {
+    "critical_interrupted": 0.5699,
+    "false_interrupt_rate": 0.0377
+   },
+   "cell_accuracy": 0.6232,
+   "cell_accuracy_model_only": 0.6161,
+   "urgency_accuracy": 0.7384,
+   "urgency_confusion": {
+    "critical->critical": 175,
+    "critical->routine": 6,
+    "critical->soon": 91,
+    "routine->critical": 7,
+    "routine->routine": 348,
+    "routine->soon": 125,
+    "soon->critical": 34,
+    "soon->routine": 30,
+    "soon->soon": 304
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.8438,
+    "breathing/routine": 0.4688,
+    "breathing/soon": 0.75,
+    "comfort_supplies/routine": 0.7708,
+    "emotional/critical": 0.375,
+    "emotional/routine": 0.5,
+    "emotional/soon": 0.875,
+    "equipment/routine": 0.0625,
+    "equipment/soon": 0.6094,
+    "fall_injury/critical": 0.7083,
+    "fall_injury/soon": 0.625,
+    "information/routine": 0.65,
+    "medication/critical": 0.0,
+    "medication/routine": 0.5625,
+    "medication/soon": 0.4375,
+    "neuro/critical": 0.5938,
+    "neuro/routine": 0.375,
+    "neuro/soon": 0.3125,
+    "other_symptom/critical": 0.3125,
+    "other_symptom/routine": 0.7375,
+    "other_symptom/soon": 0.7917,
+    "pain/critical": 0.2812,
+    "pain/routine": 0.6875,
+    "pain/soon": 0.8542,
+    "physical_help/routine": 0.6562,
+    "physical_help/soon": 0.5938,
+    "unclear/critical": 0.1875,
+    "unclear/soon": 0.8125
+   },
+   "missed_critical": [
+    {
+     "text": "yavrum oksijen gelmiyo babam nefes alamaz oldu koşun",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Kızım çabuk gel oksijen maskesi yerinden çıktı adam gidiyo",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Kızım hızlı ol, oksijen maskesi yerinden çıktı, nefesim yetmiyor!",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "nefesim yetmiyo hortum cikti olucem simdi",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "cabuk yetisinn nefes yetmiyo diyip yigildi kaldi annem",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "nefesim yetmiyo oluyom valla cabuk gelin",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "nefesim daraldi bi cankurtaran gonderin",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "havasiz kaldim oluyom la tez gelin",
+     "true": "breathing/critical",
+     "pred": "comfort_supplies/routine"
+    },
+    {
+     "text": "acilen oksijen verin nefesim daraliyor",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Babam artik gucum kalmadi dedi, gozleri dondu, cabuk olun",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "evladim gucum kalmadi artik kendime zarar vericem cabuk gelin",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "isiklari kapatin artik her sey bitti lutfen beni rahat birakin",
+     "true": "emotional/critical",
+     "pred": "comfort_supplies/routine"
+    },
+    {
+     "text": "Oglum artik nefes bile almak istemiyorum diyip aglamaya basladi",
+     "true": "emotional/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Bi bakin artik yeter bittim ben",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Cabuk olun bittim ben",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Yardim edin lutfen dayanamiyorum",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Hersey bitti artik",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Kizim cabuk gel bi bak tukendim ben",
+     "true": "emotional/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Anacığım az önce yataktan aşağı düştü, hareketsiz yatıyor, ne olur çabuk gelin.",
+     "true": "fall_injury/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "aniden dusmusum kaldirin beni",
+     "true": "fall_injury/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Hızlı olun lütfen! Eşimin ameliyat yeri fışkırırcasına kanıyor, acil yardım!",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "cabuk gel kimse yok mu babamin kanamasi cok agir durmuyor",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "acil kaniyo dedemin kolundaki yer yetisin lutfen",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "Hemşire hanım çabuk gelin, annemin yarasından resmen fışkırıyor kan, durduramıyoruz bi türlü!",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "kizim hizli ol kayinvalidemin yatagi kan doldu durmuyo",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "hemen bi doktor gonderin dedemin yataktan asagi kan damliyo durdurun sunu",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "Aciil cok kotu kanamam var hizli gelin",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "Yavrum çabuk koş, kanama fena arttı tutamıyorum.",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "Acil yardim edin kan basinci dusuyo her yer kan",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "Lutfen acele edin, agzimdan cok fazla kan geldi, hemen yardim lazim.",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "kan geliyor agzimdan durmuyor cabuk olun",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "kizim bu hap anneme yaramadi agzindan kopuk geldi resmen",
+     "true": "medication/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "ilaci aldigi gibi gozleri dondu adam kendine gelmiyo",
+     "true": "medication/critical",
+     "pred": "medication/routine"
+    },
+    {
+     "text": "yavrum bu hap babami deli gibi titretti hemen bakin",
+     "true": "medication/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "hiziyla bas donmesi basladi hemen bi hemsire gelsin lutfen",
+     "true": "medication/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "ilaci yuttu yavrum fenalasti hemen gelin gozleri kaydi",
+     "true": "medication/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Ablacım o ilacı içtiğim an midem öyle bir bulandı ki kafamı yataktan kaldıramıyorum, her yerim titriyo",
+     "true": "medication/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "Oglum bu mavi ilac zehirledi galiba beni kalbim kut kut atiyo ellerim uyustu hemen bi hemsire gonderin",
+     "true": "medication/critical",
+     "pred": "medication/routine"
+    },
+    {
+     "text": "ilac carpinti yapti",
+     "true": "medication/critical",
+     "pred": "medication/routine"
+    },
+    {
+     "text": "Yavrum o hapı yuttum yutalı bütün derim yanmaya başladı, ateşim tavan yaptı, hemen gelin",
+     "true": "medication/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "serum damardan cikti mi bilmiyorum ama tum kolum uyustu ve siddetli agriyla kivraniorum",
+     "true": "medication/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "Kızım o hapı alır almaz kulaklarım çınlamaya başladı her yer dönüyo düşücem şimdi",
+     "true": "medication/critical",
+     "pred": "medication/routine"
+    },
+    {
+     "text": "Kayinvalidem burdan kacmamiz lazim diyo, tamamen kendini kaybetti, yetisin",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Ninem bizi hirsiz zannedip esyalari firlatiyo, cok kotu bagiriyo, acil birini gonderin",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Kızım bi anda odadakileri yabancı zannetmeye başladı, çığlık atıyo, acele edin!",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "babam birden kimseyi tanimaz oldu gozleri bos bakiyo lutfen hemen gelin",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "dedem tanıdık kimse yok burda diye tutturdu, kendini kaybetmiş durumda, bakın",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Ninem kafayı yedi sanırım, tanımadığı adamlar var odada diyo, acil gelin",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Evladım adam gözümüzün içine bakıp sen kimsin diyo, acele edin",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Ya Allah askina bi bakin adam gitti resmen kim oldugumuzu hatirlamiyo",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Hemsire hanim cabuk gelin adam herkesi unutmus gibi bakiyo, korkunc",
+     "true": "neuro/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "burasi neresi hic kimseyi taniyamiyorum kafam durdu resmen hemen gelin",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Evladım, gözümün içine bakıp sen kimsin diyor, aklını kaçırdı galiba, acele et",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Kardesim adam yerinde durmuyo kafayi yedi herhalde tanimiyo bizi hizli gelin",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "acil gelin lutfen babamin akli yerinde degil kim oldugumuzu bilmiyo",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Evladım annem bir garip bakıyo bize, adımızı unuttu sanki, çok korkuyorum",
+     "true": "neuro/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "Babam basim cok donuyo dedi gozleri kaydi simdi duscek",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Oda 204 acil gelsin biri, basim cok siddetli donuyor, bilincim gidiyor.",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "hemsire hanim cabuk gelin dedem oylece kaldi gozleri dondu",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "basini kaldirmiyor bicare oylece yatiyo gozleri kapali",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Yavrum yetis gozlerim kaydi kendimde degilim hic",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "olecek gibiyim gozlerim kapandi acilmiyo",
+     "true": "neuro/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "annem titremeye basladi kafasi yerinde degil bosa bakip duruyo cabuk olun",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "Çabuk olun annemin titremesi başladı gözleri falan bi garip, ne sordugumu anlamıyo artık.",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "annem titriyo kafasi da karisti baska bi alemde gibi hemen gelin",
+     "true": "other_symptom/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "buz kesildim resmen kafam karisti sesimi duyan var mi",
+     "true": "other_symptom/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "gozum karariyo titriyorum kafam da bulandi cok fenayim",
+     "true": "other_symptom/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Hemşire hanım çabuk olun titriyorum ne dediğimi bilmiyorum",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "evladim tez gelin buz gibi oldum aklim da karisiyo",
+     "true": "other_symptom/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "carpintim var titriyorum kafam da gidip geliyo yardim edin",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "kizim cabuk gelin icim titriyo kafam basmiyo artik",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "Evladım çabuk doktor çağır, ninemin göğsüne kocaman bir taş oturmuş gibi oluyo hırıltı geliyo",
+     "true": "pain/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "gogsum patlayacak yardim edin",
+     "true": "pain/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Acil bakabilir misiniz, esim basima bicak saplaniyo dedi rengi kirec gibi oldu kalkamiyor",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "basim catliyo dedi annem, bi anda oldu her sey, ayakta duramiyo su an",
+     "true": "pain/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "babaannemin basina ani bir agri saplandi resmen beyni yaniyo gibi bagriyo yardim",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "bas agrisindan adam delircek simdi, oyle boyle degil cok fena, bi doktor cagirin",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "annemin basina bi agri girdi yuzune kan toplandi sanki ses veremiyor acil doktor",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "Acil doktor gonderin babamin basina birden oyle bir agri girdi ki titriyo korkudan",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "Basim catliyor birden bire oldu acil yardim lazim",
+     "true": "pain/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Yavrum kafama balyozla vuruyolarmis gibi bi agri girdi birden, hemen doktor cagirin",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "Evladim basim catliyo birden bire basladi gozlerimin onunde simsekler cakiyo",
+     "true": "pain/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "basimda durulmayacak derecede ani bir agri basladi, gozlerim karariyo, hizli olun",
+     "true": "pain/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "beynimin sol tarafi catliyo birden bire oldu sakin boslamayin acil",
+     "true": "pain/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "hemen doktor gonderin lutfen annem bi hal oldu cok korkuyorum",
+     "true": "unclear/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "cabuk gelin lutfen cocugumun benzi atti iyice",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Çabuk gelin evladım, eşim yatakta kıvranıyo kötü oldu",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "cabuk gelin lutfen babam cok fena bi anda fenalasti",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "acil bi ekip gonderin lutfen eşim kriz geciriyo resmen",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "acil gelin buraya cocugum gozlerimi karariyo yardim",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Kizim cabuk kos bi seyler oluyo bana fenalastim",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "cabuk olun lutfen fenalastim birden",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Yetiin cabuk gozumkarariyo",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Dayanamiyorm daha fazla gelin artik",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Ablacim tez gel gozlerim karariyo",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Ambulans mi cagirsak ne olduysa oldu bana",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "Yavrum yetisin icim yaniyo fena oldum bi anda",
+     "true": "unclear/critical",
+     "pred": "pain/soon"
+    }
+   ]
+  }
+ }
+}
