@@ -26,7 +26,9 @@ ENGINES = {
 
 def load_texts(banks: Path) -> list[dict]:
     rows = []
-    for bank in ("claude", "tone"):
+    for bank in ("claude", "tone", "fresh"):
+        if not (banks / bank).exists():
+            continue
         for path in sorted((banks / bank).glob("*.jsonl")):
             for line in path.read_text(encoding="utf-8").splitlines():
                 row = json.loads(line)

@@ -66,8 +66,9 @@ def stage_code() -> Path:
     shutil.copytree(REPO / "compare", folder / "compare", ignore=shutil.ignore_patterns("__pycache__"))
     (folder / "data" / "config").mkdir(parents=True)
     shutil.copy2(REPO / "data" / "config" / "grid.yaml", folder / "data" / "config" / "grid.yaml")
-    for bank in ("claude", "tone"):
-        shutil.copytree(REPO / "data" / "textbank" / "test" / bank, folder / "banks" / bank)
+    for bank in ("claude", "tone", "fresh"):
+        if (REPO / "data" / "textbank" / "test" / bank).exists():
+            shutil.copytree(REPO / "data" / "textbank" / "test" / bank, folder / "banks" / bank)
     return folder
 
 

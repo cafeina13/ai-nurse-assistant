@@ -17,7 +17,7 @@ from collections import Counter
 from pathlib import Path
 
 from triage.evaluate import load_examples
-from triage.models import TfidfModel
+from triage.models import make_model
 from triage.normalize import fold
 from triage.pipeline import URGENCY_RANK, Triage
 
@@ -75,6 +75,7 @@ def main() -> None:
     parser.add_argument("results", type=Path, help="folder with dousery.jsonl and llama31.jsonl")
     parser.add_argument("--with-tone-bank", action="store_true",
                         help="train ours on train/gemini plus train/gemini_tone")
+    parser.add_argument("--model", default="tfidf", help='ours: "tfidf", "hybrid-critical:tfidf", ...')
     args = parser.parse_args()
 
     engines = {}
@@ -89,9 +90,9 @@ def main() -> None:
     train = load_examples("train/gemini")
     if args.with_tone_bank:
         train += load_examples("train/gemini_tone")
-    ours = Triage(TfidfModel().fit([e.text for e in train], [e.cell for e in train]))
+    ours = Triage(make_model(args.model).fit([e.text for e in train], [e.cell for e in train]))
     ours_results = ours.run_many([r["text"] for r in rows])
-    predictions = {f"ours (TF-IDF + rules{', tone bank' if args.with_tone_bank else ''})":
+    predictions = {f"ours ({args.model} + rules{', tone bank' if args.with_tone_bank else ''})":
                    [r.urgency for r in ours_results]}
 
     if "llama31" in engines:
@@ -106,6 +107,10 @@ def main() -> None:
         "test/claude": [k for k, r in enumerate(rows) if r["bank"] == "test/claude"],
         "calm criticals": [k for k, r in enumerate(rows) if r.get("tone") == "calm_critical"],
         "panicky non-criticals": [k for k, r in enumerate(rows) if r.get("tone") == "panicky_noncritical"],
+        # Written by a fresh sub-agent that never saw our errors, rules or protocol.
+        "test/fresh": [k for k, r in enumerate(rows) if r["bank"] == "test/fresh"],
+        **{f"test/fresh: {t}": [k for k, r in enumerate(rows) if r["bank"] == "test/fresh" and r.get("tone") == t]
+           for t in ("calm", "neutral", "urgent")},
     }
     for title, idx in subsets.items():
         if not idx:

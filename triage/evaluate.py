@@ -169,6 +169,12 @@ def main() -> None:
         reports["test/claude"] = evaluate(triage, load_examples("test/claude"))
         reports["test/tone: calm criticals"] = evaluate(triage, [e for e in tone if e.urgency == "critical"])
         reports["test/tone: panicky non-criticals"] = evaluate(triage, [e for e in tone if e.urgency != "critical"])
+        # Written by a fresh sub-agent that never saw our errors, rules or protocol: the clean test.
+        if (TEXTBANK_DIR / "test" / "fresh").exists():
+            fresh = load_examples("test/fresh")
+            reports["test/fresh"] = evaluate(triage, fresh)
+            for tone_name in ("calm", "neutral", "urgent"):
+                reports[f"test/fresh: {tone_name}"] = evaluate(triage, [e for e in fresh if e.tone == tone_name])
     for title, metrics in reports.items():
         print_report(title, metrics, args.show)
 
@@ -177,7 +183,7 @@ def main() -> None:
     record = {
         "time": stamp, "model": model.name, "settings": {**model.settings, "tone_bank": args.with_tone_bank},
         "pipeline": triage.version,
-        "data": {b: fingerprint(b) for b in ("train/gemini", "train/gemini_tone", "test/claude", "test/tone")},
+        "data": {b: fingerprint(b) for b in ("train/gemini", "train/gemini_tone", "test/claude", "test/tone", "test/fresh")},
         "split": {"dev_fraction": 0.2, "seed": 0, "train": len(train), "dev": len(dev)},
         "reports": reports,
     }
