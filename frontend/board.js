@@ -32,9 +32,34 @@ function waitText(card) {
   return minutes < 1 ? "az önce" : `${minutes} dk`;
 }
 
+// Protocol facts in Turkish, for the reason line ("protokol: kusma + koyu kusmuk").
+const FACT = {
+  breath: "nefes", breath_stopped: "nefes durması", choke: "boğulma", oxygen: "oksijen", chest: "göğüs",
+  pain: "ağrı", painkiller: "ağrı kesici", head: "baş", unconscious: "bilinç kaybı", stroke: "inme belirtisi",
+  confusion: "bilinç bulanıklığı", dizzy: "baş dönmesi", fever: "ateş/titreme", vomit: "kusma", blood: "kan",
+  dark_vomit: "koyu kusmuk", heavy_bleeding: "ağır kanama", vital_dropped: "değer düşmesi", fall: "düşme",
+  wound: "yara/pansuman", self_harm: "kendine zarar", hopeless: "umutsuzluk", anxiety: "korku/panik",
+  sleep: "uykusuzluk", company: "yalnızlık", toilet: "tuvalet", bedpan: "sürgü", soiled: "kirlenme",
+  move_body: "hareket yardımı", hygiene: "temizlik", water: "su", food: "yemek", temperature: "ısı",
+  bed: "yatak", environment: "oda ortamı", supplies: "malzeme", medication: "ilaç", missed: "atlanan doz",
+  after_drug: "ilaç sonrası", swelling: "şişlik", rash: "kaşıntı/döküntü", device: "cihaz",
+  device_question: "cihaz sorusu", iv_site: "damar yolu sorunu", info: "bilgi", cough: "öksürük",
+  nose: "burun", constipation: "kabızlık", diarrhea: "ishal", food_question: "yemek sorusu",
+  vague: "belirsiz şikâyet", inability: "yapamama", passed: "geçti", severe: "şiddetli", sudden: "ani",
+  worsening: "kötüleşme", alarm_sign: "alarm bulgusu", mild: "hafif", urgency_words: "aciliyet ifadesi",
+};
+
+function protocolText(reason) {
+  // "protocol: line 8: vomit, (blood / dark_vomit) [dark_vomit, vomit]" -> "protokol: kusma + koyu kusmuk"
+  const facts = (reason.match(/\[([^\]]*)\]$/) || [, ""])[1].split(", ").filter((f) => f && f !== "no facts");
+  const shown = facts.filter((f) => !["urgency_words", "info"].includes(f)).map((f) => FACT[f] || f);
+  return shown.length ? `protokol: ${shown.join(" + ")}` : "protokol: tanınmadı";
+}
+
 function reasonText(reasons) {
   // "model: pain/soon (0.91)" -> "model %91" (Turkish puts the percent sign first)
-  return reasons.map((r) => r.replace(/^model: \S+ \(([\d.]+)\)$/, (_, p) => `model %${Math.round(p * 100)}`)
+  return reasons.map((r) => r.startsWith("protocol: ") ? protocolText(r) : r)
+                .map((r) => r.replace(/^model: \S+ \(([\d.]+)\)$/, (_, p) => `model %${Math.round(p * 100)}`)
                            .replace(/^rule: /, "kural: ")
                            .replace(/^button: /, "buton: ")
                            .replace(/^context: cannot walk alone$/, "tek başına yürüyemiyor"))
@@ -56,7 +81,7 @@ function render() {
 
 function renderCard(card) {
   const badges = el("div", { class: "badges" },
-    el("span", { class: `badge ${card.urgency}` }, URGENCY[card.urgency]),
+    el("span", { class: `badge ${card.urgency}` }, card.tentative ? "Olası kritik" : URGENCY[card.urgency]),
     el("span", { class: "badge" }, CATEGORY[card.category] || card.category));
   if (card.uncertain) badges.append(el("span", { class: "badge unsure" }, "Emin değil — kontrol edin"));
   if (card.speaker === "companion") badges.append(el("span", { class: "badge" }, "Refakatçi"));

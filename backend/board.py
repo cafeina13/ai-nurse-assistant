@@ -71,6 +71,10 @@ class Board:
                 "reasons": result.reasons,
                 "uncertain": result.uncertain,
                 "interrupt": result.interrupt,
+                # Critical only on a weak model guess (no rule, no protocol line): it keeps its place
+                # at the top, but the board says "possible critical" rather than claiming certainty.
+                "tentative": (result.urgency == "critical" and (result.confidence or 0) < 0.5
+                              and not any(r.startswith("rule:") for r in result.reasons)),
                 "status": "open",
                 "claimed_by": None,
             }

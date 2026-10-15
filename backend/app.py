@@ -22,7 +22,7 @@ from backend.board import Board
 from backend.db import init_db, make_engine, session_factory
 from backend.replay import Replay, SimClock
 from triage.evaluate import load_examples
-from triage.models import TfidfModel
+from triage.models import make_model
 from triage.pipeline import Triage
 from wardgen import DEFAULT_START, generate
 from wardgen.textbank import TEXTBANK_DIR
@@ -54,8 +54,11 @@ class Demo:
         engine = make_engine(db_path)
         init_db(engine)
         self.sessions = session_factory(engine)
-        train = load_examples("train/gemini")
-        triage = Triage(TfidfModel().fit([e.text for e in train], [e.cell for e in train]))
+        # The engine that won the head-to-head: TF-IDF + protocol (critical override) + safety
+        # rules, trained on the training bank plus the tone bank.
+        train = load_examples("train/gemini") + load_examples("train/gemini_tone")
+        model = make_model("hybrid-critical:tfidf").fit([e.text for e in train], [e.cell for e in train])
+        triage = Triage(model)
         # One simulated clock for everything: it runs in real time from the ward's start until a
         # replay speeds it up, and stops when the shift is over, so typed and replayed requests
         # always share one timeline.

@@ -112,3 +112,11 @@ def test_bad_requests_are_refused(client):
     assert client.post("/api/requests", json={"patient_id": 9999, "text": "su"}).status_code == 404
     assert client.post("/api/requests", json={"patient_id": first_patient(client), "text": "  "}).status_code == 422
     assert client.post("/api/requests/9999/claim", json={"nurse_id": 1}).status_code == 404
+
+
+def test_weak_model_criticals_are_labeled_possible(client):
+    pid = first_patient(client)
+    sure = client.post("/api/requests", json={"patient_id": pid, "text": "Nefes alamıyorum"}).json()["id"]
+    cards = {c["id"]: c for c in client.get("/api/state").json()["cards"]}
+    assert cards[sure]["urgency"] == "critical" and not cards[sure]["tentative"]
+    assert all(not c["tentative"] for c in cards.values() if c["urgency"] != "critical")
