@@ -1,9 +1,11 @@
 """Evaluates triage models on a Kaggle T4x2, from the laptop; only small reports come back.
 
     python -m triage.kaggle_triage --models emb:intfloat/multilingual-e5-base,emb:BAAI/bge-m3
+    python -m triage.kaggle_triage --models bert:dbmdz/bert-base-turkish-cased,hybrid-critical:bert:dbmdz/bert-base-turkish-cased
 
 Each model runs `python -m triage.evaluate --final --with-tone-bank --model <spec>` on Kaggle;
 models are spread over both GPUs. The experiment records land in experiments/, like local runs.
+Fine-tuned weights stay in the notebook's output (models/); only reports are downloaded.
 """
 
 import argparse
@@ -37,7 +39,7 @@ code = Path(next(glob.iglob("/kaggle/input/**/triage/evaluate.py", recursive=Tru
 gpus = len(subprocess.check_output(["nvidia-smi", "-L"], text=True).strip().splitlines())
 work = Path("/kaggle/working")
 env_base = {{**os.environ, "PYTHONPATH": os.pathsep.join([str(code), str(code / "data")]),
-            "TRIAGE_EXPERIMENTS": str(work / "experiments")}}
+            "TRIAGE_EXPERIMENTS": str(work / "experiments"), "TRIAGE_SAVE_DIR": str(work / "models")}}
 
 def run_queue(gpu, specs, failures):
     # Models on one GPU run one after another; the two GPUs run in parallel.
@@ -68,7 +70,7 @@ def stage_code() -> Path:
         shutil.copytree(REPO / package, folder / package, ignore=ignore)
     shutil.copytree(REPO / "data" / "wardgen", folder / "data" / "wardgen", ignore=ignore)
     shutil.copytree(REPO / "data" / "config", folder / "data" / "config")
-    for bank in ("train/gemini", "train/gemini_tone", "test/claude", "test/tone"):
+    for bank in ("train/gemini", "train/gemini_tone", "test/claude", "test/tone", "test/fresh"):
         shutil.copytree(REPO / "data" / "textbank" / bank, folder / "data" / "textbank" / bank)
     return folder
 
@@ -101,7 +103,10 @@ def main() -> None:
         if result.returncode != 0:
             sys.exit(1)
         while True:
-            status = kaggle("kernels", "status", kernel_ref, check=False).stdout.strip()
+            check = kaggle("kernels", "status", kernel_ref, check=False)
+            if check.returncode != 0:  # never poll forever on a notebook that cannot be found
+                sys.exit(f"status check failed: {check.stderr.strip() or check.stdout.strip()}")
+            status = check.stdout.strip()
             print(time.strftime("%H:%M:%S"), status, flush=True)
             if any(word in status.lower() for word in ("complete", "error", "cancel")):
                 break

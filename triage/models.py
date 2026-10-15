@@ -77,12 +77,108 @@ class EmbeddingModel:
         return [dict(zip(classes, map(float, row))) for row in self.classifier.predict_proba(self._encode(texts))]
 
 
+class BertModel:
+    """A Turkish BERT fine-tuned end to end on the cells (needs a GPU; run it on Kaggle).
+
+    Standard settings, fixed before any run and not tuned on a test set: 4 epochs, lr 3e-5
+    with 10% warm-up, batch 32, weight decay 0.01, texts cut at 64 tokens (requests are short),
+    and class weights like the baseline's class_weight="balanced". Raw text goes in, not folded:
+    a cased model can use the Turkish letters when they are there.
+    """
+
+    def __init__(self, model_id: str, epochs: int = 4, lr: float = 3e-5, batch_size: int = 32,
+                 max_length: int = 64, seed: int = 0, device: str | None = None):
+        self.model_id = model_id
+        self.name = f"bert-{model_id.split('/')[-1]}-e{epochs}-lr{lr}"
+        self.settings = {"model": model_id, "epochs": epochs, "lr": lr, "batch_size": batch_size,
+                         "max_length": max_length, "seed": seed, "warmup": 0.1, "weight_decay": 0.01,
+                         "class_weights": "balanced"}
+        self.epochs, self.lr, self.batch_size, self.max_length, self.seed = epochs, lr, batch_size, max_length, seed
+        self.device = device
+
+    def fit(self, texts: list[str], cells: list[str]) -> "BertModel":
+        import os
+
+        import numpy as np
+        import torch
+        from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
+                                  get_linear_schedule_with_warmup)
+
+        torch.manual_seed(self.seed)
+        np.random.seed(self.seed)
+        self.device = self.device or ("cuda" if torch.cuda.is_available() else "cpu")
+        self.classes = sorted(set(cells))
+        index = {c: i for i, c in enumerate(self.classes)}
+        labels = torch.tensor([index[c] for c in cells])
+        counts = torch.bincount(labels, minlength=len(self.classes)).float()
+        weights = (len(labels) / (len(self.classes) * counts)).to(self.device)
+
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            self.model_id, num_labels=len(self.classes)).to(self.device)
+        enc = self.tokenizer(texts, truncation=True, max_length=self.max_length, padding=True, return_tensors="pt")
+        steps = self.epochs * -(-len(texts) // self.batch_size)
+        no_decay = ("bias", "LayerNorm.weight")
+        params = [
+            {"params": [p for n, p in self.model.named_parameters() if not any(k in n for k in no_decay)],
+             "weight_decay": 0.01},
+            {"params": [p for n, p in self.model.named_parameters() if any(k in n for k in no_decay)],
+             "weight_decay": 0.0},
+        ]
+        optimizer = torch.optim.AdamW(params, lr=self.lr)
+        schedule = get_linear_schedule_with_warmup(optimizer, int(0.1 * steps), steps)
+        scaler = torch.amp.GradScaler(enabled=self.device == "cuda")
+        loss_fn = torch.nn.CrossEntropyLoss(weight=weights)
+        generator = torch.Generator().manual_seed(self.seed)
+        self.model.train()
+        for epoch in range(self.epochs):
+            order = torch.randperm(len(texts), generator=generator)
+            total = 0.0
+            for start in range(0, len(texts), self.batch_size):
+                batch = order[start:start + self.batch_size]
+                inputs = {k: v[batch].to(self.device) for k, v in enc.items()}
+                with torch.autocast(self.device, enabled=self.device == "cuda"):
+                    logits = self.model(**inputs).logits
+                loss = loss_fn(logits.float(), labels[batch].to(self.device))
+                optimizer.zero_grad()
+                scaler.scale(loss).backward()
+                scaler.unscale_(optimizer)
+                torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
+                scaler.step(optimizer)
+                scaler.update()
+                schedule.step()
+                total += loss.item() * len(batch)
+            print(f"{self.name} epoch {epoch + 1}/{self.epochs} loss {total / len(texts):.4f}", flush=True)
+        self.model.eval()
+        if os.environ.get("TRIAGE_SAVE_DIR"):  # keep the weights, e.g. for the demo later
+            out = os.path.join(os.environ["TRIAGE_SAVE_DIR"], self.name)
+            self.model.save_pretrained(out)
+            self.tokenizer.save_pretrained(out)
+        return self
+
+    def predict_proba(self, texts: list[str]) -> list[dict[str, float]]:
+        import torch
+
+        out = []
+        with torch.no_grad():
+            for start in range(0, len(texts), 128):
+                enc = self.tokenizer(texts[start:start + 128], truncation=True, max_length=self.max_length,
+                                     padding=True, return_tensors="pt").to(self.device)
+                with torch.autocast(self.device, enabled=self.device == "cuda"):
+                    probs = torch.softmax(self.model(**enc).logits.float(), dim=-1).cpu().tolist()
+                out += [dict(zip(self.classes, map(float, row))) for row in probs]
+        return out
+
+
 def make_model(spec: str, C: float = 10.0):
-    """"tfidf", "emb:<hugging face id>", "protocol" or "hybrid-<mode>:<classifier spec>"."""
+    """"tfidf", "emb:<hugging face id>", "bert:<hugging face id>", "protocol" or
+    "hybrid-<mode>:<classifier spec>"."""
     if spec == "tfidf":
         return TfidfModel(C=C)
     if spec.startswith("emb:"):
         return EmbeddingModel(spec[4:], C=C)
+    if spec.startswith("bert:"):
+        return BertModel(spec[5:])
     if spec == "protocol":
         from triage.protocol import ProtocolModel
         return ProtocolModel()
