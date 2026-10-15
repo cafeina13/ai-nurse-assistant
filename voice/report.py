@@ -1,6 +1,7 @@
 """Scores a voice evaluation on the laptop: transcription errors and what they cost triage.
 
     python -m voice.report data/generated/voice_eval/transcripts.jsonl
+    python -m voice.report ... --model hybrid-critical:tfidf --with-tone-bank   # the demo's engine
 
 Triage runs twice on every clip, on the original text and on the transcript, so the drop
 between them is what speech to text costs. Critical recall comes first, as the plan requires.
@@ -12,7 +13,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from triage.evaluate import load_examples
-from triage.models import TfidfModel
+from triage.models import make_model
 from triage.normalize import fold
 from triage.pipeline import Triage
 from voice.checks import reject_reason
@@ -80,6 +81,9 @@ def main() -> None:
     parser.add_argument("--train-transcripts", type=Path,
                         help="transcripts of the training bank (voice.run_eval --set train); the model "
                              "then trains on typed texts plus these, to learn what Whisper mishears")
+    parser.add_argument("--model", default="tfidf", help='triage model: "tfidf", "hybrid-critical:tfidf", ...')
+    parser.add_argument("--with-tone-bank", action="store_true",
+                        help="train on train/gemini plus train/gemini_tone")
     parser.add_argument("--stt", help="only clips from this STT preset (the run's 'stt' field)")
     parser.add_argument("--checks", action="store_true",
                         help="reject unbelievable transcripts (voice.checks): they become Unclear/Soon")
@@ -98,6 +102,8 @@ def main() -> None:
         c["rejected"] = (reject_reason(c["transcript"], c["seconds"], c.get("compression_ratio"))
                          if args.checks else None)
     train = load_examples("train/gemini")
+    if args.with_tone_bank:
+        train += load_examples("train/gemini_tone")
     texts, cells = [e.text for e in train], [e.cell for e in train]
     if args.train_transcripts:
         heard = [json.loads(line) for line in args.train_transcripts.read_text(encoding="utf-8").splitlines() if line]
@@ -107,7 +113,8 @@ def main() -> None:
         print(f"Model trained on {len(train)} typed texts + {len(heard)} training transcripts")
     else:
         print(f"Model trained on {len(train)} typed texts only")
-    triage = Triage(TfidfModel().fit(texts, cells))
+    print(f"Triage model: {args.model}")
+    triage = Triage(make_model(args.model).fit(texts, cells))
     by_text = triage.run_many([c["text"] for c in clips])
     by_voice = triage.run_many([c["transcript"] or "" for c in clips])
 
