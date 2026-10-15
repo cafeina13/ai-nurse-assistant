@@ -1,0 +1,5 @@
+{"text": "Banyoda düştüm, kalkamıyorum", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Babam yataktan düştü, başını çarptı", "category": "fall_injury", "urgency": "critical", "topic": "fell", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Serum yerinden kan akıyor, durmuyor", "category": "fall_injury", "urgency": "critical", "topic": "heavy_bleeding", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Kustum, içinde kan vardı", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "annem siyah bir sey kusmus, bilginiz olsun", "category": "fall_injury", "urgency": "critical", "topic": "vomiting_blood", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}

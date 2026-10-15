@@ -1,0 +1,6 @@
+{"text": "ÇABUK GELİN SÜRGÜ LAZIM ACİL", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "acil surgu getirin yetisin babam bekleyemiyo", "category": "physical_help", "urgency": "soon", "topic": "bedpan_urinal", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Hemen gelin annem altına kaçırdı, çabuk!", "category": "physical_help", "urgency": "soon", "topic": "soiled", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Çabuk gelin tuvalete gideceğim, acil!", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "yetisin tuvaletim geldi acil", "category": "physical_help", "urgency": "routine", "topic": "toilet_help", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Acil gelin babamı çevirmemiz lazım hemen", "category": "physical_help", "urgency": "routine", "topic": "reposition", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

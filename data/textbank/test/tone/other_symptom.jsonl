@@ -1,0 +1,3 @@
+{"text": "Babam titriyor, ateşi var, ne dediğimi anlamıyor", "category": "other_symptom", "urgency": "critical", "topic": "chills_with_confusion", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Çabuk gelin midem bulanıyor, acil poşet!", "category": "other_symptom", "urgency": "soon", "topic": "nausea_vomiting", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "yetisin annem oksuruyo durmadan acil surup", "category": "other_symptom", "urgency": "routine", "topic": "cough", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

@@ -1,0 +1,4 @@
+{"text": "ÇABUK GELİN MAKİNE ÖTÜYOR SUSMUYOR", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "acil acil serum makinesi bagiriyo yetisin", "category": "equipment", "urgency": "soon", "topic": "pump_alarm", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Hemen gelin serum bitti, çabuk!", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "yetisin serumum bitti acil", "category": "equipment", "urgency": "soon", "topic": "iv_finished", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

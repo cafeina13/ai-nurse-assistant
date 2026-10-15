@@ -1,0 +1,2 @@
+{"text": "Acil doktor çağırın, babamın sonuçlarını öğrenmemiz lazım hemen", "category": "information", "urgency": "routine", "topic": "doctor_rounds", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Hemen gelin taburcu işlemimi yapın, acil, çabuk", "category": "information", "urgency": "routine", "topic": "discharge", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

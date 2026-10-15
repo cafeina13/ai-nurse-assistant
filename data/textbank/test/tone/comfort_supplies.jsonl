@@ -1,0 +1,6 @@
+{"text": "Acil su lazım, çabuk getirin!", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "hemen su getirin yetisin annem susadi", "category": "comfort_supplies", "urgency": "routine", "topic": "water", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "ACİL BATTANİYE ÜŞÜYORUM ÇABUK", "category": "comfort_supplies", "urgency": "routine", "topic": "blanket_temperature", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Yemek nerede, çabuk getirin artık, hemen!", "category": "comfort_supplies", "urgency": "routine", "topic": "food", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Hemen gelin şu televizyonu kapatın, acil!", "category": "comfort_supplies", "urgency": "routine", "topic": "room_environment", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "çabuk yatağımı kaldırın acil", "category": "comfort_supplies", "urgency": "routine", "topic": "bed_adjust", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

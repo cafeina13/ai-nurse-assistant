@@ -1,0 +1,4 @@
+{"text": "İlaçtan sonra dudaklarım şişti, yutkunmak zor", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Babama verilen ilaçtan sonra dili şişti", "category": "medication", "urgency": "critical", "topic": "side_effect", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Acil! Annemin sabah ilacı verilmedi, hemen gelin", "category": "medication", "urgency": "soon", "topic": "missed_dose", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "çabuk söyleyin ilacım ne zaman, acil", "category": "medication", "urgency": "routine", "topic": "next_dose_time", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

@@ -1,0 +1,5 @@
+{"text": "Artık yaşamak istemiyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "kendime bir sey yapmayi dusunuyorum", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Eşim pencereden atlamaktan bahsediyor", "category": "emotional", "urgency": "critical", "topic": "hopelessness", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Acil gelin uyuyamıyorum, hemen bir şey yapın", "category": "emotional", "urgency": "routine", "topic": "cannot_sleep", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Çabuk gelin annem çok korkuyor, ağlıyor", "category": "emotional", "urgency": "soon", "topic": "anxiety_fear", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}

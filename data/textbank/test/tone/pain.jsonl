@@ -1,0 +1,6 @@
+{"text": "Göğsümde bir baskı var, sol koluma yayılıyor", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "annem gogsunun sikistigini soyluyor, terledi biraz", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Kalbimin üstünde ağırlık var, bir hemşire gelebilir mi", "category": "pain", "urgency": "critical", "topic": "chest_pain", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Birden çok şiddetli bir baş ağrısı başladı, daha önce hiç olmamıştı", "category": "pain", "urgency": "critical", "topic": "sudden_severe_headache", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "calm_critical"}
+{"text": "Acil ağrı kesici, çabuk getirin", "category": "pain", "urgency": "soon", "topic": "wants_painkiller", "speaker": "patient", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
+{"text": "Hemen gelin babamın ağrısı arttı, acil!", "category": "pain", "urgency": "soon", "topic": "worsening_pain", "speaker": "companion", "source": "claude-opus-5-5", "prompt_version": 0, "tone": "panicky_noncritical"}
