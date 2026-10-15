@@ -78,9 +78,16 @@ class EmbeddingModel:
 
 
 def make_model(spec: str, C: float = 10.0):
-    """"tfidf" or "emb:<hugging face id>"."""
+    """"tfidf", "emb:<hugging face id>", "protocol" or "hybrid-<mode>:<classifier spec>"."""
     if spec == "tfidf":
         return TfidfModel(C=C)
     if spec.startswith("emb:"):
         return EmbeddingModel(spec[4:], C=C)
+    if spec == "protocol":
+        from triage.protocol import ProtocolModel
+        return ProtocolModel()
+    if spec.startswith("hybrid-"):  # hybrid-<mode>:<classifier spec>, e.g. hybrid-raise:tfidf
+        from triage.protocol import HybridModel
+        mode, inner = spec[len("hybrid-"):].split(":", 1)
+        return HybridModel(make_model(inner, C=C), mode=mode)
     raise ValueError(f"unknown model {spec!r}")

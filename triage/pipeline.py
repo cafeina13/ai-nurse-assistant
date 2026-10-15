@@ -87,6 +87,8 @@ class Triage:
         model_cell, confidence = max(proba.items(), key=lambda kv: kv[1])
         model_critical = model_cell.endswith("/critical")
         result = TriageResult(model_cell, confidence, [f"model: {model_cell} ({confidence:.2f})"])
+        if hasattr(self.model, "explain"):  # the protocol can say which line and facts decided
+            result.reasons.append(f"protocol: {self.model.explain(text)}")
         hits = find_hits(text, self.rules)
         if hits:
             # The rule wins outright: its critical cell replaces the model's (hard rule 2).
