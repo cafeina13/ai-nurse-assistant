@@ -148,9 +148,14 @@ def main() -> None:
                         help="also evaluate on the test banks; only once settings are fixed")
     parser.add_argument("--C", type=float, default=10.0)
     parser.add_argument("--show", type=int, default=10, help="missed criticals to print")
+    parser.add_argument("--with-tone-bank", action="store_true",
+                        help="also train on train/gemini_tone (calm criticals, panicky non-criticals)")
     args = parser.parse_args()
 
     train, dev = split_dev(load_examples("train/gemini"))
+    if args.with_tone_bank:
+        # Training only: the dev split stays the plain bank, so dev numbers stay comparable.
+        train += load_examples("train/gemini_tone")
     model = TfidfModel(C=args.C).fit([ex.text for ex in train], [ex.cell for ex in train])
     triage = Triage(model, load_rules())
 
@@ -166,8 +171,9 @@ def main() -> None:
     EXPERIMENTS_DIR.mkdir(exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     record = {
-        "time": stamp, "model": model.name, "settings": model.settings, "pipeline": triage.version,
-        "data": {b: fingerprint(b) for b in ("train/gemini", "test/claude", "test/tone")},
+        "time": stamp, "model": model.name, "settings": {**model.settings, "tone_bank": args.with_tone_bank},
+        "pipeline": triage.version,
+        "data": {b: fingerprint(b) for b in ("train/gemini", "train/gemini_tone", "test/claude", "test/tone")},
         "split": {"dev_fraction": 0.2, "seed": 0, "train": len(train), "dev": len(dev)},
         "reports": reports,
     }
