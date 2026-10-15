@@ -286,10 +286,16 @@ hybrid-critical:tfidf [--checks --floor listen]`.
 - Speech to text costs little in clean and ward speech (1-1.5 points) and a lot in hard
   audio (about 16 points). The fresh texts are easier to hear than `test/claude` (clean WER
   16% vs 20%), so this drop is smaller than in 3.1.
-- **Tone matters for speech recognition too.** Calm texts are heard almost perfectly (clean
-  WER 4.5%); urgent ones are not (clean 31.9%, hard 68.0%), since shouted capitals, "!!" and
-  broken spelling become garbled speech. Hard-condition critical recall: calm 86.8%, urgent
-  76.5%. So the requests most likely to be real emergencies are the hardest to hear.
+- **Not a finding: "urgent requests are the hardest to hear".** The overall numbers above
+  are sound, but split by tone they are confounded. Each text is read by one Drifting voice
+  plus one other voice chosen by `id % 3`, and the fresh set's ids cycle calm / neutral /
+  urgent, so every urgent text got piper-merve (the worst voice) and every calm text got
+  piper-dfki (the best). With the Drifting voices alone, which read every tone: clean WER
+  calm 5.9%, neutral 16.7%, urgent 14.6%, and hard-condition critical recall calm 82.4%,
+  neutral 70.6%, urgent 73.5% (34 criticals each, about 3 points per text). Calm texts are
+  heard more easily, probably because they are written in tidier Turkish; urgent ones are no
+  worse than neutral. The voice choice now rotates (`voice/run_eval.py`, `_rotate`), so later
+  runs give every tone every voice.
 - With the floor, **no** critical reached routine in any condition; 20-42% of routine requests
   rose to soon.
 - **The worst error is a dropped negation**, and no check catches it:
