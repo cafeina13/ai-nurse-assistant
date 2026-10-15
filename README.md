@@ -34,6 +34,20 @@ Text banks (`data/textbank/`) hold Turkish wordings per grid cell, topic and spe
 Every number in `data/config/ward.yaml` is a labeled assumption. The request grid (categories, urgency
 levels and example topics per cell) lives in `data/config/grid.yaml`.
 
+## Demo: patient page and live nurse board
+
+```sh
+uv run uvicorn backend.app:app --port 8000
+```
+
+- Nurse board: http://localhost:8000/board
+- Patient page: http://localhost:8000/patient (open it in a second window or on a phone)
+
+Each start builds a fresh synthetic ward. "Vardiyayı oynat" on the board replays a 24-hour
+shift through the same triage pipeline (×600 = 10 simulated minutes per second), using the
+Claude-written test texts the model never trained on. Critical requests top the queue; only
+confident ones beep. Completing a critical asks whether it really was critical.
+
 ## Tests
 
 ```sh
