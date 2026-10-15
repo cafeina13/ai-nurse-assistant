@@ -30,8 +30,13 @@ DOUSERY_MAPS = {
 
 
 def dousery_level(raw: str) -> str:
-    """The text before the first colon, folded: "ÇOK ACİL: Hemen 112 arayın." -> "cok acil"."""
-    return fold(raw.split(":", 1)[0]) if ":" in raw else fold(raw.split(".", 1)[0])[:20]
+    """Its level from the start of the answer, folded: "ÇOK ACİL: Hemen 112 arayın." -> "cok acil".
+    It sometimes writes a sentence instead ("Normal bir durum…"), so the first words decide."""
+    head = fold(raw.split(":", 1)[0] if ":" in raw else raw)
+    for level in ("cok acil", "cok onemli", "acil degil", "acil", "orta", "normal", "dusuk"):
+        if head.startswith(level):
+            return "cok acil" if level == "cok onemli" else level
+    return head[:20]
 
 
 def llama_cell(raw: str) -> tuple[str | None, str | None]:
