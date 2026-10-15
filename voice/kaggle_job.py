@@ -161,7 +161,8 @@ def main() -> None:
     user = username()
     # Separate notebooks, so a training run never overwrites the test results.
     tag = args.tag or (args.set if args.set != "test" else None)
-    slug = f"ai-nurse-voice-{tag}" if tag else "ai-nurse-voice-eval"
+    # Kaggle turns "_" into "-" in notebook ids; asking for the raw name later finds nothing.
+    slug = f"ai-nurse-voice-{tag.replace('_', '-')}" if tag else "ai-nurse-voice-eval"
     kernel_ref = f"{user}/{slug}"
     results = RESULTS / tag if tag else RESULTS
     if not args.download_only:
@@ -189,7 +190,10 @@ def main() -> None:
             sys.exit(1)
 
         while True:
-            status = kaggle("kernels", "status", kernel_ref, check=False).stdout.strip()
+            check = kaggle("kernels", "status", kernel_ref, check=False)
+            if check.returncode != 0:  # never poll forever on a notebook that cannot be found
+                sys.exit(f"status check failed: {check.stderr.strip() or check.stdout.strip()}")
+            status = check.stdout.strip()
             print(time.strftime("%H:%M:%S"), status, flush=True)
             if any(word in status.lower() for word in ("complete", "error", "cancel")):
                 break
