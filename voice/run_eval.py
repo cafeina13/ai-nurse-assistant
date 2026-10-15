@@ -78,9 +78,9 @@ def download(url: str, dest: Path) -> Path:
     return dest
 
 
-def load_texts(banks_dir: Path) -> list[dict]:
+def load_texts(banks_dir: Path, banks: tuple[str, ...] = ("claude", "tone")) -> list[dict]:
     rows = []
-    for bank in ("claude", "tone"):
+    for bank in banks:
         for path in sorted((banks_dir / bank).glob("*.jsonl")):
             for line in path.read_text(encoding="utf-8").splitlines():
                 row = json.loads(line)
@@ -163,8 +163,9 @@ def main() -> None:
     parser.add_argument("--samples", type=Path, help="folder to save a few example wavs")
     parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
     parser.add_argument("--device", default="cuda")
-    parser.add_argument("--set", choices=["test", "train"], default="test",
-                        help="train: speak the Gemini training bank once per text, one condition each")
+    parser.add_argument("--set", choices=["test", "train", "fresh"], default="test",
+                        help="train: speak the Gemini training bank once per text, one condition each; "
+                             "fresh: the test/fresh bank, written blind to our rules and protocol")
     parser.add_argument("--shard", type=int, default=0, help="this worker's index (parallel runs)")
     parser.add_argument("--allow-missing-voices", action="store_true",
                         help="go on if a TTS engine fails to load (default: stop)")
@@ -177,7 +178,9 @@ def main() -> None:
     # Downloads go to a temp folder, not next to the output: Kaggle returns everything in
     # its output folder, and a 60 MB voice file is not a result.
     work = Path(tempfile.gettempdir()) / "voice_eval_cache"
-    texts = (load_train_texts(args.banks) if training else load_texts(args.banks))[:args.limit]
+    texts = (load_train_texts(args.banks) if training
+             else load_texts(args.banks, ("fresh",)) if args.set == "fresh"
+             else load_texts(args.banks))[:args.limit]
     texts = [row for row in texts if row["id"] % args.shards == args.shard]
     drifting, others = load_voices(work, None if training else args.merve, args.device, training,
                                    allow_missing=args.allow_missing_voices)

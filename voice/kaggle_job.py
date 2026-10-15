@@ -4,6 +4,7 @@
     python -m voice.kaggle_job                 # full run
     python -m voice.kaggle_job --download-only # fetch results of the last run
     python -m voice.kaggle_job --set train     # speak the training bank (for transcript training)
+    python -m voice.kaggle_job --set fresh --stt-presets large-v3-syntia-hint   # the blind test set
     python -m voice.kaggle_job --tag stt --stt-presets large-v3-syntia,turbo-syntia
 
 Uploads two private datasets (the code with the test texts, and the Merve voice), pushes a
@@ -128,7 +129,7 @@ def stage_code() -> Path:
     shutil.rmtree(folder, ignore_errors=True)
     shutil.copytree(REPO / "voice", folder / "voice", ignore=shutil.ignore_patterns("__pycache__"))
     banks = REPO / "data" / "textbank"
-    for bank in ("test/claude", "test/tone", "train/gemini"):
+    for bank in ("test/claude", "test/tone", "test/fresh", "train/gemini"):
         shutil.copytree(banks / bank, folder / "banks" / bank.split("/")[1])
     return folder
 
@@ -151,7 +152,7 @@ def main() -> None:
     parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
     parser.add_argument("--download-only", action="store_true")
     parser.add_argument("--skip-merve-upload", action="store_true", help="the voice is already up")
-    parser.add_argument("--set", choices=["test", "train"], default="test")
+    parser.add_argument("--set", choices=["test", "train", "fresh"], default="test")
     parser.add_argument("--stt-presets", help="voice.stt.PRESETS names, comma-separated")
     parser.add_argument("--tag", help="name for a separate notebook and results folder")
     parser.add_argument("--workers-per-gpu", type=int, default=2)
@@ -159,7 +160,7 @@ def main() -> None:
 
     user = username()
     # Separate notebooks, so a training run never overwrites the test results.
-    tag = args.tag or ("train" if args.set == "train" else None)
+    tag = args.tag or (args.set if args.set != "test" else None)
     slug = f"ai-nurse-voice-{tag}" if tag else "ai-nurse-voice-eval"
     kernel_ref = f"{user}/{slug}"
     results = RESULTS / tag if tag else RESULTS
