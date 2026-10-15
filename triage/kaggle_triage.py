@@ -80,20 +80,24 @@ def main() -> None:
     parser.add_argument("--models", default=DEFAULT_MODELS)
     parser.add_argument("--no-tone-bank", action="store_true")
     parser.add_argument("--download-only", action="store_true")
+    parser.add_argument("--slug", default=SLUG,
+                        help="notebook name; a second name lets two jobs run at once (one push "
+                             "to a running notebook would cancel it)")
     args = parser.parse_args()
 
     user = username()
-    kernel_ref = f"{user}/{SLUG}"
-    results = REPO / "data" / "generated" / "triage_models"
+    slug = args.slug.replace("_", "-")  # Kaggle's own id rule
+    kernel_ref = f"{user}/{slug}"
+    results = REPO / "data" / "generated" / ("triage_models" if slug == SLUG else slug)
     if not args.download_only:
         source = publish_dataset(stage_code(), "ai-nurse-triage-code", "ai-nurse-triage-code", user)
-        kernel = STAGE / "kernel"
+        kernel = STAGE / ("kernel" if slug == SLUG else f"kernel-{slug}")
         kernel.mkdir(parents=True, exist_ok=True)
         extra = [] if args.no_tone_bank else ["--with-tone-bank"]
         (kernel / "run.py").write_text(RUN_SCRIPT.format(models=args.models.split(","), extra=extra),
                                        encoding="utf-8")
         (kernel / "kernel-metadata.json").write_text(json.dumps({
-            "id": kernel_ref, "title": SLUG, "code_file": "run.py", "language": "python",
+            "id": kernel_ref, "title": slug, "code_file": "run.py", "language": "python",
             "kernel_type": "script", "is_private": "true", "enable_gpu": "true",
             "enable_internet": "true", "machine_shape": "NvidiaTeslaT4", "dataset_sources": [source],
             "competition_sources": [], "kernel_sources": [], "model_sources": [],
