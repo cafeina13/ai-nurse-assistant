@@ -10,18 +10,21 @@ its data fingerprint, settings and scores so results can be reproduced.
 import argparse
 import hashlib
 import json
+import os
 import random
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from triage.models import TfidfModel
+from triage.models import make_model
 from triage.pipeline import URGENCY_RANK, Triage
 from triage.rules import find_hits, load_rules
 from wardgen.textbank import TEXTBANK_DIR
 
-EXPERIMENTS_DIR = Path(__file__).resolve().parent.parent / "experiments"
+# TRIAGE_EXPERIMENTS overrides it where the code folder is read-only (Kaggle).
+EXPERIMENTS_DIR = Path(os.environ.get("TRIAGE_EXPERIMENTS",
+                                      Path(__file__).resolve().parent.parent / "experiments"))
 
 
 @dataclass(frozen=True)
@@ -147,6 +150,7 @@ def main() -> None:
     parser.add_argument("--final", action="store_true",
                         help="also evaluate on the test banks; only once settings are fixed")
     parser.add_argument("--C", type=float, default=10.0)
+    parser.add_argument("--model", default="tfidf", help='"tfidf" or "emb:<hugging face id>"')
     parser.add_argument("--show", type=int, default=10, help="missed criticals to print")
     parser.add_argument("--with-tone-bank", action="store_true",
                         help="also train on train/gemini_tone (calm criticals, panicky non-criticals)")
@@ -156,7 +160,7 @@ def main() -> None:
     if args.with_tone_bank:
         # Training only: the dev split stays the plain bank, so dev numbers stay comparable.
         train += load_examples("train/gemini_tone")
-    model = TfidfModel(C=args.C).fit([ex.text for ex in train], [ex.cell for ex in train])
+    model = make_model(args.model, C=args.C).fit([ex.text for ex in train], [ex.cell for ex in train])
     triage = Triage(model, load_rules())
 
     reports = {"dev (20% of train/gemini)": evaluate(triage, dev)}
@@ -177,9 +181,9 @@ def main() -> None:
         "split": {"dev_fraction": 0.2, "seed": 0, "train": len(train), "dev": len(dev)},
         "reports": reports,
     }
-    out = EXPERIMENTS_DIR / f"{stamp}_{model.name}.json"
+    out = EXPERIMENTS_DIR / f"{stamp}_{model.name}{'_tone' if args.with_tone_bank else ''}.json"
     out.write_text(json.dumps(record, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"\nSaved {out.relative_to(EXPERIMENTS_DIR.parent)}")
+    print(f"\nSaved {out}")
 
 
 if __name__ == "__main__":
