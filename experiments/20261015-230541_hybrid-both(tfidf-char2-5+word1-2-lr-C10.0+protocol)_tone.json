@@ -1,0 +1,201 @@
+{
+ "time": "20261015-230541",
+ "model": "hybrid-both(tfidf-char2-5+word1-2-lr-C10.0+protocol)",
+ "settings": {
+  "mode": "both",
+  "classifier": {
+   "C": 10.0,
+   "seed": 0,
+   "char_ngrams": [
+    2,
+    5
+   ],
+   "word_ngrams": [
+    1,
+    2
+   ]
+  },
+  "protocol": {
+   "protocol": "protocol.yaml",
+   "lines": 47
+  },
+  "tone_bank": true
+ },
+ "pipeline": "rules:51+model:hybrid-both(tfidf-char2-5+word1-2-lr-C10.0+protocol)",
+ "data": {
+  "train/gemini": "fedba77549f8",
+  "train/gemini_tone": "4dedb4cfa831",
+  "test/claude": "185d2a222820",
+  "test/tone": "b68fadf3c76c",
+  "test/fresh": "a42086d64383"
+ },
+ "split": {
+  "dev_fraction": 0.2,
+  "seed": 0,
+  "train": 5436,
+  "dev": 1120
+ },
+ "reports": {
+  "dev (20% of train/gemini)": {
+   "n": 1120,
+   "critical_recall": {
+    "combined": 0.9265,
+    "model_only": 0.9118,
+    "rules_only": 0.5551
+   },
+   "under_triage_rate": 0.0312,
+   "over_triage_rate": 0.0616,
+   "false_critical_rate": 0.066,
+   "interrupt": {
+    "critical_interrupted": 0.6471,
+    "false_interrupt_rate": 0.0212
+   },
+   "cell_accuracy": 0.8518,
+   "cell_accuracy_model_only": 0.858,
+   "urgency_accuracy": 0.9071,
+   "urgency_confusion": {
+    "critical->critical": 252,
+    "critical->routine": 1,
+    "critical->soon": 19,
+    "routine->critical": 9,
+    "routine->routine": 458,
+    "routine->soon": 13,
+    "soon->critical": 47,
+    "soon->routine": 15,
+    "soon->soon": 306
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.9844,
+    "breathing/routine": 0.9375,
+    "breathing/soon": 0.5833,
+    "comfort_supplies/routine": 0.9062,
+    "emotional/critical": 0.875,
+    "emotional/routine": 0.9062,
+    "emotional/soon": 0.875,
+    "equipment/routine": 0.9375,
+    "equipment/soon": 0.8906,
+    "fall_injury/critical": 0.9167,
+    "fall_injury/soon": 0.8438,
+    "information/routine": 0.9,
+    "medication/critical": 0.3125,
+    "medication/routine": 0.75,
+    "medication/soon": 0.8125,
+    "neuro/critical": 0.8906,
+    "neuro/routine": 0.6875,
+    "neuro/soon": 0.4688,
+    "other_symptom/critical": 0.875,
+    "other_symptom/routine": 0.85,
+    "other_symptom/soon": 0.9583,
+    "pain/critical": 0.7812,
+    "pain/routine": 0.875,
+    "pain/soon": 0.9375,
+    "physical_help/routine": 0.9219,
+    "physical_help/soon": 0.9375,
+    "unclear/critical": 0.5,
+    "unclear/soon": 0.8125
+   },
+   "missed_critical": [
+    {
+     "text": "acilen oksijen verin nefesim daraliyor",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Hızlı olun lütfen! Eşimin ameliyat yeri fışkırırcasına kanıyor, acil yardım!",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "acil kaniyo dedemin kolundaki yer yetisin lutfen",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "yavrum bu hap babami deli gibi titretti hemen bakin",
+     "true": "medication/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "hiziyla bas donmesi basladi hemen bi hemsire gelsin lutfen",
+     "true": "medication/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Oglum bu mavi ilac zehirledi galiba beni kalbim kut kut atiyo ellerim uyustu hemen bi hemsire gonderin",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "ilac carpinti yapti",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "Yavrum o hapı yuttum yutalı bütün derim yanmaya başladı, ateşim tavan yaptı, hemen gelin",
+     "true": "medication/critical",
+     "pred": "medication/soon"
+    },
+    {
+     "text": "serum damardan cikti mi bilmiyorum ama tum kolum uyustu ve siddetli agriyla kivraniorum",
+     "true": "medication/critical",
+     "pred": "equipment/soon"
+    },
+    {
+     "text": "Ninem bizi hirsiz zannedip esyalari firlatiyo, cok kotu bagiriyo, acil birini gonderin",
+     "true": "neuro/critical",
+     "pred": "comfort_supplies/routine"
+    },
+    {
+     "text": "Kızım bi anda odadakileri yabancı zannetmeye başladı, çığlık atıyo, acele edin!",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "burasi neresi hic kimseyi taniyamiyorum kafam durdu resmen hemen gelin",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Evladım, gözümün içine bakıp sen kimsin diyor, aklını kaçırdı galiba, acele et",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Acil bakabilir misiniz, esim basima bicak saplaniyo dedi rengi kirec gibi oldu kalkamiyor",
+     "true": "pain/critical",
+     "pred": "pain/soon"
+    },
+    {
+     "text": "hemen doktor gonderin lutfen annem bi hal oldu cok korkuyorum",
+     "true": "unclear/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "cabuk gelin lutfen babam cok fena bi anda fenalasti",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "acil gelin buraya cocugum gozlerimi karariyo yardim",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "cabuk olun lutfen fenalastim birden",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Ablacim tez gel gozlerim karariyo",
+     "true": "unclear/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Yavrum yetisin icim yaniyo fena oldum bi anda",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  }
+ }
+}
