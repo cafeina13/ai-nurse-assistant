@@ -56,6 +56,7 @@ class Replay:
         self.sessions = sessions
         self.speed = speed
         self.listeners: list[Listener] = []
+        self.clock: SimClock | None = None  # set while running, so others can read sim time
 
     def subscribe(self, listener: Listener) -> None:
         self.listeners.append(listener)
@@ -65,7 +66,7 @@ class Replay:
         steps = self._load_steps(until)
         if not steps:
             return 0
-        clock = SimClock(steps[0].at, self.speed)
+        clock = self.clock = SimClock(steps[0].at, self.speed)
         await self._emit(steps[0].at, EventType.REPLAY_STARTED, "system",
                          details={"speed": self.speed, "steps": len(steps)})
 
@@ -84,7 +85,10 @@ class Replay:
 
     def _load_steps(self, until: datetime | None) -> list[_Step]:
         with self.sessions() as session:
-            if session.scalar(select(func.count()).select_from(Request)):
+            # Only scripted calls count: requests typed live (e.g. on the demo's patient page)
+            # before the replay starts must not block it.
+            replayed = select(func.count()).select_from(Request).where(Request.scenario_call_id.is_not(None))
+            if session.scalar(replayed):
                 raise RuntimeError(
                     "this database has already been replayed; generate a fresh one "
                     "(the event log is append-only, so a replay cannot be undone)"

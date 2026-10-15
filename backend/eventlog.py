@@ -14,6 +14,7 @@ from backend.models import Event
 class EventType:
     SHIFT_STARTED = "shift.started"
     REQUEST_CREATED = "request.created"
+    REQUEST_TRIAGED = "request.triaged"
     REQUEST_CLAIMED = "request.claimed"
     REQUEST_COMPLETED = "request.completed"
     REQUEST_REASSIGNED = "request.reassigned"
