@@ -150,3 +150,21 @@ def test_text_banks_cover_every_slot(bank, per_slot):
 
     counts = {k: len(v) for k, v in load_bank(TEXTBANK_DIR / bank).items()}
     assert counts == {slot: per_slot for slot in slots(load_config())}
+
+
+def test_sim_clock_pause_resume_and_speed():
+    import time as _time
+    from backend.replay import SimClock
+
+    clock = SimClock(DEFAULT_START, speed=3600.0)  # one simulated hour per real second
+    _time.sleep(0.05)
+    assert clock.now() > DEFAULT_START
+    clock.pause()
+    held = clock.now()
+    _time.sleep(0.05)
+    assert clock.now() == held  # paused: time stands still
+    clock.resume()
+    clock.set_speed(1.0)
+    before = clock.now()
+    _time.sleep(0.05)
+    assert timedelta(0) < clock.now() - before < timedelta(seconds=5)  # real time again

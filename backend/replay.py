@@ -22,25 +22,54 @@ Listener = Callable[[Event], Awaitable[None] | None]
 
 
 class SimClock:
-    """Simulated time running `speed` times faster than real time; None means no waiting."""
+    """Simulated time running `speed` times faster than real time; None means no waiting.
+
+    It can change speed, pause and resume while running, so a demo can be slowed down,
+    held, or frozen when the shift ends.
+    """
 
     def __init__(self, start: datetime, speed: float | None):
-        self.start = start
         self.speed = speed
-        self._real_start = time.monotonic()
+        self.paused = False
+        self._anchor = start  # simulated time at the last rebase
+        self._real_anchor = time.monotonic()
         self._latest = start
 
     def now(self) -> datetime:
         if self.speed is None:
             return self._latest
-        elapsed = (time.monotonic() - self._real_start) * self.speed
-        return self.start + timedelta(seconds=elapsed)
+        if self.paused:
+            return self._anchor
+        elapsed = (time.monotonic() - self._real_anchor) * self.speed
+        return self._anchor + timedelta(seconds=elapsed)
+
+    def _rebase(self) -> None:
+        self._anchor = self.now()
+        self._latest = max(self._latest, self._anchor)
+        self._real_anchor = time.monotonic()
+
+    def set_speed(self, speed: float | None) -> None:
+        self._rebase()
+        self.speed = speed
+
+    def pause(self) -> None:
+        self._rebase()
+        self.paused = True
+
+    def resume(self) -> None:
+        self._real_anchor = time.monotonic()
+        self.paused = False
 
     async def wait_until(self, at: datetime) -> None:
-        if self.speed is not None:
+        # Short sleeps, re-checked, so a pause or a speed change takes effect at once.
+        while self.speed is not None:
+            if self.paused:
+                await asyncio.sleep(0.2)
+                continue
             delay = (at - self.now()).total_seconds() / self.speed
-            if delay > 0:
-                await asyncio.sleep(delay)
+            if delay <= 0:
+                break
+            await asyncio.sleep(min(delay, 0.5))
         self._latest = max(self._latest, at)
 
 
@@ -52,11 +81,13 @@ class _Step:
 
 
 class Replay:
-    def __init__(self, sessions: sessionmaker[Session], speed: float | None = None):
+    def __init__(self, sessions: sessionmaker[Session], speed: float | None = None,
+                 clock: SimClock | None = None):
         self.sessions = sessions
         self.speed = speed
         self.listeners: list[Listener] = []
-        self.clock: SimClock | None = None  # set while running, so others can read sim time
+        # Pass a clock to share one simulated time with the rest of an app (the demo does).
+        self.clock: SimClock | None = clock
 
     def subscribe(self, listener: Listener) -> None:
         self.listeners.append(listener)
@@ -66,7 +97,7 @@ class Replay:
         steps = self._load_steps(until)
         if not steps:
             return 0
-        clock = self.clock = SimClock(steps[0].at, self.speed)
+        clock = self.clock = self.clock or SimClock(steps[0].at, self.speed)
         await self._emit(steps[0].at, EventType.REPLAY_STARTED, "system",
                          details={"speed": self.speed, "steps": len(steps)})
 
