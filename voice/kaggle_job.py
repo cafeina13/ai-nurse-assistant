@@ -11,6 +11,7 @@ few sample wavs to data/generated/voice_eval/. Needs `kaggle auth login` once.
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -49,8 +50,10 @@ subprocess.run(cmd, check=True, cwd=code, env={{**os.environ, "PYTHONPATH": str(
 
 def kaggle(*args: str, check: bool = True) -> subprocess.CompletedProcess:
     print("$ kaggle " + " ".join(args), flush=True)
+    # UTF-8 so the CLI does not crash writing Turkish text with the Windows default codec.
     return subprocess.run(["kaggle", *args], check=check, text=True, capture_output=True,
-                          encoding="utf-8", errors="replace")
+                          encoding="utf-8", errors="replace",
+                          env={**os.environ, "PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"})
 
 
 def username() -> str:
@@ -141,7 +144,8 @@ def main() -> None:
             time.sleep(60)
 
     RESULTS.mkdir(parents=True, exist_ok=True)
-    result = kaggle("kernels", "output", kernel_ref, "-p", str(RESULTS), "-o", check=False)
+    result = kaggle("kernels", "output", kernel_ref, "-p", str(RESULTS), "-o",
+                    "--file-pattern", r"(transcripts\.jsonl|\.log|\.wav)$", check=False)
     print(result.stdout.strip()[-2000:] or result.stderr.strip())
     print(f"Results in {RESULTS}")
 

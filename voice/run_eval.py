@@ -10,6 +10,7 @@ scoring happens later, on the laptop (voice.report), so this stays a pure audio 
 import argparse
 import json
 import re
+import tempfile
 import time
 import traceback
 import urllib.request
@@ -126,7 +127,9 @@ def main() -> None:
 
     import soundfile as sf
 
-    work = args.out.parent / "cache"
+    # Downloads go to a temp folder, not next to the output: Kaggle returns everything in
+    # its output folder, and a 60 MB voice file is not a result.
+    work = Path(tempfile.gettempdir()) / "voice_eval_cache"
     texts = load_texts(args.banks)[:args.limit]
     drifting, others = load_voices(work, args.merve, args.device)
     stt = WhisperSTT(args.stt_model, device=args.device)
