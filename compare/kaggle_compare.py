@@ -60,13 +60,13 @@ if failed:
 '''
 
 
-def stage_code() -> Path:
+def stage_code(banks: tuple[str, ...] = ("claude", "tone", "fresh")) -> Path:
     folder = STAGE / "code"
     shutil.rmtree(folder, ignore_errors=True)
     shutil.copytree(REPO / "compare", folder / "compare", ignore=shutil.ignore_patterns("__pycache__"))
     (folder / "data" / "config").mkdir(parents=True)
     shutil.copy2(REPO / "data" / "config" / "grid.yaml", folder / "data" / "config" / "grid.yaml")
-    for bank in ("claude", "tone", "fresh"):
+    for bank in banks:
         if (REPO / "data" / "textbank" / "test" / bank).exists():
             shutil.copytree(REPO / "data" / "textbank" / "test" / bank, folder / "banks" / bank)
     return folder
@@ -78,12 +78,15 @@ def main() -> None:
     parser.add_argument("--max-tokens", type=int, default=300)
     parser.add_argument("--engines", default="dousery,llama31")
     parser.add_argument("--download-only", action="store_true")
+    parser.add_argument("--banks", default="claude,tone,fresh", help="which test banks to send")
+    parser.add_argument("--out", type=Path, default=RESULTS, help="where to download results")
     args = parser.parse_args()
 
     user = username()
     kernel_ref = f"{user}/{SLUG}"
     if not args.download_only:
-        source = publish_dataset(stage_code(), "ai-nurse-compare-code", "ai-nurse-compare-code", user)
+        source = publish_dataset(stage_code(tuple(args.banks.split(","))), "ai-nurse-compare-code",
+                                 "ai-nurse-compare-code", user)
         kernel = STAGE / "kernel"
         kernel.mkdir(parents=True, exist_ok=True)
         (kernel / "run.py").write_text(RUN_SCRIPT.format(
@@ -105,11 +108,11 @@ def main() -> None:
                 break
             time.sleep(60)
 
-    RESULTS.mkdir(parents=True, exist_ok=True)
-    result = kaggle("kernels", "output", kernel_ref, "-p", str(RESULTS), "-o",
+    args.out.mkdir(parents=True, exist_ok=True)
+    result = kaggle("kernels", "output", kernel_ref, "-p", str(args.out), "-o",
                     "--file-pattern", r"\.(jsonl|log)$", check=False)
     print(result.stdout.strip()[-1500:] or result.stderr.strip())
-    print(f"Results in {RESULTS}")
+    print(f"Results in {args.out}")
 
 
 if __name__ == "__main__":
