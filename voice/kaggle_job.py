@@ -4,6 +4,7 @@
     python -m voice.kaggle_job                 # full run
     python -m voice.kaggle_job --download-only # fetch results of the last run
     python -m voice.kaggle_job --set train     # speak the training bank (for transcript training)
+    python -m voice.kaggle_job --tag stt --stt-presets large-v3-syntia,turbo-syntia
 
 Uploads two private datasets (the code with the test texts, and the Merve voice), pushes a
 GPU script that runs voice.run_eval, waits for it, and downloads transcripts.jsonl and a
@@ -30,6 +31,7 @@ from pathlib import Path
 
 LIMIT = {limit!r}
 SET = {set!r}
+PRESETS = {presets!r}
 
 def sh(cmd):
     print("$", cmd, flush=True)
@@ -47,6 +49,8 @@ if merve:
     cmd += ["--merve", merve]
 if LIMIT:
     cmd += ["--limit", str(LIMIT)]
+if PRESETS:
+    cmd += ["--stt-presets", PRESETS]
 subprocess.run(cmd, check=True, cwd=code, env={{**os.environ, "PYTHONPATH": str(code)}})
 '''
 
@@ -114,13 +118,16 @@ def main() -> None:
     parser.add_argument("--download-only", action="store_true")
     parser.add_argument("--skip-merve-upload", action="store_true", help="the voice is already up")
     parser.add_argument("--set", choices=["test", "train"], default="test")
+    parser.add_argument("--stt-presets", help="voice.stt.PRESETS names, comma-separated")
+    parser.add_argument("--tag", help="name for a separate notebook and results folder")
     args = parser.parse_args()
 
     user = username()
     # Separate notebooks, so a training run never overwrites the test results.
-    slug = "ai-nurse-voice-eval" if args.set == "test" else "ai-nurse-voice-train"
+    tag = args.tag or ("train" if args.set == "train" else None)
+    slug = f"ai-nurse-voice-{tag}" if tag else "ai-nurse-voice-eval"
     kernel_ref = f"{user}/{slug}"
-    results = RESULTS if args.set == "test" else RESULTS / "train"
+    results = RESULTS / tag if tag else RESULTS
     if not args.download_only:
         sources = [publish_dataset(stage_code(), "ai-nurse-voice-code", "ai-nurse-voice-code", user)]
         merve = None if args.skip_merve_upload else stage_merve()
@@ -129,9 +136,9 @@ def main() -> None:
         elif args.skip_merve_upload:
             sources.append(f"{user}/merve-tts-voice")
 
-        kernel = STAGE / f"kernel-{args.set}"
+        kernel = STAGE / f"kernel-{tag or 'eval'}"
         kernel.mkdir(parents=True, exist_ok=True)
-        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit, set=args.set), encoding="utf-8")
+        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit, set=args.set, presets=args.stt_presets), encoding="utf-8")
         (kernel / "kernel-metadata.json").write_text(json.dumps({
             "id": kernel_ref, "title": slug, "code_file": "run.py",
             "language": "python", "kernel_type": "script", "is_private": "true",

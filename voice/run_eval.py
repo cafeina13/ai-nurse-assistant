@@ -147,6 +147,8 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--merve", type=Path, help="tr_TR-merve-medium.onnx (with its .json)")
     parser.add_argument("--stt-model", default="large-v3")
+    parser.add_argument("--stt-presets", help="comma-separated voice.stt.PRESETS names; every clip "
+                                              "is transcribed by each (replaces --stt-model)")
     parser.add_argument("--samples", type=Path, help="folder to save a few example wavs")
     parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
     parser.add_argument("--device", default="cuda")
@@ -162,7 +164,10 @@ def main() -> None:
     work = Path(tempfile.gettempdir()) / "voice_eval_cache"
     texts = (load_train_texts(args.banks) if training else load_texts(args.banks))[:args.limit]
     drifting, others = load_voices(work, None if training else args.merve, args.device, training)
-    stt = WhisperSTT(args.stt_model, device=args.device)
+    if args.stt_presets:
+        stts = WhisperSTT.presets(args.stt_presets.split(","), device=args.device)
+    else:
+        stts = [WhisperSTT(args.stt_model, device=args.device)]
     rng = np.random.default_rng(0)
     babble_pool = []
     for i, sentence in enumerate(BABBLE):
@@ -195,15 +200,16 @@ def main() -> None:
                 for condition in conditions:
                     babble = babble_pool[rng.integers(len(babble_pool))] if babble_pool else room_hum(STT_RATE, rng)
                     heard = apply_condition(speech, condition, babble, rng)
-                    t = stt(heard)
-                    out.write(json.dumps({
-                        "id": row["id"], "bank": row["bank"], "text": row["text"], "spoken": spoken,
-                        "category": row["category"], "urgency": row["urgency"], "topic": row["topic"],
-                        "speaker": row["speaker"], "tone": row.get("tone"), "voice": voice.name,
-                        "condition": condition, "transcript": t.text, "avg_logprob": t.avg_logprob,
-                        "no_speech_prob": t.no_speech_prob, "seconds": round(len(speech) / STT_RATE, 2),
-                        "stt": stt.name,
-                    }, ensure_ascii=False) + "\n")
+                    for stt in stts:  # every preset hears exactly the same audio
+                        t = stt(heard)
+                        out.write(json.dumps({
+                            "id": row["id"], "bank": row["bank"], "text": row["text"], "spoken": spoken,
+                            "category": row["category"], "urgency": row["urgency"], "topic": row["topic"],
+                            "speaker": row["speaker"], "tone": row.get("tone"), "voice": voice.name,
+                            "condition": condition, "transcript": t.text, "avg_logprob": t.avg_logprob,
+                            "no_speech_prob": t.no_speech_prob, "compression_ratio": t.compression_ratio,
+                            "seconds": round(len(speech) / STT_RATE, 2), "stt": stt.name,
+                        }, ensure_ascii=False) + "\n")
                     if args.samples and row["id"] < 6:
                         sf.write(args.samples / f"{row['id']}_{voice.name}_{condition}.wav", heard, STT_RATE)
             done += 1
