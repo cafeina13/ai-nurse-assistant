@@ -1,0 +1,150 @@
+"""Runs the voice evaluation on a Kaggle GPU, from the laptop, with the Kaggle CLI.
+
+    python -m voice.kaggle_job --limit 10      # smoke test: 10 texts
+    python -m voice.kaggle_job                 # full run
+    python -m voice.kaggle_job --download-only # fetch results of the last run
+
+Uploads two private datasets (the code with the test texts, and the Merve voice), pushes a
+GPU script that runs voice.run_eval, waits for it, and downloads transcripts.jsonl and a
+few sample wavs to data/generated/voice_eval/. Needs `kaggle auth login` once.
+"""
+
+import argparse
+import json
+import shutil
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+STAGE = REPO / "data" / "generated" / "kaggle"
+RESULTS = REPO / "data" / "generated" / "voice_eval"
+MERVE_DIR = Path(r"\\wsl.localhost\Ubuntu\home\cafeina\TTS\deploy\step_15000")
+
+RUN_SCRIPT = '''\
+import glob, os, subprocess, sys
+from pathlib import Path
+
+LIMIT = {limit!r}
+
+def sh(cmd):
+    print("$", cmd, flush=True)
+    subprocess.run(cmd, shell=True, check=True)
+
+sh('pip install -q faster-whisper piper-tts soundfile '
+   '"drifting-tts[bigvgan] @ git+https://github.com/kadirnar/drifting-tts" '
+   'git+https://github.com/emres/turkish-deasciifier')
+code = Path(next(glob.iglob("/kaggle/input/**/voice/run_eval.py", recursive=True))).parent.parent
+merve = next(glob.iglob("/kaggle/input/**/tr_TR-merve-medium.onnx", recursive=True), None)
+cmd = [sys.executable, "-m", "voice.run_eval", "--banks", str(code / "banks"),
+       "--out", "/kaggle/working/transcripts.jsonl", "--samples", "/kaggle/working/samples"]
+if merve:
+    cmd += ["--merve", merve]
+if LIMIT:
+    cmd += ["--limit", str(LIMIT)]
+subprocess.run(cmd, check=True, cwd=code, env={{**os.environ, "PYTHONPATH": str(code)}})
+'''
+
+
+def kaggle(*args: str, check: bool = True) -> subprocess.CompletedProcess:
+    print("$ kaggle " + " ".join(args), flush=True)
+    return subprocess.run(["kaggle", *args], check=check, text=True, capture_output=True,
+                          encoding="utf-8", errors="replace")
+
+
+def username() -> str:
+    out = kaggle("config", "view").stdout
+    for line in out.splitlines():
+        if line.strip().startswith("- username:"):
+            return line.split(":", 1)[1].strip()
+    raise SystemExit("could not read the Kaggle username; run `kaggle auth login`")
+
+
+def publish_dataset(folder: Path, slug: str, title: str, user: str) -> str:
+    """Creates the private dataset, or adds a new version if it already exists."""
+    ref = f"{user}/{slug}"
+    (folder / "dataset-metadata.json").write_text(json.dumps(
+        {"title": title, "id": ref, "licenses": [{"name": "other"}]}), encoding="utf-8")
+    if kaggle("datasets", "status", ref, check=False).returncode == 0:
+        result = kaggle("datasets", "version", "-p", str(folder), "-m", "update", "-r", "zip", check=False)
+    else:
+        result = kaggle("datasets", "create", "-p", str(folder), "-r", "zip", check=False)
+    print(result.stdout.strip() or result.stderr.strip())
+    for _ in range(60):  # Kaggle processes uploads before kernels can mount them
+        status = kaggle("datasets", "status", ref, check=False).stdout.strip()
+        if "ready" in status:
+            return ref
+        time.sleep(10)
+    raise SystemExit(f"dataset {ref} not ready: {status}")
+
+
+def stage_code() -> Path:
+    folder = STAGE / "code"
+    shutil.rmtree(folder, ignore_errors=True)
+    shutil.copytree(REPO / "voice", folder / "voice", ignore=shutil.ignore_patterns("__pycache__"))
+    for bank in ("claude", "tone"):
+        shutil.copytree(REPO / "data" / "textbank" / "test" / bank, folder / "banks" / bank)
+    return folder
+
+
+def stage_merve() -> Path | None:
+    if not (MERVE_DIR / "tr_TR-merve-medium.onnx").exists():
+        print(f"Merve voice not found at {MERVE_DIR}; running without it")
+        return None
+    folder = STAGE / "merve"
+    folder.mkdir(parents=True, exist_ok=True)
+    for name in ("tr_TR-merve-medium.onnx", "tr_TR-merve-medium.onnx.json"):
+        target = folder / name
+        if not target.exists():
+            shutil.copy2(MERVE_DIR / name, target)
+    return folder
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
+    parser.add_argument("--download-only", action="store_true")
+    parser.add_argument("--skip-merve-upload", action="store_true", help="the voice is already up")
+    args = parser.parse_args()
+
+    user = username()
+    kernel_ref = f"{user}/ai-nurse-voice-eval"
+    if not args.download_only:
+        sources = [publish_dataset(stage_code(), "ai-nurse-voice-code", "ai-nurse-voice-code", user)]
+        merve = None if args.skip_merve_upload else stage_merve()
+        if merve:
+            sources.append(publish_dataset(merve, "merve-tts-voice", "merve-tts-voice", user))
+        elif args.skip_merve_upload:
+            sources.append(f"{user}/merve-tts-voice")
+
+        kernel = STAGE / "kernel"
+        kernel.mkdir(parents=True, exist_ok=True)
+        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit), encoding="utf-8")
+        (kernel / "kernel-metadata.json").write_text(json.dumps({
+            "id": kernel_ref, "title": "ai-nurse-voice-eval", "code_file": "run.py",
+            "language": "python", "kernel_type": "script", "is_private": "true",
+            "enable_gpu": "true", "enable_internet": "true", "machine_shape": "NvidiaTeslaT4",
+            "dataset_sources": sources, "competition_sources": [], "kernel_sources": [],
+            "model_sources": [],
+        }, indent=1), encoding="utf-8")
+        result = kaggle("kernels", "push", "-p", str(kernel), "--accelerator", "NvidiaTeslaT4", check=False)
+        print(result.stdout.strip() or result.stderr.strip())
+        if result.returncode != 0:
+            sys.exit(1)
+
+        while True:
+            status = kaggle("kernels", "status", kernel_ref, check=False).stdout.strip()
+            print(time.strftime("%H:%M:%S"), status, flush=True)
+            if any(word in status.lower() for word in ("complete", "error", "cancel")):
+                break
+            time.sleep(60)
+
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    result = kaggle("kernels", "output", kernel_ref, "-p", str(RESULTS), "-o", check=False)
+    print(result.stdout.strip()[-2000:] or result.stderr.strip())
+    print(f"Results in {RESULTS}")
+
+
+if __name__ == "__main__":
+    main()
