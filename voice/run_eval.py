@@ -78,6 +78,14 @@ def download(url: str, dest: Path) -> Path:
     return dest
 
 
+def _rotate(i: int, n: int) -> int:
+    """Voice index for text i. Plain i % n lines up with any bank written in cycles of n: the
+    fresh set cycles calm/neutral/urgent, so with 3 voices every urgent text got the same
+    voice (the worst one) and tone and voice could not be told apart. Shifting by one every
+    n texts gives each voice every position in the cycle."""
+    return (i + i // n) % n
+
+
 def load_texts(banks_dir: Path, banks: tuple[str, ...] = ("claude", "tone")) -> list[dict]:
     rows = []
     for bank in banks:
@@ -203,9 +211,9 @@ def main() -> None:
         for row in texts:
             voices = []
             if drifting:
-                voices.append(drifting[row["id"] % len(drifting)])
+                voices.append(drifting[_rotate(row["id"], len(drifting))])
             if others:
-                voices.append(others[row["id"] % len(others)])
+                voices.append(others[_rotate(row["id"], len(others))])
             spoken = spoken_form(row["text"])
             for voice in voices:
                 try:
