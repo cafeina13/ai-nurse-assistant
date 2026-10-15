@@ -86,16 +86,43 @@ def load_texts(banks_dir: Path) -> list[dict]:
     return rows
 
 
-def load_voices(work: Path, merve: Path | None, device: str) -> tuple[list, list]:
-    """Returns (drifting voices, other voices); an engine that fails to load is skipped."""
+def load_train_texts(banks_dir: Path) -> list[dict]:
+    rows = []
+    for path in sorted((banks_dir / "gemini").glob("*.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            row["bank"] = "train/gemini"
+            rows.append(row)
+    for i, row in enumerate(rows):
+        row["id"] = i
+    return rows
+
+
+def train_speakers(speakers_csv: Path, n: int = 24) -> list[int]:
+    """Drifting speakers for training audio, disjoint from the test speakers, so the model
+    cannot score well on the test by having heard its voices."""
+    test = set(pick_drifting_speakers(speakers_csv))
+    pool = [s for s in pick_drifting_speakers(speakers_csv, n=2 * n + 2 * len(test)) if s not in test]
+    return pool[:n]
+
+
+def load_voices(work: Path, merve: Path | None, device: str, for_training: bool = False) -> tuple[list, list]:
+    """Returns (drifting voices, other voices); an engine that fails to load is skipped.
+    Training uses only unseen Drifting speakers: no test voices, and no Piper or MMS engines,
+    which the test then uses to check transfer to voices never heard in training."""
     drifting, others = [], []
     try:
         engine = DriftingTTS(device)
-        speakers = pick_drifting_speakers(download(SPEAKERS_CSV, work / "speakers.csv"))
+        csv_path = download(SPEAKERS_CSV, work / "speakers.csv")
+        speakers = train_speakers(csv_path) if for_training else pick_drifting_speakers(csv_path)
         drifting = [engine.voice(s) for s in speakers]
         print(f"drifting: {len(drifting)} speakers {speakers}", flush=True)
     except Exception:
         traceback.print_exc()
+    if for_training:
+        if not drifting:
+            raise SystemExit("training audio needs the Drifting voices")
+        return drifting, others
     def load_dfki():
         download(DFKI + ".json", work / "dfki.onnx.json")  # Piper reads the config beside the model
         return PiperTTS("piper-dfki", download(DFKI, work / "dfki.onnx"))
@@ -123,15 +150,18 @@ def main() -> None:
     parser.add_argument("--samples", type=Path, help="folder to save a few example wavs")
     parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--set", choices=["test", "train"], default="test",
+                        help="train: speak the Gemini training bank once per text, one condition each")
     args = parser.parse_args()
+    training = args.set == "train"
 
     import soundfile as sf
 
     # Downloads go to a temp folder, not next to the output: Kaggle returns everything in
     # its output folder, and a 60 MB voice file is not a result.
     work = Path(tempfile.gettempdir()) / "voice_eval_cache"
-    texts = load_texts(args.banks)[:args.limit]
-    drifting, others = load_voices(work, args.merve, args.device)
+    texts = (load_train_texts(args.banks) if training else load_texts(args.banks))[:args.limit]
+    drifting, others = load_voices(work, None if training else args.merve, args.device, training)
     stt = WhisperSTT(args.stt_model, device=args.device)
     rng = np.random.default_rng(0)
     babble_pool = []
@@ -160,7 +190,9 @@ def main() -> None:
                     print(f"tts failed {voice.name} #{row['id']}: {e}", flush=True)
                     continue
                 speech = resample(audio, rate)
-                for condition in CONDITIONS:
+                # Training: one condition per text, in turn, so 5,600 texts stay ~5,600 clips.
+                conditions = [CONDITIONS[row["id"] % len(CONDITIONS)]] if training else CONDITIONS
+                for condition in conditions:
                     babble = babble_pool[rng.integers(len(babble_pool))] if babble_pool else room_hum(STT_RATE, rng)
                     heard = apply_condition(speech, condition, babble, rng)
                     t = stt(heard)

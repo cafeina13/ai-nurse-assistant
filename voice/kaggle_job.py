@@ -3,6 +3,7 @@
     python -m voice.kaggle_job --limit 10      # smoke test: 10 texts
     python -m voice.kaggle_job                 # full run
     python -m voice.kaggle_job --download-only # fetch results of the last run
+    python -m voice.kaggle_job --set train     # speak the training bank (for transcript training)
 
 Uploads two private datasets (the code with the test texts, and the Merve voice), pushes a
 GPU script that runs voice.run_eval, waits for it, and downloads transcripts.jsonl and a
@@ -28,6 +29,7 @@ import glob, os, subprocess, sys
 from pathlib import Path
 
 LIMIT = {limit!r}
+SET = {set!r}
 
 def sh(cmd):
     print("$", cmd, flush=True)
@@ -39,7 +41,8 @@ sh('pip install -q faster-whisper piper-tts soundfile '
 code = Path(next(glob.iglob("/kaggle/input/**/voice/run_eval.py", recursive=True))).parent.parent
 merve = next(glob.iglob("/kaggle/input/**/tr_TR-merve-medium.onnx", recursive=True), None)
 cmd = [sys.executable, "-m", "voice.run_eval", "--banks", str(code / "banks"),
-       "--out", "/kaggle/working/transcripts.jsonl", "--samples", "/kaggle/working/samples"]
+       "--out", "/kaggle/working/transcripts.jsonl", "--samples", "/kaggle/working/samples",
+       "--set", SET]
 if merve:
     cmd += ["--merve", merve]
 if LIMIT:
@@ -86,8 +89,9 @@ def stage_code() -> Path:
     folder = STAGE / "code"
     shutil.rmtree(folder, ignore_errors=True)
     shutil.copytree(REPO / "voice", folder / "voice", ignore=shutil.ignore_patterns("__pycache__"))
-    for bank in ("claude", "tone"):
-        shutil.copytree(REPO / "data" / "textbank" / "test" / bank, folder / "banks" / bank)
+    banks = REPO / "data" / "textbank"
+    for bank in ("test/claude", "test/tone", "train/gemini"):
+        shutil.copytree(banks / bank, folder / "banks" / bank.split("/")[1])
     return folder
 
 
@@ -109,10 +113,14 @@ def main() -> None:
     parser.add_argument("--limit", type=int, help="only the first N texts (smoke test)")
     parser.add_argument("--download-only", action="store_true")
     parser.add_argument("--skip-merve-upload", action="store_true", help="the voice is already up")
+    parser.add_argument("--set", choices=["test", "train"], default="test")
     args = parser.parse_args()
 
     user = username()
-    kernel_ref = f"{user}/ai-nurse-voice-eval"
+    # Separate notebooks, so a training run never overwrites the test results.
+    slug = "ai-nurse-voice-eval" if args.set == "test" else "ai-nurse-voice-train"
+    kernel_ref = f"{user}/{slug}"
+    results = RESULTS if args.set == "test" else RESULTS / "train"
     if not args.download_only:
         sources = [publish_dataset(stage_code(), "ai-nurse-voice-code", "ai-nurse-voice-code", user)]
         merve = None if args.skip_merve_upload else stage_merve()
@@ -121,11 +129,11 @@ def main() -> None:
         elif args.skip_merve_upload:
             sources.append(f"{user}/merve-tts-voice")
 
-        kernel = STAGE / "kernel"
+        kernel = STAGE / f"kernel-{args.set}"
         kernel.mkdir(parents=True, exist_ok=True)
-        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit), encoding="utf-8")
+        (kernel / "run.py").write_text(RUN_SCRIPT.format(limit=args.limit, set=args.set), encoding="utf-8")
         (kernel / "kernel-metadata.json").write_text(json.dumps({
-            "id": kernel_ref, "title": "ai-nurse-voice-eval", "code_file": "run.py",
+            "id": kernel_ref, "title": slug, "code_file": "run.py",
             "language": "python", "kernel_type": "script", "is_private": "true",
             "enable_gpu": "true", "enable_internet": "true", "machine_shape": "NvidiaTeslaT4",
             "dataset_sources": sources, "competition_sources": [], "kernel_sources": [],
@@ -143,11 +151,11 @@ def main() -> None:
                 break
             time.sleep(60)
 
-    RESULTS.mkdir(parents=True, exist_ok=True)
-    result = kaggle("kernels", "output", kernel_ref, "-p", str(RESULTS), "-o",
+    results.mkdir(parents=True, exist_ok=True)
+    result = kaggle("kernels", "output", kernel_ref, "-p", str(results), "-o",
                     "--file-pattern", r"(transcripts\.jsonl|\.log|\.wav)$", check=False)
     print(result.stdout.strip()[-2000:] or result.stderr.strip())
-    print(f"Results in {RESULTS}")
+    print(f"Results in {results}")
 
 
 if __name__ == "__main__":
