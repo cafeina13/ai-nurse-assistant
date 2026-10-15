@@ -34,6 +34,7 @@ def test_pattern_syntax():
     ("Annem uyanmıyor", "neuro/critical"),
     ("yüzü kaydı, konuşamıyor", "neuro/critical"),
     ("Babam düştü", "fall_injury/critical"),
+    ("Babam düştü, ateşi de var", "fall_injury/critical"),
     ("yatak kan içinde kaldı", "fall_injury/critical"),
     ("dudaklarım şişti", "medication/critical"),
     ("ölmek istiyorum", "emotional/critical"),
@@ -46,6 +47,8 @@ def test_red_flags_fire(text, cell):
 @pytest.mark.parametrize("text", [
     "Su alabilir miyim",
     "Ateşim düştü",  # good news, not a fall
+    "Annemin ateşi düştü, rahatladı",  # found in the live demo replay
+    "Babamın tansiyonu düştü",
     "maskem düştü",  # an object, not a person
     "kan sonuçlarım sisteme düştü mü",
     "Oksijen maskesi yüzümden kaydı",  # the mask slid, not the face

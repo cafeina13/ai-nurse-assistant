@@ -7,6 +7,7 @@
 #   ...       up to four words in between
 # not_after: words (roots) that must not come right before the match (optional).
 # unless: words (roots) that, anywhere in the message, stop the rule (optional).
+# unless_in_match: words (roots) that stop the rule when they fall inside the matched words.
 # Tune these on the training bank only; the test bank stays untouched until evaluation.
 
 rules:
@@ -50,6 +51,8 @@ rules:
     - pattern: "(yere/yataktan/banyoda/tuvalette) düş"
     - pattern: "düştüm"
     - pattern: "(annem/babam/eşim/dedem/ninem/oğlum/kızım/kayınvalidem/kayınpederim/hasta) ... düştü"
+      # "Annemin ateşi düştü" is good news, not a fall.
+      unless_in_match: ["ateş", "tansiyon", "şeker", "nabz", "değer", "sıcaklı", "maske", "pansuman", "bant", "sonuç", "kilo"]
     - pattern: "yere (kapaklan/yuvarlan/yığıl)"
     - pattern: "kan kus"
     - pattern: "çok kan"

@@ -23,6 +23,7 @@ class Rule:
     regex: re.Pattern
     not_after: tuple[str, ...] = ()  # roots that must not come right before the match
     unless: tuple[str, ...] = ()  # roots that, anywhere in the text, stop the rule
+    unless_in_match: tuple[str, ...] = ()  # roots that stop the rule when inside the matched words
 
 
 @dataclass(frozen=True)
@@ -67,6 +68,7 @@ def load_rules(path: Path = PHRASES_PATH) -> list[Rule]:
                 regex=compile_pattern(entry["pattern"]),
                 not_after=tuple(fold(w) for w in entry.get("not_after", ())),
                 unless=tuple(fold(w) for w in entry.get("unless", ())),
+                unless_in_match=tuple(fold(w) for w in entry.get("unless_in_match", ())),
             ))
     return rules
 
@@ -82,6 +84,9 @@ def find_hits(text: str, rules: list[Rule]) -> list[RuleHit]:
         for match in rule.regex.finditer(folded):
             before = folded[:match.start()].split()
             if before and rule.not_after and before[-1].startswith(rule.not_after):
+                continue
+            if rule.unless_in_match and any(w.startswith(rule.unless_in_match)
+                                            for w in match.group(0).split()):
                 continue
             hits.append(RuleHit(rule.cell, rule.pattern, match.group(0)))
             break
