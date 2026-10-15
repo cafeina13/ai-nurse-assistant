@@ -115,9 +115,15 @@ class HybridModel:
     raise     the higher urgency of the two wins (the protocol can only raise, like safety rules)
     critical  the classifier decides, but a protocol critical line overrides it
     protocol  the protocol decides when a specific line matches, the classifier otherwise
+    both      "critical", and also: a WEAK classifier critical (below DEMOTE_BELOW) yields to a
+              specific non-critical protocol line. Safety rules run after the model in the
+              pipeline and re-raise any red flag, so a real emergency phrase is never lowered.
     """
 
-    MODES = ("raise", "critical", "protocol")
+    # "both" was tested on dev (2026-10-15) and rejected: critical recall 96.0% -> 92.7% for
+    # under one point fewer false alarms. Kept for the record; the demo uses "critical".
+    MODES = ("raise", "critical", "protocol", "both")
+    DEMOTE_BELOW = 0.5
 
     def __init__(self, classifier, mode: str = "raise", protocol: Protocol | None = None):
         if mode not in self.MODES:
@@ -140,8 +146,11 @@ class HybridModel:
             p_cell = decision.cell
             if self.mode == "raise":
                 take = specific and URGENCY_RANK[_urgency(p_cell)] > URGENCY_RANK[_urgency(model_cell)]
-            elif self.mode == "critical":
+            elif self.mode in ("critical", "both"):
                 take = specific and _urgency(p_cell) == "critical" and _urgency(model_cell) != "critical"
+                if self.mode == "both" and not take:
+                    take = (specific and _urgency(model_cell) == "critical" and _urgency(p_cell) != "critical"
+                            and learned[model_cell] < self.DEMOTE_BELOW)
             else:
                 take = specific and p_cell != model_cell
             if take:
