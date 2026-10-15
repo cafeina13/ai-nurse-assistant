@@ -170,9 +170,38 @@ class BertModel:
         return out
 
 
+class EnsembleModel:
+    """Averages the members' cell probabilities (soft voting, equal weights, nothing tuned).
+
+    The members miss different texts (only 6 of about 40 missed criticals were shared between
+    TF-IDF and the best embedding model), so a text one of them is unsure about can be carried
+    by another.
+    """
+
+    def __init__(self, members: list):
+        self.members = members
+        self.name = "ens(" + "+".join(m.name for m in members) + ")"
+        self.settings = {"members": [m.settings for m in members], "weights": "equal"}
+
+    def fit(self, texts: list[str], cells: list[str]) -> "EnsembleModel":
+        for member in self.members:
+            member.fit(texts, cells)
+        return self
+
+    def predict_proba(self, texts: list[str]) -> list[dict[str, float]]:
+        out = [dict() for _ in texts]
+        for member in self.members:
+            for avg, probs in zip(out, member.predict_proba(texts)):
+                for cell, p in probs.items():
+                    avg[cell] = avg.get(cell, 0.0) + p / len(self.members)
+        return out
+
+
 def make_model(spec: str, C: float = 10.0):
-    """"tfidf", "emb:<hugging face id>", "bert:<hugging face id>", "protocol" or
-    "hybrid-<mode>:<classifier spec>"."""
+    """"tfidf", "emb:<hugging face id>", "bert:<hugging face id>", "protocol",
+    "hybrid-<mode>:<classifier spec>" or "ens:<spec>+<spec>+..."."""
+    if spec.startswith("ens:"):  # ens:tfidf+emb:BAAI/bge-m3
+        return EnsembleModel([make_model(s, C=C) for s in spec[4:].split("+")])
     if spec == "tfidf":
         return TfidfModel(C=C)
     if spec.startswith("emb:"):
