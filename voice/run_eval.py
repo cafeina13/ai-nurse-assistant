@@ -9,6 +9,7 @@ scoring happens later, on the laptop (voice.report), so this stays a pure audio 
 
 import argparse
 import json
+import os
 import re
 import tempfile
 import time
@@ -67,9 +68,13 @@ def spoken_form(text: str) -> str:
 
 
 def download(url: str, dest: Path) -> Path:
+    """Downloads once. Parallel workers share the cache, so each writes to its own temporary
+    name and renames it into place: no worker can ever read a half-written file."""
     if not dest.exists():
         dest.parent.mkdir(parents=True, exist_ok=True)
-        urllib.request.urlretrieve(url, dest)
+        tmp = dest.with_name(f"{dest.name}.{os.getpid()}.part")
+        urllib.request.urlretrieve(url, tmp)
+        os.replace(tmp, dest)
     return dest
 
 
@@ -106,11 +111,13 @@ def train_speakers(speakers_csv: Path, n: int = 24) -> list[int]:
     return pool[:n]
 
 
-def load_voices(work: Path, merve: Path | None, device: str, for_training: bool = False) -> tuple[list, list]:
-    """Returns (drifting voices, other voices); an engine that fails to load is skipped.
+def load_voices(work: Path, merve: Path | None, device: str, for_training: bool = False,
+                allow_missing: bool = False) -> tuple[list, list]:
+    """Returns (drifting voices, other voices). A voice that fails to load stops the run,
+    unless allow_missing: a silently missing voice would shrink the test without anyone noticing.
     Training uses only unseen Drifting speakers: no test voices, and no Piper or MMS engines,
     which the test then uses to check transfer to voices never heard in training."""
-    drifting, others = [], []
+    drifting, others, failed = [], [], []
     try:
         engine = DriftingTTS(device)
         csv_path = download(SPEAKERS_CSV, work / "speakers.csv")
@@ -119,6 +126,7 @@ def load_voices(work: Path, merve: Path | None, device: str, for_training: bool 
         print(f"drifting: {len(drifting)} speakers {speakers}", flush=True)
     except Exception:
         traceback.print_exc()
+        failed.append("drifting")
     if for_training:
         if not drifting:
             raise SystemExit("training audio needs the Drifting voices")
@@ -136,6 +144,9 @@ def load_voices(work: Path, merve: Path | None, device: str, for_training: bool 
             print(f"loaded {name}", flush=True)
         except Exception:
             traceback.print_exc()
+            failed.append(name)
+    if failed and not allow_missing:
+        raise SystemExit(f"voices failed to load: {failed} (pass --allow-missing-voices to go on without them)")
     if not drifting and not others:
         raise SystemExit("no TTS voice could be loaded")
     return drifting, others
@@ -155,6 +166,8 @@ def main() -> None:
     parser.add_argument("--set", choices=["test", "train"], default="test",
                         help="train: speak the Gemini training bank once per text, one condition each")
     parser.add_argument("--shard", type=int, default=0, help="this worker's index (parallel runs)")
+    parser.add_argument("--allow-missing-voices", action="store_true",
+                        help="go on if a TTS engine fails to load (default: stop)")
     parser.add_argument("--shards", type=int, default=1, help="how many workers split the texts")
     args = parser.parse_args()
     training = args.set == "train"
@@ -166,7 +179,8 @@ def main() -> None:
     work = Path(tempfile.gettempdir()) / "voice_eval_cache"
     texts = (load_train_texts(args.banks) if training else load_texts(args.banks))[:args.limit]
     texts = [row for row in texts if row["id"] % args.shards == args.shard]
-    drifting, others = load_voices(work, None if training else args.merve, args.device, training)
+    drifting, others = load_voices(work, None if training else args.merve, args.device, training,
+                                   allow_missing=args.allow_missing_voices)
     if args.stt_presets:
         stts = WhisperSTT.presets(args.stt_presets.split(","), device=args.device)
     else:
