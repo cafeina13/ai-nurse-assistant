@@ -81,8 +81,20 @@ def test_replay_fills_the_board_through_the_same_pipeline(client):
     cards = client.get("/api/state").json()["cards"]
     assert sum(c["text"] != "[Su]" for c in cards) > 50
     assert all(c["reasons"] for c in cards)
+    # The shift is over: the clock stops, so waiting times stop growing.
+    for _ in range(50):
+        if client.get("/api/state").json()["replay"] == "finished":
+            break
+        time.sleep(0.1)
+    state = client.get("/api/state").json()
+    assert state["replay"] == "finished"
+    time.sleep(0.3)
+    assert client.get("/api/state").json()["now"] == state["now"]
+    # Requests typed before the replay share the ward's timeline, not the real date.
+    assert all(c["created_at"][:4] == "2026" and c["created_at"][5:7] == "01" for c in state["cards"])
     # A ward can only be replayed once (the event log is append-only).
     assert client.post("/api/replay", json={"speed": 0}).status_code == 409
+    assert client.post("/api/replay/control", json={"action": "pause"}).status_code == 409
 
 
 def test_websocket_pushes_new_cards(client):

@@ -20,11 +20,11 @@ from pydantic import BaseModel
 
 from backend.board import Board
 from backend.db import init_db, make_engine, session_factory
-from backend.replay import Replay
+from backend.replay import Replay, SimClock
 from triage.evaluate import load_examples
 from triage.models import TfidfModel
 from triage.pipeline import Triage
-from wardgen import generate
+from wardgen import DEFAULT_START, generate
 from wardgen.textbank import TEXTBANK_DIR
 
 REPO = Path(__file__).resolve().parent.parent
@@ -56,16 +56,22 @@ class Demo:
         self.sessions = session_factory(engine)
         train = load_examples("train/gemini")
         triage = Triage(TfidfModel().fit([e.text for e in train], [e.cell for e in train]))
+        # One simulated clock for everything: it runs in real time from the ward's start until a
+        # replay speeds it up, and stops when the shift is over, so typed and replayed requests
+        # always share one timeline.
+        self.clock = SimClock(DEFAULT_START, speed=1.0)
         self.replay: Replay | None = None
         self.replay_task: asyncio.Task | None = None
+        self.replay_state = "idle"  # idle | running | paused | finished
         self.board = Board(self.sessions, triage, self.now)
         self.clients = Clients()
 
     def now(self) -> datetime:
-        """Simulated ward time while a replay runs, so typed and replayed requests share one clock."""
-        if self.replay and self.replay.clock:
-            return self.replay.clock.now().replace(microsecond=0)
-        return datetime.now().replace(microsecond=0)
+        return self.clock.now().replace(microsecond=0)
+
+    async def push_status(self) -> None:
+        await self.clients.send({"type": "status", "replay": self.replay_state,
+                                 "speed": self.clock.speed, "now": self.now().isoformat()})
 
     async def push(self, card: dict) -> None:
         await self.clients.send({"type": "card", "card": card, "now": self.now().isoformat()})
@@ -73,14 +79,38 @@ class Demo:
     async def start_replay(self, speed: float) -> None:
         if self.replay is not None:
             raise HTTPException(409, "this ward has already been replayed; restart the server for a new one")
-        self.replay = Replay(self.sessions, speed=speed or None)  # 0 = as fast as possible
+        self.clock.set_speed(speed or None)  # 0 = as fast as possible
+        self.replay = Replay(self.sessions, clock=self.clock)
 
         async def on_event(event):
             if event.type == "request.created":
                 await self.push(self.board.on_created(event))
 
+        async def run():
+            await self.replay.run()
+            self.clock.pause()  # the shift is over: time stops, waiting times stop growing
+            self.replay_state = "finished"
+            await self.push_status()
+
         self.replay.subscribe(on_event)
-        self.replay_task = asyncio.create_task(self.replay.run())
+        self.replay_state = "running"
+        self.replay_task = asyncio.create_task(run())
+        await self.push_status()
+
+    async def control(self, action: str, speed: float | None = None) -> None:
+        if self.replay_state in ("idle", "finished"):
+            raise HTTPException(409, f"no replay running ({self.replay_state})")
+        if action == "pause":
+            self.clock.pause()
+            self.replay_state = "paused"
+        elif action == "resume":
+            self.clock.resume()
+            self.replay_state = "running"
+        elif action == "speed":
+            if not speed or speed <= 0:
+                raise HTTPException(422, "speed must be positive")
+            self.clock.set_speed(speed)
+        await self.push_status()
 
 
 class NewRequest(BaseModel):
@@ -97,6 +127,11 @@ class Action(BaseModel):
 
 class ReplayStart(BaseModel):
     speed: float = 600.0  # simulated seconds per real second: 10 sim minutes per second
+
+
+class ReplayControl(BaseModel):
+    action: str  # pause | resume | speed
+    speed: float | None = None
 
 
 def create_app(demo_factory=Demo) -> FastAPI:
@@ -132,7 +167,7 @@ def create_app(demo_factory=Demo) -> FastAPI:
     def get_state():
         d = demo()
         return {"cards": d.board.queue(), "nurses": d.board.nurses(), "patients": d.board.patients(),
-                "now": d.now().isoformat(), "replaying": d.replay is not None}
+                "now": d.now().isoformat(), "replay": d.replay_state, "speed": d.clock.speed}
 
     @app.post("/api/requests")
     async def new_request(body: NewRequest):
@@ -171,12 +206,18 @@ def create_app(demo_factory=Demo) -> FastAPI:
         await demo().start_replay(body.speed)
         return {"started": True, "speed": body.speed}
 
+    @app.post("/api/replay/control")
+    async def replay_control(body: ReplayControl):
+        await demo().control(body.action, body.speed)
+        return {"replay": demo().replay_state, "speed": demo().clock.speed}
+
     @app.websocket("/ws")
     async def ws(socket: WebSocket):
         await socket.accept()
         d = demo()
         d.clients.sockets.add(socket)
-        await socket.send_json({"type": "snapshot", "cards": d.board.queue(), "now": d.now().isoformat()})
+        await socket.send_json({"type": "snapshot", "cards": d.board.queue(), "now": d.now().isoformat(),
+                                "replay": d.replay_state, "speed": d.clock.speed})
         try:
             while True:  # the board only listens; a tick keeps waiting times moving
                 await asyncio.sleep(1)

@@ -117,8 +117,29 @@ function beep() {
   } catch (e) { /* no sound before the page has been clicked */ }
 }
 
+let replay = "idle";  // idle | running | paused | finished
+
+function showReplay(state) {
+  replay = state;
+  const button = $("replay");
+  button.textContent = { idle: "Vardiyayı oynat", running: "Duraklat", paused: "Devam", finished: "Vardiya bitti" }[state];
+  button.disabled = state === "finished";
+  $("status").textContent = state === "paused" ? "duraklatıldı" : "";
+}
+
+async function onReplayButton() {
+  if (replay === "idle") {
+    await post("/api/replay", { speed: Number($("speed").value) });
+  } else if (replay === "running") {
+    await post("/api/replay/control", { action: "pause" });
+  } else if (replay === "paused") {
+    await post("/api/replay/control", { action: "resume" });
+  }
+}
+
 function onMessage(msg) {
   if (msg.now) now = new Date(msg.now);
+  if (msg.replay) showReplay(msg.replay);
   if (msg.type === "snapshot") {
     cards = new Map(msg.cards.map((c) => [c.id, c]));
   } else if (msg.type === "card") {
@@ -141,9 +162,13 @@ async function init() {
   const state = await (await fetch("/api/state")).json();
   $("nurse").replaceChildren(...state.nurses.map((n) =>
     el("option", { value: n.id }, n.role === "head_nurse" ? `${n.name} (sorumlu)` : n.name)));
-  $("replay").disabled = state.replaying;
-  $("replay").onclick = async () => {
-    if (await post("/api/replay", { speed: Number($("speed").value) })) $("replay").disabled = true;
+  showReplay(state.replay);
+  $("replay").onclick = onReplayButton;
+  // A new speed applies at once while the shift is playing.
+  $("speed").onchange = () => {
+    if (replay === "running" || replay === "paused") {
+      post("/api/replay/control", { action: "speed", speed: Number($("speed").value) });
+    }
   };
   connect();
 }
