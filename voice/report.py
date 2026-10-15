@@ -15,6 +15,7 @@ from triage.evaluate import load_examples
 from triage.models import TfidfModel
 from triage.normalize import fold
 from triage.pipeline import Triage
+from voice.checks import reject_reason
 
 
 def word_errors(reference: str, hypothesis: str) -> tuple[int, int]:
@@ -45,7 +46,10 @@ def summarize(rows: list[dict]) -> dict:
         "crit_recall_text": share(crit, lambda r: r["text_urgency"] == "critical"),
         "crit_recall_voice": share(crit, lambda r: r["voice_urgency"] == "critical"),
         "lost_in_stt": share(crit, lambda r: r["text_urgency"] == "critical" != r["voice_urgency"]),
+        "crit_to_routine": share(crit, lambda r: r["voice_urgency"] == "routine"),
         "false_critical_voice": share(other, lambda r: r["voice_urgency"] == "critical"),
+        "routine_as_soon": share([r for r in rows if r["urgency"] == "routine"],
+                                 lambda r: r["voice_urgency"] == "soon"),
         "flagged_listen": share(rows, lambda r: r["listen"]),
         "listen_on_lost": share([r for r in crit if r["text_urgency"] == "critical" != r["voice_urgency"]],
                                 lambda r: r["listen"]),
@@ -59,12 +63,12 @@ def _pct(x):
 def print_table(title: str, groups: dict[str, list[dict]]) -> None:
     print(f"\n{title}")
     print(f"  {'':<22} {'clips':>5} {'WER':>6} {'empty':>6} {'crit text':>9} {'crit voice':>10} "
-          f"{'lost':>6} {'false crit':>10} {'listen':>6}")
+          f"{'lost':>6} {'->routine':>9} {'false crit':>10} {'rout->soon':>10} {'listen':>6} {'listen|lost':>11}")
     for name, rows in groups.items():
         s = summarize(rows)
         print(f"  {name:<22} {s['clips']:>5} {_pct(s['wer'])} {_pct(s['empty'])} {_pct(s['crit_recall_text']):>9} "
-              f"{_pct(s['crit_recall_voice']):>10} {_pct(s['lost_in_stt'])} {_pct(s['false_critical_voice']):>10} "
-              f"{_pct(s['flagged_listen'])}")
+              f"{_pct(s['crit_recall_voice']):>10} {_pct(s['lost_in_stt'])} {_pct(s['crit_to_routine']):>9} "
+              f"{_pct(s['false_critical_voice']):>10} {_pct(s['routine_as_soon']):>10} {_pct(s['flagged_listen'])} {_pct(s['listen_on_lost']):>11}")
 
 
 def main() -> None:
@@ -76,9 +80,23 @@ def main() -> None:
     parser.add_argument("--train-transcripts", type=Path,
                         help="transcripts of the training bank (voice.run_eval --set train); the model "
                              "then trains on typed texts plus these, to learn what Whisper mishears")
+    parser.add_argument("--stt", help="only clips from this STT preset (the run's 'stt' field)")
+    parser.add_argument("--checks", action="store_true",
+                        help="reject unbelievable transcripts (voice.checks): they become Unclear/Soon")
+    parser.add_argument("--floor", choices=["listen", "stt"],
+                        help="never routine when in doubt: 'listen' lifts every listen-flagged request "
+                             "to soon; 'stt' only those where speech to text itself is in doubt")
     args = parser.parse_args()
 
     clips = [json.loads(line) for line in args.transcripts.read_text(encoding="utf-8").splitlines() if line]
+    presets = sorted({c["stt"] for c in clips})
+    if args.stt:
+        clips = [c for c in clips if c["stt"] == args.stt]
+    elif len(presets) > 1:
+        raise SystemExit(f"several STT presets in this file, pick one with --stt: {presets}")
+    for c in clips:
+        c["rejected"] = (reject_reason(c["transcript"], c["seconds"], c.get("compression_ratio"))
+                         if args.checks else None)
     train = load_examples("train/gemini")
     texts, cells = [e.text for e in train], [e.cell for e in train]
     if args.train_transcripts:
@@ -96,12 +114,22 @@ def main() -> None:
     for clip, t, v in zip(clips, by_text, by_voice):
         # Measured against what was spoken (letters restored), not the typed original.
         clip["word_errors"], clip["ref_words"] = word_errors(clip.get("spoken", clip["text"]), clip["transcript"])
-        clip["text_urgency"], clip["voice_urgency"] = t.urgency, v.urgency
-        clip["voice_cell"] = v.cell
+        clip["text_urgency"] = t.urgency
+        heard_nothing = not clip["transcript"].strip() or clip["rejected"]
+        if heard_nothing:
+            # Like the old call button: someone called, we could not tell why.
+            clip["voice_urgency"], clip["voice_cell"] = "soon", "unclear/soon"
+        else:
+            clip["voice_urgency"], clip["voice_cell"] = v.urgency, v.cell
         low_confidence = clip["avg_logprob"] is None or clip["avg_logprob"] < args.listen_logprob
-        clip["listen"] = low_confidence or not clip["transcript"].strip() or v.uncertain
+        clip["listen"] = bool(low_confidence or heard_nothing or v.uncertain)
+        doubt = clip["listen"] if args.floor == "listen" else bool(low_confidence or heard_nothing)
+        if args.floor and doubt and clip["voice_urgency"] == "routine":
+            clip["voice_urgency"] = "soon"
 
-    print(f"{len(clips)} clips, {len({c['id'] for c in clips})} texts, STT {clips[0]['stt']}")
+    rejected = sum(bool(c["rejected"]) for c in clips)
+    print(f"{len(clips)} clips, {len({c['id'] for c in clips})} texts, STT {clips[0]['stt']}"
+          f"{f', checks rejected {rejected}' if args.checks else ''}{f', floor on {args.floor} doubt' if args.floor else ''}")
     groups = defaultdict(list)
     for c in clips:
         groups[c["condition"]].append(c)
