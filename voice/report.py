@@ -73,11 +73,23 @@ def main() -> None:
     parser.add_argument("--listen-logprob", type=float, default=-0.6,
                         help="flag 'listen to the recording' when Whisper's avg_logprob is below this")
     parser.add_argument("--show", type=int, default=15, help="criticals lost in STT to print")
+    parser.add_argument("--train-transcripts", type=Path,
+                        help="transcripts of the training bank (voice.run_eval --set train); the model "
+                             "then trains on typed texts plus these, to learn what Whisper mishears")
     args = parser.parse_args()
 
     clips = [json.loads(line) for line in args.transcripts.read_text(encoding="utf-8").splitlines() if line]
     train = load_examples("train/gemini")
-    triage = Triage(TfidfModel().fit([e.text for e in train], [e.cell for e in train]))
+    texts, cells = [e.text for e in train], [e.cell for e in train]
+    if args.train_transcripts:
+        heard = [json.loads(line) for line in args.train_transcripts.read_text(encoding="utf-8").splitlines() if line]
+        heard = [h for h in heard if h["transcript"].strip()]
+        texts += [h["transcript"] for h in heard]
+        cells += [f"{h['category']}/{h['urgency']}" for h in heard]
+        print(f"Model trained on {len(train)} typed texts + {len(heard)} training transcripts")
+    else:
+        print(f"Model trained on {len(train)} typed texts only")
+    triage = Triage(TfidfModel().fit(texts, cells))
     by_text = triage.run_many([c["text"] for c in clips])
     by_voice = triage.run_many([c["transcript"] or "" for c in clips])
 
