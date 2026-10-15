@@ -2,6 +2,8 @@
 
     python -m wardgen.gemini_fill --target 40           # fill every slot to 40 texts
     python -m wardgen.gemini_fill --dry-run              # print one prompt, call nothing
+    python -m wardgen.gemini_fill --tone calm --target 10     # calm criticals (train/gemini_tone)
+    python -m wardgen.gemini_fill --tone panicky --target 6   # panicky non-criticals
 
 Resumable: every batch is saved as it arrives, so after a rate limit or a stopped run,
 running it again continues where it left off. Reads GEMINI_API_KEY from the environment
@@ -38,6 +40,18 @@ SPEAKER_GUIDE = {
                   "plainly ('annem su istiyor'); never formal phrasing like 'refakatçisi olduğum "
                   "hasta' or 'su talebinde bulundu'."),
 }
+# Tone sets break the shortcut "panic words mean critical" that the default prompt teaches
+# (critical messages there are asked to sound panicked). They replace "How it should sound".
+TONE_GUIDE = {
+    "calm": ("Calm, matter-of-fact, even polite or apologetic, as people who do not want to "
+             "bother the staff often write. No urgency words (acil, çabuk, hemen, yetişin, koşun), "
+             "no exclamation marks, no capitals. The situation itself is still exactly as serious "
+             "as described: understate the tone, never the facts."),
+    "panicky": ("Hurried and alarmed: urgency words (acil, çabuk, hemen, yetişin), exclamation "
+                "marks or capitals, impatience. The need itself stays ordinary and not dangerous: "
+                "exaggerate the tone, never the facts."),
+}
+
 # Every batch mixes these, so no cell ends up in a single style.
 STYLE_MIX = """- about a third: hurried phone typing, lowercase, missing Turkish characters
   (agri, cok, nefes alamiyorum), small typos, little punctuation
@@ -46,8 +60,10 @@ STYLE_MIX = """- about a third: hurried phone typing, lowercase, missing Turkish
 - some polite, some impatient or annoyed"""
 
 
-def build_prompt(config: Config, topic: Topic, speaker: str, n: int, avoid: list[str]) -> str:
+def build_prompt(config: Config, topic: Topic, speaker: str, n: int, avoid: list[str],
+                 tone: str | None = None) -> str:
     cell = topic.cell
+    sound = TONE_GUIDE[tone] if tone else URGENCY_GUIDE[cell.urgency]
     category = config.categories[cell.category]["name"]
     avoid_block = "\n".join(f"- {t}" for t in avoid) or "- (none yet)"
     return f"""You write synthetic test data for a hospital nurse-call assistant in Turkey.
@@ -57,7 +73,7 @@ Write {n} different messages in Turkish.
 
 Kind of request: {category}, urgency {cell.urgency}: {cell.means.lower()}.
 What the message is about: {topic.id.replace("_", " ")} (example: "{topic.example}")
-How it should sound: {URGENCY_GUIDE[cell.urgency]}
+How it should sound: {sound}
 Who writes: {SPEAKER_GUIDE[speaker]}
 
 Rules:
@@ -73,6 +89,17 @@ Rules:
 {avoid_block}
 
 Return a JSON array of {n} strings."""
+
+
+def load_tone_bank(bank_dir: Path, tone: str) -> dict:
+    bank: dict = {}
+    for path in sorted(bank_dir.glob("*.jsonl")) if bank_dir.exists() else []:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            if row.get("tone") == tone:
+                key = (row["category"], row["urgency"], row["topic"], row["speaker"])
+                bank.setdefault(key, []).append(row["text"])
+    return bank
 
 
 def call_gemini(prompt: str, model: str, api_key: str) -> list[str]:
@@ -116,7 +143,9 @@ def main() -> None:
     parser.add_argument("--min-interval", type=float, default=7.0,
                         help="seconds between calls, to stay under a per-minute limit")
     parser.add_argument("--topics", help="comma-separated topic ids (default: all)")
-    parser.add_argument("--out", type=Path, default=TEXTBANK_DIR / "train" / "gemini")
+    parser.add_argument("--out", type=Path, help="default: train/gemini, or train/gemini_tone with --tone")
+    parser.add_argument("--tone", choices=["calm", "panicky"],
+                        help="calm: only critical topics, worded calmly; panicky: only non-critical, worded urgently")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -124,7 +153,16 @@ def main() -> None:
     topics = {t.key: t for t in config.topics}
     wanted = set(args.topics.split(",")) if args.topics else None
     all_slots = [s for s in slots(config) if wanted is None or s[2] in wanted]
-    bank = load_bank(args.out) if args.out.exists() else {}
+    if args.tone == "calm":
+        # Vague-but-alarmed is defined by its alarm, so it has no calm form.
+        all_slots = [s for s in all_slots if s[1] == "critical" and s[0] != "unclear"]
+    elif args.tone == "panicky":
+        all_slots = [s for s in all_slots if s[1] != "critical"]
+    if args.out is None:
+        args.out = TEXTBANK_DIR / "train" / ("gemini_tone" if args.tone else "gemini")
+    # Tone texts share a folder, so a slot counts only texts of the requested tone.
+    bank_tone = load_tone_bank(args.out, args.tone) if args.tone else None
+    bank = bank_tone if args.tone else (load_bank(args.out) if args.out.exists() else {})
     todo = [s for s in all_slots if len(bank.get(s, [])) < args.target]
     print(f"{len(todo)} of {len(all_slots)} slots need texts (target {args.target}).")
 
@@ -132,7 +170,7 @@ def main() -> None:
         if todo:
             *key, speaker = todo[0]
             print(build_prompt(config, topics[tuple(key)], speaker, args.batch,
-                               bank.get(todo[0], [])[-15:]))
+                               bank.get(todo[0], [])[-15:], args.tone))
         return
 
     key = api_key()
@@ -145,7 +183,7 @@ def main() -> None:
         while len(existing) < args.target and attempts < 6:
             attempts += 1
             n = min(args.batch, args.target - len(existing) + 5)  # a few spare for duplicates
-            prompt = build_prompt(config, topic, speaker, n, existing[-15:])
+            prompt = build_prompt(config, topic, speaker, n, existing[-15:], args.tone)
             texts = _call_with_backoff(prompt, args.model, key)
             if texts is None:
                 print("\nStopping: the API keeps refusing (daily quota?). Run again later to resume.")
@@ -157,7 +195,8 @@ def main() -> None:
                     fresh.append(t)
             append_rows(args.out, [
                 {"text": t, "category": category, "urgency": urgency, "topic": topic_id,
-                 "speaker": speaker, "source": args.model, "prompt_version": PROMPT_VERSION}
+                 "speaker": speaker, "source": args.model, "prompt_version": PROMPT_VERSION,
+                 **({"tone": args.tone} if args.tone else {})}
                 for t in fresh
             ])
             existing += fresh
