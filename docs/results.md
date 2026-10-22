@@ -195,6 +195,48 @@ Earlier run on `test/claude` + `test/tone` (614 texts, TF-IDF + rules + tone ban
 protocol existed): ours 86.0% critical recall / 7.3% false critical, Llama 52.9% / 5.0%,
 full-cell accuracy 76.7% vs 46.3% (`data/generated/compare`).
 
+### 2.6 BERTurk and ensembles (Kaggle T4, `python -m triage.kaggle_triage`)
+**BERTurk** (`dbmdz/bert-base-turkish-*`) fine-tuned end to end (`BertModel`: 4 epochs, lr
+3e-5, batch 32, balanced class weights; settings fixed before any run). **Ensembles**
+(`EnsembleModel`) average the members' cell probabilities with equal weights. Same splits as
+2.4 (`evaluate.py`, dev held out), with rules on top in every row.
+
+| Model | Dev crit. | Fresh crit. | Fresh false crit. | Fresh under-triage | Fresh urg. acc. | Fresh cell acc. |
+|---|---:|---:|---:|---:|---:|---:|
+| TF-IDF | 94.1% | 89.2% | 3.5% | 6.2% | 90.2% | 86.4% |
+| BERTurk cased | 93.4% | 87.2% | 2.8% | 4.5% | 92.1% | 90.5% |
+| BERTurk uncased | 93.0% | 88.2% | 1.9% | 4.5% | 93.1% | 91.0% |
+| BERTurk 128k cased | 93.8% | 89.2% | 3.8% | 4.0% | 92.4% | 89.5% |
+| Ens. TF-IDF + turkish-emb | 94.1% | 91.2% | 1.9% | 4.5% | 93.1% | 90.7% |
+| Ens. TF-IDF + bge-m3 | 95.6% | 89.2% | 1.3% | 4.0% | 94.8% | 91.9% |
+| Ens. TF-IDF + turkish-emb + bge-m3 | 95.6% | 90.2% | 1.3% | 3.8% | 94.5% | 92.9% |
+| *Hybrid `critical` over:* | | | | | | |
+| TF-IDF (2.4, the demo engine) | 96.0% | 96.1% | 4.7% | 4.5% | 91.0% | 87.1% |
+| BERTurk cased | 93.8% | 94.1% | 4.1% | 2.9% | 92.9% | 91.2% |
+| BERTurk 128k cased | 94.1% | 95.1% | 5.0% | 2.6% | 92.9% | 90.0% |
+| Ens. TF-IDF + turkish-emb | 96.0% | 96.1% | 3.1% | 3.3% | 93.3% | 91.0% |
+| **Ens. TF-IDF + turkish-emb + bge-m3** | **96.7%** | **96.1%** | **2.5%** | **2.4%** | **95.0%** | **93.3%** |
+
+Records: `experiments/20261015-2302*` to `-2322*` (`bert-*`, `ens(*`, `hybrid-critical(bert*`,
+`hybrid-critical(ens(*`).
+
+- **New best: the hybrid over the three-model ensemble.** Same critical recall on the fresh
+  set as the demo engine (96.1%), but false criticals nearly halved (4.7% -> 2.5%),
+  under-triage nearly halved (4.5% -> 2.4%), and cell accuracy up 6 points (87.1% -> 93.3%).
+  It is also the best on dev (96.7%), so choosing it does not depend on the fresh numbers.
+  The dev margin is small, though: 96.7% vs 96.0% is about two of 272 dev criticals.
+- **BERTurk is the more careful model, not the more sensitive one.** Alone, it gets more cells
+  right than TF-IDF (up to 91.0% vs 86.4%) with fewer false criticals, but it catches no more
+  criticals (87-89% vs 89.2%). Inside the hybrid it stays slightly below the TF-IDF hybrid on
+  critical recall. Uncased beat cased; the 128k vocabulary helped critical recall most.
+- **Ensembles do what 2.2 predicted.** TF-IDF and the embedding models miss different texts,
+  so averaging them gives fewer false criticals and higher accuracy than any member alone.
+- **The fresh set is wearing out.** Thirteen variants have now been scored on it. Every choice
+  above was made on dev, but the more often the fresh set is looked at, the less it stays a
+  blind test. A new blind set should come before any further tuning.
+- **Cost for the demo:** the ensemble needs two embedding models (bge-m3 is about 2.2 GB) and
+  torch on the laptop, against TF-IDF's few megabytes. The demo still runs the TF-IDF hybrid.
+
 ---
 
 ## 3. Voice results
@@ -307,7 +349,9 @@ hybrid-critical:tfidf [--checks --floor listen]`.
 
 ## 4. Negative results (kept on purpose)
 
-- **Frozen embeddings did not beat TF-IDF** (2.2), not even the Turkish-specific model.
+- **Frozen embeddings did not beat TF-IDF** (2.2), not even the Turkish-specific model, on
+  their own. In an ensemble with TF-IDF they help (2.6).
+- **Fine-tuned BERTurk did not catch more criticals than TF-IDF** (2.6), alone or in the hybrid.
 - **Hybrid `protocol` mode** (the protocol decides whenever it can): dev critical recall falls
   to 82.0%. The protocol is a good *net*, not a good *judge*.
 - **Hybrid `both` mode** was rejected (2.1).
@@ -373,4 +417,6 @@ measured in real use.
 ## 8. Next
 
 - Nurse-student labels for about 100 texts (gold standard; also checks the grid).
-- Fine-tuned BERTurk, and an ensemble of TF-IDF and embeddings (they miss different texts).
+- A new blind test set before any more tuning (2.6).
+- Decide whether the demo should run the ensemble hybrid (better, but needs torch and about
+  2.5 GB of models on the laptop).
