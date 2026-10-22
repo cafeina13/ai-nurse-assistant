@@ -1,0 +1,605 @@
+{
+ "time": "20261015-232207",
+ "model": "hybrid-critical(ens(tfidf-char2-5+word1-2-lr-C10.0+emb-turkish-embedding-model-lr-C10.0+emb-bge-m3-lr-C10.0)+protocol)",
+ "settings": {
+  "mode": "critical",
+  "classifier": {
+   "members": [
+    {
+     "C": 10.0,
+     "seed": 0,
+     "char_ngrams": [
+      2,
+      5
+     ],
+     "word_ngrams": [
+      1,
+      2
+     ]
+    },
+    {
+     "embedding": "trmteb/turkish-embedding-model",
+     "C": 10.0,
+     "seed": 0
+    },
+    {
+     "embedding": "BAAI/bge-m3",
+     "C": 10.0,
+     "seed": 0
+    }
+   ],
+   "weights": "equal"
+  },
+  "protocol": {
+   "protocol": "protocol.yaml",
+   "lines": 47
+  },
+  "tone_bank": true
+ },
+ "pipeline": "rules:51+model:hybrid-critical(ens(tfidf-char2-5+word1-2-lr-C10.0+emb-turkish-embedding-model-lr-C10.0+emb-bge-m3-lr-C10.0)+protocol)",
+ "data": {
+  "train/gemini": "fedba77549f8",
+  "train/gemini_tone": "4dedb4cfa831",
+  "test/claude": "185d2a222820",
+  "test/tone": "b68fadf3c76c",
+  "test/fresh": "a42086d64383"
+ },
+ "split": {
+  "dev_fraction": 0.2,
+  "seed": 0,
+  "train": 5436,
+  "dev": 1120
+ },
+ "reports": {
+  "dev (20% of train/gemini)": {
+   "n": 1120,
+   "critical_recall": {
+    "combined": 0.9669,
+    "model_only": 0.9596,
+    "rules_only": 0.5551
+   },
+   "under_triage_rate": 0.0187,
+   "over_triage_rate": 0.0625,
+   "false_critical_rate": 0.0696,
+   "interrupt": {
+    "critical_interrupted": 0.5993,
+    "false_interrupt_rate": 0.02
+   },
+   "cell_accuracy": 0.8688,
+   "cell_accuracy_model_only": 0.8795,
+   "urgency_accuracy": 0.9187,
+   "urgency_confusion": {
+    "critical->critical": 263,
+    "critical->soon": 9,
+    "routine->critical": 9,
+    "routine->routine": 460,
+    "routine->soon": 11,
+    "soon->critical": 50,
+    "soon->routine": 12,
+    "soon->soon": 306
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.9531,
+    "breathing/routine": 0.9375,
+    "breathing/soon": 0.5833,
+    "comfort_supplies/routine": 0.9062,
+    "emotional/critical": 0.9375,
+    "emotional/routine": 0.875,
+    "emotional/soon": 0.9375,
+    "equipment/routine": 0.875,
+    "equipment/soon": 0.8281,
+    "fall_injury/critical": 0.9583,
+    "fall_injury/soon": 0.9062,
+    "information/routine": 0.925,
+    "medication/critical": 0.625,
+    "medication/routine": 0.8125,
+    "medication/soon": 0.8125,
+    "neuro/critical": 0.8906,
+    "neuro/routine": 0.875,
+    "neuro/soon": 0.5,
+    "other_symptom/critical": 0.875,
+    "other_symptom/routine": 0.875,
+    "other_symptom/soon": 0.9583,
+    "pain/critical": 0.7812,
+    "pain/routine": 0.9688,
+    "pain/soon": 0.9375,
+    "physical_help/routine": 0.8906,
+    "physical_help/soon": 0.9375,
+    "unclear/critical": 0.75,
+    "unclear/soon": 0.875
+   },
+   "missed_critical": [
+    {
+     "text": "Kızım çabuk gel oksijen maskesi yerinden çıktı adam gidiyo",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "acilen oksijen verin nefesim daraliyor",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "acil kaniyo dedemin kolundaki yer yetisin lutfen",
+     "true": "fall_injury/critical",
+     "pred": "fall_injury/soon"
+    },
+    {
+     "text": "hiziyla bas donmesi basladi hemen bi hemsire gelsin lutfen",
+     "true": "medication/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "serum damardan cikti mi bilmiyorum ama tum kolum uyustu ve siddetli agriyla kivraniorum",
+     "true": "medication/critical",
+     "pred": "equipment/soon"
+    },
+    {
+     "text": "burasi neresi hic kimseyi taniyamiyorum kafam durdu resmen hemen gelin",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Oda 204 acil gelsin biri, basim cok siddetli donuyor, bilincim gidiyor.",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "hemen doktor gonderin lutfen annem bi hal oldu cok korkuyorum",
+     "true": "unclear/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "Yavrum yetisin icim yaniyo fena oldum bi anda",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  },
+  "test/claude": {
+   "n": 560,
+   "critical_recall": {
+    "combined": 0.9412,
+    "model_only": 0.9412,
+    "rules_only": 0.5294
+   },
+   "under_triage_rate": 0.0661,
+   "over_triage_rate": 0.0607,
+   "false_critical_rate": 0.059,
+   "interrupt": {
+    "critical_interrupted": 0.5588,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 0.8107,
+   "cell_accuracy_model_only": 0.8179,
+   "urgency_accuracy": 0.8732,
+   "urgency_confusion": {
+    "critical->critical": 128,
+    "critical->routine": 1,
+    "critical->soon": 7,
+    "routine->critical": 7,
+    "routine->routine": 224,
+    "routine->soon": 9,
+    "soon->critical": 18,
+    "soon->routine": 29,
+    "soon->soon": 137
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.8438,
+    "breathing/routine": 0.75,
+    "breathing/soon": 0.5,
+    "comfort_supplies/routine": 0.7917,
+    "emotional/critical": 0.875,
+    "emotional/routine": 0.75,
+    "emotional/soon": 0.875,
+    "equipment/routine": 0.625,
+    "equipment/soon": 0.6562,
+    "fall_injury/critical": 1.0,
+    "fall_injury/soon": 0.9375,
+    "information/routine": 0.9,
+    "medication/critical": 1.0,
+    "medication/routine": 0.9375,
+    "medication/soon": 0.625,
+    "neuro/critical": 0.9062,
+    "neuro/routine": 0.875,
+    "neuro/soon": 0.5,
+    "other_symptom/critical": 0.875,
+    "other_symptom/routine": 0.85,
+    "other_symptom/soon": 0.875,
+    "pain/critical": 0.9375,
+    "pain/routine": 0.6875,
+    "pain/soon": 0.9167,
+    "physical_help/routine": 0.9375,
+    "physical_help/soon": 0.5,
+    "unclear/critical": 0.75,
+    "unclear/soon": 0.875
+   },
+   "missed_critical": [
+    {
+     "text": "hortum cikti nefesim daraldi takamiyorum yetisin",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "Eşim nefes almak için çırpınıyor, iyice daraldı",
+     "true": "breathing/critical",
+     "pred": "breathing/soon"
+    },
+    {
+     "text": "dedem ilaclarimi toplu icecem diyo",
+     "true": "emotional/critical",
+     "pred": "medication/routine"
+    },
+    {
+     "text": "kafam calismiyo yazdiklarim anlamsiz geliyo yardim",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Babam birden tamamen şaşırdı, serumu koparmaya çalışıyor, acil",
+     "true": "neuro/critical",
+     "pred": "equipment/soon"
+    },
+    {
+     "text": "basim cok fena donuyo dusecem tutunamiyorum",
+     "true": "neuro/critical",
+     "pred": "neuro/soon"
+    },
+    {
+     "text": "Kalbimin üstüne biri oturmuş gibi, terliyorum",
+     "true": "pain/critical",
+     "pred": "emotional/soon"
+    },
+    {
+     "text": "annem fenalasti acil",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  },
+  "test/tone: calm criticals": {
+   "n": 28,
+   "critical_recall": {
+    "combined": 1.0,
+    "model_only": 0.9643,
+    "rules_only": 0.6071
+   },
+   "under_triage_rate": 0.0,
+   "over_triage_rate": 0.0,
+   "false_critical_rate": null,
+   "interrupt": {
+    "critical_interrupted": 0.6071,
+    "false_interrupt_rate": null
+   },
+   "cell_accuracy": 0.9643,
+   "cell_accuracy_model_only": 0.9286,
+   "urgency_accuracy": 1.0,
+   "urgency_confusion": {
+    "critical->critical": 28
+   },
+   "per_cell_recall": {
+    "breathing/critical": 1.0,
+    "emotional/critical": 0.6667,
+    "fall_injury/critical": 1.0,
+    "medication/critical": 1.0,
+    "neuro/critical": 1.0,
+    "other_symptom/critical": 1.0,
+    "pain/critical": 1.0
+   },
+   "missed_critical": []
+  },
+  "test/tone: panicky non-criticals": {
+   "n": 26,
+   "critical_recall": {
+    "combined": null,
+    "model_only": null,
+    "rules_only": null
+   },
+   "under_triage_rate": 0.0,
+   "over_triage_rate": 0.0,
+   "false_critical_rate": 0.0,
+   "interrupt": {
+    "critical_interrupted": null,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 1.0,
+   "cell_accuracy_model_only": 1.0,
+   "urgency_accuracy": 1.0,
+   "urgency_confusion": {
+    "routine->routine": 14,
+    "soon->soon": 12
+   },
+   "per_cell_recall": {
+    "comfort_supplies/routine": 1.0,
+    "emotional/routine": 1.0,
+    "emotional/soon": 1.0,
+    "equipment/soon": 1.0,
+    "information/routine": 1.0,
+    "medication/routine": 1.0,
+    "medication/soon": 1.0,
+    "other_symptom/routine": 1.0,
+    "other_symptom/soon": 1.0,
+    "pain/soon": 1.0,
+    "physical_help/routine": 1.0,
+    "physical_help/soon": 1.0
+   },
+   "missed_critical": []
+  },
+  "test/fresh": {
+   "n": 420,
+   "critical_recall": {
+    "combined": 0.9608,
+    "model_only": 0.9608,
+    "rules_only": 0.7255
+   },
+   "under_triage_rate": 0.0238,
+   "over_triage_rate": 0.0262,
+   "false_critical_rate": 0.0252,
+   "interrupt": {
+    "critical_interrupted": 0.7255,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 0.9333,
+   "cell_accuracy_model_only": 0.9381,
+   "urgency_accuracy": 0.95,
+   "urgency_confusion": {
+    "critical->critical": 98,
+    "critical->soon": 4,
+    "routine->critical": 1,
+    "routine->routine": 176,
+    "routine->soon": 3,
+    "soon->critical": 7,
+    "soon->routine": 6,
+    "soon->soon": 125
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.9583,
+    "breathing/routine": 0.9167,
+    "breathing/soon": 0.9444,
+    "comfort_supplies/routine": 0.9722,
+    "emotional/critical": 1.0,
+    "emotional/routine": 1.0,
+    "emotional/soon": 1.0,
+    "equipment/routine": 0.8333,
+    "equipment/soon": 0.8333,
+    "fall_injury/critical": 1.0,
+    "fall_injury/soon": 0.9167,
+    "information/routine": 1.0,
+    "medication/critical": 0.8333,
+    "medication/routine": 0.9167,
+    "medication/soon": 0.9167,
+    "neuro/critical": 1.0,
+    "neuro/routine": 1.0,
+    "neuro/soon": 0.75,
+    "other_symptom/critical": 0.8333,
+    "other_symptom/routine": 0.9333,
+    "other_symptom/soon": 1.0,
+    "pain/critical": 1.0,
+    "pain/routine": 0.9167,
+    "pain/soon": 1.0,
+    "physical_help/routine": 1.0,
+    "physical_help/soon": 0.6667,
+    "unclear/critical": 0.3333,
+    "unclear/soon": 1.0
+   },
+   "missed_critical": [
+    {
+     "text": "annem titreyerek üşüyor, ateşi yükseldi, beni tanımakta zorlanıyor",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "cok kotuyum biseyler oluyo bana",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "annemde bir terslik var, çok kötü görünüyor, tarif edemiyorum",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "babam bi tuhaf oldu çok kötü",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  },
+  "test/fresh: calm": {
+   "n": 140,
+   "critical_recall": {
+    "combined": 0.9412,
+    "model_only": 0.9412,
+    "rules_only": 0.7059
+   },
+   "under_triage_rate": 0.0286,
+   "over_triage_rate": 0.0143,
+   "false_critical_rate": 0.0094,
+   "interrupt": {
+    "critical_interrupted": 0.7059,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 0.9429,
+   "cell_accuracy_model_only": 0.9429,
+   "urgency_accuracy": 0.9571,
+   "urgency_confusion": {
+    "critical->critical": 32,
+    "critical->soon": 2,
+    "routine->routine": 59,
+    "routine->soon": 1,
+    "soon->critical": 1,
+    "soon->routine": 2,
+    "soon->soon": 43
+   },
+   "per_cell_recall": {
+    "breathing/critical": 1.0,
+    "breathing/routine": 1.0,
+    "breathing/soon": 1.0,
+    "comfort_supplies/routine": 1.0,
+    "emotional/critical": 1.0,
+    "emotional/routine": 1.0,
+    "emotional/soon": 1.0,
+    "equipment/routine": 1.0,
+    "equipment/soon": 0.625,
+    "fall_injury/critical": 1.0,
+    "fall_injury/soon": 1.0,
+    "information/routine": 1.0,
+    "medication/critical": 1.0,
+    "medication/routine": 1.0,
+    "medication/soon": 1.0,
+    "neuro/critical": 1.0,
+    "neuro/routine": 1.0,
+    "neuro/soon": 1.0,
+    "other_symptom/critical": 0.5,
+    "other_symptom/routine": 0.9,
+    "other_symptom/soon": 1.0,
+    "pain/critical": 1.0,
+    "pain/routine": 1.0,
+    "pain/soon": 1.0,
+    "physical_help/routine": 1.0,
+    "physical_help/soon": 0.75,
+    "unclear/critical": 0.0,
+    "unclear/soon": 1.0
+   },
+   "missed_critical": [
+    {
+     "text": "annem titreyerek üşüyor, ateşi yükseldi, beni tanımakta zorlanıyor",
+     "true": "other_symptom/critical",
+     "pred": "other_symptom/soon"
+    },
+    {
+     "text": "annemde bir terslik var, çok kötü görünüyor, tarif edemiyorum",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  },
+  "test/fresh: neutral": {
+   "n": 140,
+   "critical_recall": {
+    "combined": 0.9412,
+    "model_only": 0.9412,
+    "rules_only": 0.7353
+   },
+   "under_triage_rate": 0.0357,
+   "over_triage_rate": 0.0286,
+   "false_critical_rate": 0.0283,
+   "interrupt": {
+    "critical_interrupted": 0.7353,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 0.9143,
+   "cell_accuracy_model_only": 0.9286,
+   "urgency_accuracy": 0.9357,
+   "urgency_confusion": {
+    "critical->critical": 32,
+    "critical->soon": 2,
+    "routine->routine": 59,
+    "routine->soon": 1,
+    "soon->critical": 3,
+    "soon->routine": 3,
+    "soon->soon": 40
+   },
+   "per_cell_recall": {
+    "breathing/critical": 0.875,
+    "breathing/routine": 1.0,
+    "breathing/soon": 1.0,
+    "comfort_supplies/routine": 1.0,
+    "emotional/critical": 1.0,
+    "emotional/routine": 1.0,
+    "emotional/soon": 1.0,
+    "equipment/routine": 0.5,
+    "equipment/soon": 0.875,
+    "fall_injury/critical": 1.0,
+    "fall_injury/soon": 0.75,
+    "information/routine": 1.0,
+    "medication/critical": 0.5,
+    "medication/routine": 1.0,
+    "medication/soon": 0.75,
+    "neuro/critical": 1.0,
+    "neuro/routine": 1.0,
+    "neuro/soon": 0.75,
+    "other_symptom/critical": 1.0,
+    "other_symptom/routine": 0.9,
+    "other_symptom/soon": 1.0,
+    "pain/critical": 1.0,
+    "pain/routine": 1.0,
+    "pain/soon": 1.0,
+    "physical_help/routine": 1.0,
+    "physical_help/soon": 0.5,
+    "unclear/critical": 0.0,
+    "unclear/soon": 1.0
+   },
+   "missed_critical": [
+    {
+     "text": "cok kotuyum biseyler oluyo bana",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    },
+    {
+     "text": "babam bi tuhaf oldu çok kötü",
+     "true": "unclear/critical",
+     "pred": "unclear/soon"
+    }
+   ]
+  },
+  "test/fresh: urgent": {
+   "n": 140,
+   "critical_recall": {
+    "combined": 1.0,
+    "model_only": 1.0,
+    "rules_only": 0.7353
+   },
+   "under_triage_rate": 0.0071,
+   "over_triage_rate": 0.0357,
+   "false_critical_rate": 0.0377,
+   "interrupt": {
+    "critical_interrupted": 0.7353,
+    "false_interrupt_rate": 0.0
+   },
+   "cell_accuracy": 0.9429,
+   "cell_accuracy_model_only": 0.9429,
+   "urgency_accuracy": 0.9571,
+   "urgency_confusion": {
+    "critical->critical": 34,
+    "routine->critical": 1,
+    "routine->routine": 58,
+    "routine->soon": 1,
+    "soon->critical": 3,
+    "soon->routine": 1,
+    "soon->soon": 42
+   },
+   "per_cell_recall": {
+    "breathing/critical": 1.0,
+    "breathing/routine": 0.75,
+    "breathing/soon": 0.8333,
+    "comfort_supplies/routine": 0.9167,
+    "emotional/critical": 1.0,
+    "emotional/routine": 1.0,
+    "emotional/soon": 1.0,
+    "equipment/routine": 1.0,
+    "equipment/soon": 1.0,
+    "fall_injury/critical": 1.0,
+    "fall_injury/soon": 1.0,
+    "information/routine": 1.0,
+    "medication/critical": 1.0,
+    "medication/routine": 0.75,
+    "medication/soon": 1.0,
+    "neuro/critical": 1.0,
+    "neuro/routine": 1.0,
+    "neuro/soon": 0.5,
+    "other_symptom/critical": 1.0,
+    "other_symptom/routine": 1.0,
+    "other_symptom/soon": 1.0,
+    "pain/critical": 1.0,
+    "pain/routine": 0.75,
+    "pain/soon": 1.0,
+    "physical_help/routine": 1.0,
+    "physical_help/soon": 0.75,
+    "unclear/critical": 1.0,
+    "unclear/soon": 1.0
+   },
+   "missed_critical": []
+  }
+ }
+}
